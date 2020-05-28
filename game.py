@@ -66,3 +66,16 @@ def setup_game(story, text_speed, wait_time, output):
         setup_game(tutorial_story, 0.06, 1.5, 2)
 
 title_screen()
+
+print("\n")
+print("Location: ???     Kingdom: Earth")
+print("Map Legend:           ")
+print("@ you              |.|")
+print(". path             |.|")
+print("-| wall            |@|")
+print("? battle           ---")
+print("\n")
+print("You find yourself in a strange place, surrounded\nby many trees")
+print("\n")
+print("To move,\ntype n(north), s(south),\ne(east), or w(west).\nYou can only move where there is a path.")
+
