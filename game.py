@@ -50,6 +50,7 @@ def title_screen():
 
 
 def setup_game(story, text_speed, wait_time, output):
+
     print("\n")
     story_num = int(len(story))
     story_current = 0
@@ -68,6 +69,5 @@ def setup_game(story, text_speed, wait_time, output):
         print("█" * 25)
         time.sleep(2)
         setup_game(tutorial_story, 0.06, 1.5, 2)
-
 
 title_screen()
