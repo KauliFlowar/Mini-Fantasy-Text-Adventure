@@ -22,8 +22,13 @@ tutorial_story = ["I open my eyes.\n",
                   "Where am I...?\n"]
 
 
-# Game Execution
-def title_screen_menu():
+def title_screen():
+    print("█" * 16)
+    print("█ Mini Fantasy █")
+    print("█   Text Game  █")
+    print("█" * 16)
+    print("    .:Play:.   ")
+    print("    .:Quit:.   ")
     # Allows the player to select menu options, which is case-sensitive.
     option = input("> ")
     if option.lower() == "play":
@@ -37,16 +42,6 @@ def title_screen_menu():
             setup_game(intro_story, 0.045, 1, 1)
         elif option.lower() == "quit":
             sys.exit()
-
-
-def title_screen():
-    print("█" * 16)
-    print("█ Mini Fantasy █")
-    print("█   Text Game  █")
-    print("█" * 16)
-    print("    .:Play:.   ")
-    print("    .:Quit:.   ")
-    title_screen_menu()
 
 
 def setup_game(story, text_speed, wait_time, output):
