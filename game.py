@@ -150,10 +150,13 @@ def enter_city(loc):
     global travel_commands
     global player_hp
     global player_max_hp
+    global gold
+    global equipped_companion
+    global companions
     location = loc
     print("\nGold: " + str(gold) + "       Kingdom:" + location)
     if location == "Earth":
-        travel_commands = ["shop", "medic", "hunt", "journey"]
+        travel_commands = ["shop", "medic", "hunt", "journey", "companions"]
         print("Commands:")
         print(travel_commands)
         command = get_command(travel_commands)
@@ -164,17 +167,25 @@ def enter_city(loc):
             print("Wooden Sword - 10 gold")
             print("Type \"Leave\" to leave.")
             buy = get_command(items)
+            if buy == items[0]:
+                if gold >= 10:
+                    shield_type = 1
+                    player_max_hp += 10
+                    player_hp += 10
+                    current_commands.append("block")
+                    print("You have bought Wooden Shield.")
+                    print("It has been automatically equipped.")
+                    gold -= 10
+                else:
+                    print("You need more gold!")
             if buy == items[1]:
-                shield_type = 1
-                player_max_hp += 10
-                player_hp += 10
-                current_commands.append("block")
-                print("You have bought Wooden Shield.")
-                print("It has been automatically equipped.")
-            if buy == items[2]:
-                weapon_type = 2
-                print("You have bought Wooden Sword.")
-                print("It has been automatically equipped.")
+                if gold >= 10:
+                    weapon_type = 2
+                    print("You have bought Wooden Sword.")
+                    print("It has been automatically equipped.")
+                    gold -= 10
+                else:
+                    print("You need more gold!")
             if buy == items[-1]:
                 print("Come again!")
             enter_city("Earth")
@@ -187,16 +198,32 @@ def enter_city(loc):
             print("2 - Earth Boar")
             print("3 - Rock Monster")
             prey = get_command(preys)
-            if prey == preys[1]:
+            if prey == preys[0]:
                 enter_battle(dirt_elemental, 3)
-            if prey == preys[2]:
+            elif prey == preys[1]:
                 enter_battle(earth_boar, 3)
-            if prey == preys[3]:
+            elif prey == preys[2]:
                 enter_battle(rock_monster, 3)
+        if command.lower() == "companions":
+            companion_name = ""
+            if equipped_companion == 1:
+                companion_name = "Flame Knight"
+            if equipped_companion == 2:
+                companion_name = "Aqua Mage"
+            print("Active companion: " + companion_name)
+            print("Inactive companions: ")
+            length = len(companions)
+            for i in range(length):
+                if companions[i] == 1:
+                    companion_name = "Flame Knight"
+                elif companions[i] == 2:
+                    companion_name = "Aqua Mage"
+                print(companion_name)
+            enter_city("Earth")
 
 
 def get_command(commands):
-    command = input(">")
+    command = input("> ")
     if command.lower() in commands:
         return command.lower()
     while command not in commands:
@@ -250,6 +277,10 @@ def battle(enemy, output):
         companion_name = "Flame Knight"
         companion_ATK = 4
         companion_ability = 1
+    if equipped_companion == 2:
+        companion_name = "Aqua Mage"
+        companion_ATK = 18
+        companion_ability = 2
     for char in (enemy[0] + " would like to fight!"):
         sys.stdout.write(char)
         sys.stdout.flush()
@@ -276,11 +307,17 @@ def battle(enemy, output):
         blocked_damage = randint(min_block, max_block)
         print("You blocked " + str(blocked_damage) + " damage!")
     if command.lower() == "ability":
-        if enemy_ability != 1:
+        if enemy_ability != 2:
+            ability = ""
             if companion_ability == 1:
                 print("Flame Enhancement!")
                 companion_boost += 2
-            print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
+                ability = "ATK_boost"
+            if companion_ability == 2:
+                print("Aqua Surge!")
+                heal(8)
+            if ability == "ATK_boost":
+                print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
         else:
             print(enemy_name + " has negated the ability's activation.")
     while enemy_hp > 0:
@@ -322,11 +359,17 @@ def battle(enemy, output):
                 blocked_damage = randint(min_block, max_block)
                 print("You blocked " + str(blocked_damage) + " damage!")
             if command.lower() == "ability":
-                if enemy_ability != 1:
+                if enemy_ability != 2:
+                    ability = ""
                     if companion_ability == 1:
                         print("Flame Enhancement!")
                         companion_boost += 2
-                    print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
+                        ability = "ATK_boost"
+                    if companion_ability == 2:
+                        print("Aqua Surge!")
+                        heal(8)
+                    if ability == "ATK_boost":
+                        print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
                 else:
                     print(enemy_name + " has negated the ability's activation.")
 
@@ -389,12 +432,13 @@ def setup_name():
                        "\"Alright\", I say. \"You may join me. On the journey to save Isuren...\""]
 
 
-# current_commands.append("attack")
+current_commands.append("attack")
 # current_commands.append("block")
-# current_commands.append("ability")
-# weapon_type = 1
+current_commands.append("ability")
+weapon_type = 1
 # shield_type = 1
-# equipped_companion = 1
+equipped_companion = 2
+enter_city("Earth")
 # enter_battle(worm, 1, False)
-title_screen()
+# title_screen()
 time.sleep(100)
