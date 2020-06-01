@@ -206,10 +206,12 @@ def enter_city(loc):
                 enter_battle(rock_monster, 3)
         if command.lower() == "companions":
             companion_name = ""
+            equipped_companion_name = ""
             if equipped_companion == 1:
                 companion_name = "Flame Knight"
             if equipped_companion == 2:
                 companion_name = "Aqua Mage"
+            equipped_companion_name = companion_name
             print("Active companion: " + companion_name)
             print("Inactive companions: ")
             length = len(companions)
@@ -218,7 +220,19 @@ def enter_city(loc):
                     companion_name = "Flame Knight"
                 elif companions[i] == 2:
                     companion_name = "Aqua Mage"
-                print(companion_name)
+                print(str(i + 1) + ". " + companion_name)
+            print("Type the number of the companion to set it active. Type anything else to close.")
+            swap = ""
+            # i learn a new technique with every passing day
+            try:
+                swap = int(input("> "))
+            except ValueError:
+                enter_city("Earth")
+            if int(swap) <= length:
+                companions.append(equipped_companion)
+                equipped_companion = companions[int(swap) - 1]
+                companions.pop(int(swap) - 1)
+                print(equipped_companion_name + " has been swapped out.")
             enter_city("Earth")
 
 
@@ -252,6 +266,8 @@ def battle(enemy, output):
     companion_ATK = 0
     companion_boost = 0
     companion_ability = 0
+    ability_cooldown = 0
+    current_cooldown = 0
     enemy_name = enemy[0]
     enemy_hp = enemy[1]
     enemy_minATK = enemy[2]
@@ -281,7 +297,20 @@ def battle(enemy, output):
         companion_name = "Aqua Mage"
         companion_ATK = 18
         companion_ability = 2
-    for char in (enemy[0] + " would like to fight!"):
+        ability_cooldown = 1
+    combat_start = randint(1, 5)
+    start_text = ""
+    if combat_start == 1:
+        start_text = enemy_name + " would like to fight!"
+    if combat_start == 2:
+        start_text = enemy_name + " challenges you to a fight!"
+    if combat_start == 3:
+        start_text = enemy_name + " will fight you!"
+    if combat_start == 4:
+        start_text = "Get ready to fight " + enemy_name + "!"
+    if combat_start == 5:
+        start_text = "You will fight " + enemy_name + "!"
+    for char in start_text:
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(0.03)
@@ -316,6 +345,7 @@ def battle(enemy, output):
             if companion_ability == 2:
                 print("Aqua Surge!")
                 heal(8)
+            current_cooldown = ability_cooldown + 1
             if ability == "ATK_boost":
                 print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
         else:
@@ -328,6 +358,8 @@ def battle(enemy, output):
         if enemy_damage < 0:
             enemy_damage = 0
         player_hp = player_hp - enemy_damage
+        if current_cooldown > 0:
+            current_cooldown -= 1
         print(enemy_name + " attacked you for " + str(enemy_damage) + " damage!")
         if player_hp <= 0:
             print("You have died!")
@@ -359,7 +391,7 @@ def battle(enemy, output):
                 blocked_damage = randint(min_block, max_block)
                 print("You blocked " + str(blocked_damage) + " damage!")
             if command.lower() == "ability":
-                if enemy_ability != 2:
+                if enemy_ability != 2 and current_cooldown == 0:
                     ability = ""
                     if companion_ability == 1:
                         print("Flame Enhancement!")
@@ -371,7 +403,10 @@ def battle(enemy, output):
                     if ability == "ATK_boost":
                         print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
                 else:
-                    print(enemy_name + " has negated the ability's activation.")
+                    if enemy_ability == 2:
+                        print(enemy_name + " has negated the ability's activation.")
+                    else:
+                        print("Wait " + str(current_cooldown) + " more turns to use that ability!")
 
 
 def enter_battle(enemy, output):
@@ -432,13 +467,15 @@ def setup_name():
                        "\"Alright\", I say. \"You may join me. On the journey to save Isuren...\""]
 
 
+# some commands are commented out to skip ahead in progression.
 current_commands.append("attack")
 # current_commands.append("block")
 current_commands.append("ability")
 weapon_type = 1
 # shield_type = 1
 equipped_companion = 2
+companions.append(1)
 enter_city("Earth")
-# enter_battle(worm, 1, False)
+# enter_battle(worm, 1)
 # title_screen()
 time.sleep(100)
