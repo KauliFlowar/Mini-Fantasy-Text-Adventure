@@ -19,6 +19,7 @@ gold = 0
 current_commands = []
 location = ""
 travel_commands = []
+journey = 0
 
 # enemy = ["Name", HP, minATK, maxATK, ability, dodgeChance, gold drop]
 worm = ["Worm", 10, 2, 2, 0, 0, 5]
@@ -60,6 +61,7 @@ tutorial_story3 = ["The worm fled me.",
                    "My name? My name is..."]
 tutorial_story4 = []
 tutorial_story5 = []
+journey1_part1 = []
 
 
 def title_screen():
@@ -139,6 +141,9 @@ def setup_game(story, text_speed, wait_time, output):
         os.system('cls')
         enter_battle(earth_knight, 2)
     if output == 6:
+        print(
+            "Welcome to Earth Kingdom! Take some time to settle in, hunt, and get better equipment. Start by going to the shop and buying a" +
+            " wooden shield. It increases max health and gives the \"block\" command.")
         global location
         enter_city("Earth")
 
@@ -153,6 +158,7 @@ def enter_city(loc):
     global gold
     global equipped_companion
     global companions
+    global journey
     location = loc
     print("\nGold: " + str(gold) + "       Kingdom:" + location)
     if location == "Earth":
@@ -172,7 +178,8 @@ def enter_city(loc):
                     shield_type = 1
                     player_max_hp += 10
                     player_hp += 10
-                    current_commands.append("block")
+                    if "block" not in current_commands:
+                        current_commands.append("block")
                     print("You have bought Wooden Shield.")
                     print("It has been automatically equipped.")
                     gold -= 10
@@ -234,6 +241,10 @@ def enter_city(loc):
                 companions.pop(int(swap) - 1)
                 print(equipped_companion_name + " has been swapped out.")
             enter_city("Earth")
+        if command.lower() == "journey":
+            journey += 1
+            if journey == 1:
+                setup_game(journey1_part1, 0.04, 0.5, 7)
 
 
 def get_command(commands):
@@ -436,6 +447,7 @@ def setup_name():
     global player_name
     global tutorial_story4
     global tutorial_story5
+    global journey1_part1
     print("Type your name. Leave blank for the default name.")
     player_name = input(">")
     if player_name.lower() == "":
@@ -465,17 +477,25 @@ def setup_name():
                        "Some of our people were tortured. Killed. Or worse.",
                        "I cannot forgive this crystal thief. So I want to help you on this journey, " + player_name + "\n",
                        "\"Alright\", I say. \"You may join me. On the journey to save Isuren...\""]
+    journey1_part1 = ["\"Hey " + player_name + ".\", said Nadrus.",
+                      "I look at Nadrus as he holds a piece of paper, smiling.",
+                      "\"What's up?\", I respond.",
+                      "He smirks and looks at me. \"I think we need more allies, don't you think?\"",
+                      "\"Yeah I guess so...\"",
+                      "\"I know a friend who can help us. He is from the Water Kingdom.\"",
+                      "\"Well we should go get him. No one is willing to leave the Kingdom walls ever since the crystal was stolen, right?\"",
+                      "He sighs and looks at the floor. \"You're right. Let's go. Even if there's a chance to die, we need to go.\""]
 
 
 # some commands are commented out to skip ahead in progression.
-current_commands.append("attack")
+# current_commands.append("attack")
 # current_commands.append("block")
-current_commands.append("ability")
-weapon_type = 1
+# current_commands.append("ability")
+# weapon_type = 1
 # shield_type = 1
-equipped_companion = 2
-companions.append(1)
-enter_city("Earth")
+# equipped_companion = 2
+# companions.append(1)
+# enter_city("Earth")
 # enter_battle(worm, 1)
-# title_screen()
+title_screen()
 time.sleep(100)
