@@ -15,6 +15,7 @@ player_max_hp = 20
 player_hp = 20
 weapon_type = 0
 shield_type = 0
+shield_boost = 0
 gold = 0
 current_commands = []
 location = ""
@@ -27,6 +28,9 @@ earth_knight = ["Earth Knight", 20, 3, 4, 0, 0, 15]
 dirt_elemental = ["Dirt Elemental", 15, 3, 3, 0, 0, 10]
 earth_boar = ["Earth Boar", 30, 4, 6, 0, 5, 25]
 rock_monster = ["Rock Monster", 75, 7, 10, 0, 0, 80]
+minotaur = ["Minotaur", 40, 4, 6, 0, 0, 35]
+impish_demon = ["Impish Demon", 35, 4, 7, 0, 3, 35]
+galatigos_lackey = ["Galatigos Lackey", 50, 5, 6, 0, 0, 50]
 
 intro_story = ["Once upon a time, there was a world named Isuren, which was home to many amazing creatures.",
                "Isuren was divided into various kingdoms, each with their own element.",
@@ -59,9 +63,71 @@ tutorial_story3 = ["The worm fled me.",
                    "I come out. \"Hello\" was all I could say to him.",
                    "\"What's your name?\", he asks.",
                    "My name? My name is..."]
-tutorial_story4 = []
-tutorial_story5 = []
-journey1_part1 = []
+tutorial_story4 = ["\"" + player_name + "? I've heard that name before. You must be the hero.",
+                   "Me? A hero? What does he mean?",
+                   "\"Your name was the name that came from a prophecy, which a great mage has foreseen.\"",
+                   "he said.\n",
+                   "\"I'm a bit lost right now. I have no idea where I am.\", I said.",
+                   "\"You are in the Earth Kingdom's forest. I came down here because I heard a person went missing down here.\", he said.",
+                   "\"I am Nadrus, the Flame Knight. Pleased to meet you.\"",
+                   "He helped guide me out of the forest and gave me some food.\n",
+                   "\"Thank you\", I said. \"For everything you've done.\"",
+                   "Then another knight appeared. He was from the Earth Kingdom.",
+                   "\"Trespassers are not welcome here.\", he grunted.",
+                   "Flame Knight looks at you. " + player_name + "! I'll help you fight him off."]
+tutorial_story5 = ["\"Grrr\", he grunts. \"You won't get away next time.\"",
+                   "Flame Knight looks at you. \"You fought well " + player_name + "\", he said.",
+                   "I look at Flame Knight and Smile."
+                   "\"It was nice knowing you. I must go now.\"",
+                   "\"" + player_name + "! Wait!\" he said.",
+                   "\"If you are the hero of Isuren, let me join you. I'll protect you.\"",
+                   "\"Why do want to help me?\", I asked.\n",
+                   "You see... Fire Kingdom once lived in peace.",
+                   "Ever since the fire crystal was stolen, our power shrank a lot.",
+                   "Warring kingdoms would attack us while they still had their crystal.",
+                   "Some of our people were tortured. Killed. Or worse.",
+                   "I cannot forgive this crystal thief. So I want to help you on this journey, " + player_name + "\n",
+                   "\"Alright\", I say. \"You may join me. On the journey to save Isuren...\""]
+journey1_part1 = ["\"Hey " + player_name + ".\", said Nadrus.",
+                  "I look at Nadrus as he holds a piece of paper, smiling.",
+                  "\"What's up?\", I respond.",
+                  "He smirks and looks at me. \"I think we need more allies, don't you think?\"",
+                  "\"Yeah I guess so...\"",
+                  "\"I know a friend who can help us. He is from the Water Kingdom.\"",
+                  "\"Well we should go get him. No one is willing to leave the Kingdom walls ever since the crystal was stolen, right?\"",
+                  "He sighs and looks at the floor. \"You're right. Let's go. Even if there's a chance to die, we need to go.\"\n",
+                  "We make our way to a crossroad. Which direction should we go? (Left or Right)"]
+journey1_part1left = ["\"Let's go left.\", I say. \"I have a good feeling it's this way.\"",
+                      "Nadrus nods and walks ahead to the left road.",
+                      "A giant Minotaur walks in front of us. \"You chose the wrong way\", it said."]
+journey1_part1right = ["\"Right is always the right way\", I say. \"I just have a feeling it's this way.\"",
+                       "Nadrus nods and walks ahead to the right road",
+                       "Suddenly, a impish demon pounces on us. \"I might be small, but I pack a punch\", it says as it gnaws on Nadrus's right foot.",
+                       "He kicks it off. \"Then show us what you got!\""]
+journey1_part2 = ["It fell to the floor and fainted. We pushed it's corpse away and continued along the road.",
+                  "\"" + player_name + "!\", Nadrus called out. \"You picked the right way. There's Water Kingdom.\"",
+                  "\"Soon you'll meet my friend, Aurus. He is the Aqua Mage.\"",
+                  "Aqua Mage? If he is the Aqua Mage, then we would have a healer. I turn to Nadrus.",
+                  "\"I'm sure he will be of use.\", I say.\n",
+                  "\"Too bad you wont be able to see him\", a figure calls out.",
+                  "It walks up to us. It was a person who held a staff of the night sky.",
+                  "\"We, the Galatigos, have secured the Water Kingdom.\", he smiles.",
+                  "\"Surrender now or beg for mercy from our Pontifex.\"",
+                  "Nadrus stands in front of me. \"We have no idea what the Galatigos are, but we are on an important mission, so stay out of our way.\"",
+                  "\"I'm afraid I can't do that.\"",
+                  "Nadrus pushes him back. \"Then we will fight.\"",
+                  "He spins his staff in place. \"Very well then.\""]
+journey1_part3 = ["He collapses onto the floor. \"Y-You'll hear from our Pontifex soon enough.\"",
+                  "Nadrus pushes him aside and walks into the Water Kingdom.",
+                  "\"Aurus, are you out here?\", he calls out.",
+                  "A man with eyes of blue steps out of an alley.",
+                  "\"Nadrus?\", he calls out. \"It's been a while.\"",
+                  "Nadrus nods. \"We need your help. I'm with " + player_name + ". He might be able to help us.\"",
+                  "He gasps. \"" + player_name + "? The chosen one?\"",
+                  "I smile. \"It's a pleasure to meet you, Aurus.\"",
+                  "He shakes your hand and gives a serious face. \"I'll help you.\"",
+                  "He sees your wounds on your body. \"You're wounded. I'll heal you up.\""]
+journey1_part4 = ["\"Alright then\", I say. \"We should head back to Earth Kingdom.\""]
 
 
 def title_screen():
@@ -146,6 +212,21 @@ def setup_game(story, text_speed, wait_time, output):
             " wooden shield. It increases max health and gives the \"block\" command.")
         global location
         enter_city("Earth")
+    if output == 7:
+        directions = ["left", "right"]
+        going = get_command(directions)
+        if going == "left":
+            setup_game(journey1_part1left, 0.05, 0.5, 8)
+        if going == "right":
+            setup_game(journey1_part1right, 0.05, 0.5, 9)
+    if output == 8:
+        enter_battle(minotaur, 4)
+    if output == 9:
+        enter_battle(impish_demon, 4)
+    if output == 10:
+        enter_battle(galatigos_lackey, 5)
+    if output == 11:
+        heal(50)
 
 
 def enter_city(loc):
@@ -159,6 +240,7 @@ def enter_city(loc):
     global equipped_companion
     global companions
     global journey
+    global shield_boost
     location = loc
     print("\nGold: " + str(gold) + "       Kingdom:" + location)
     if location == "Earth":
@@ -167,17 +249,25 @@ def enter_city(loc):
         print(travel_commands)
         command = get_command(travel_commands)
         if command.lower() == "shop":
-            items = ["wooden shield", "wooden sword", "leave"]
+            items = ["wooden shield", "wooden sword"]
+            if journey >= 1:
+                items.append("iron sword")
+                items.append("iron shield")
+            items.append("leave")
             print("Current items in stock:")
             print("Wooden Shield - 10 gold")
             print("Wooden Sword - 10 gold")
+            if journey >= 1:
+                print("Iron Sword - 150 gold")
+                print("Iron Shield - 150 gold")
             print("Type \"Leave\" to leave.")
-            buy = get_command(items)
+            buy = get_command(items).lower()
             if buy == items[0]:
                 if gold >= 10:
                     shield_type = 1
-                    player_max_hp += 10
-                    player_hp += 10
+                    shield_boost = 30
+                    player_max_hp = shield_boost + 20
+                    player_hp += shield_boost
                     if "block" not in current_commands:
                         current_commands.append("block")
                     print("You have bought Wooden Shield.")
@@ -193,11 +283,32 @@ def enter_city(loc):
                     gold -= 10
                 else:
                     print("You need more gold!")
+            if buy == "iron sword":
+                if gold >= 150:
+                    weapon_type = 3
+                    print("You have bought Iron Sword.")
+                    print("It has been automatically equipped.")
+                    gold -= 150
+                else:
+                    print("You need more gold!")
+            if buy == "iron shield":
+                if gold >= 150:
+                    shield_type = 2
+                    shield_boost = 55
+                    player_max_hp = shield_boost + 20
+                    player_hp += shield_boost
+                    if "block" not in current_commands:
+                        current_commands.append("block")
+                    print("You have bought Iron Shield.")
+                    print("It has been automatically equipped.")
+                    gold -= 150
+                else:
+                    print("You need more gold!")
             if buy == items[-1]:
                 print("Come again!")
             enter_city("Earth")
         if command.lower() == "medic":
-            heal(100)
+            heal(1000000)
             enter_city("Earth")
         if command.lower() == "hunt":
             preys = ["dirt elemental", "earth boar", "rock monster"]
@@ -213,7 +324,6 @@ def enter_city(loc):
                 enter_battle(rock_monster, 3)
         if command.lower() == "companions":
             companion_name = ""
-            equipped_companion_name = ""
             if equipped_companion == 1:
                 companion_name = "Flame Knight"
             if equipped_companion == 2:
@@ -242,9 +352,17 @@ def enter_city(loc):
                 print(equipped_companion_name + " has been swapped out.")
             enter_city("Earth")
         if command.lower() == "journey":
+            os.system('cls')
+            if "block" not in current_commands:
+                print("Buy a wooden shield before you start journeying!")
+                return enter_city("Earth")
             journey += 1
             if journey == 1:
                 setup_game(journey1_part1, 0.04, 0.5, 7)
+                print("You can now set Aqua Mage as your active companion.")
+                companions.append(2)
+            print("Journey Complete!")
+            enter_city("Earth")
 
 
 def get_command(commands):
@@ -374,7 +492,7 @@ def battle(enemy, output):
         print(enemy_name + " attacked you for " + str(enemy_damage) + " damage!")
         if player_hp <= 0:
             print("You have died!")
-            time.sleep(5)
+            time.sleep(50)
             sys.exit()
         if player_hp > 0:
             print("You have " + str(player_hp) + " health left.")
@@ -428,6 +546,10 @@ def enter_battle(enemy, output):
         setup_game(tutorial_story5, 0.05, 0.5, 6)
     if outcome == 3:
         enter_city("Earth")
+    if outcome == 4:
+        setup_game(journey1_part2, 0.05, 0.5, 10)
+    if outcome == 5:
+        setup_game(journey1_part3, 0.05, 0.5, 11)
 
 
 def heal(healing):
@@ -448,6 +570,8 @@ def setup_name():
     global tutorial_story4
     global tutorial_story5
     global journey1_part1
+    global journey1_part2
+    global journey1_part3
     print("Type your name. Leave blank for the default name.")
     player_name = input(">")
     if player_name.lower() == "":
@@ -466,7 +590,7 @@ def setup_name():
                        "Flame Knight looks at you. " + player_name + "! I'll help you fight him off."]
     tutorial_story5 = ["\"Grrr\", he grunts. \"You won't get away next time.\"",
                        "Flame Knight looks at you. \"You fought well " + player_name + "\", he said.",
-                       "You look at Flame Knight and Smile."
+                       "I look at Flame Knight and Smile."
                        "\"It was nice knowing you. I must go now.\"",
                        "\"" + player_name + "! Wait!\" he said.",
                        "\"If you are the hero of Isuren, let me join you. I'll protect you.\"",
@@ -484,18 +608,45 @@ def setup_name():
                       "\"Yeah I guess so...\"",
                       "\"I know a friend who can help us. He is from the Water Kingdom.\"",
                       "\"Well we should go get him. No one is willing to leave the Kingdom walls ever since the crystal was stolen, right?\"",
-                      "He sighs and looks at the floor. \"You're right. Let's go. Even if there's a chance to die, we need to go.\""]
+                      "He sighs and looks at the floor. \"You're right. Let's go. Even if there's a chance to die, we need to go.\"\n",
+                      "We make our way to a crossroad. Which direction should we go? (Left or Right)"]
+    journey1_part2 = ["It fell to the floor and fainted. We pushed it's corpse away and continued along the road.",
+                      "\"" + player_name + "!\", Nadrus called out. \"You picked the right way. There's Water Kingdom.\"",
+                      "\"Soon you'll meet my friend, Aurus. He is the Aqua Mage.\"",
+                      "Aqua Mage? If he is the Aqua Mage, then we would have a healer. I turn to Nadrus.",
+                      "\"I'm sure he will be of use.\", I say.\n",
+                      "\"Too bad you wont be able to see him\", a figure calls out.",
+                      "It walks up to us. It was a person who held a staff of the night sky.",
+                      "\"We, the Galatigos, have secured the Water Kingdom.\", he smiles.",
+                      "\"Surrender now or beg for mercy from our Pontifex.\"",
+                      "Nadrus stands in front of me. \"We have no idea what the Galatigos are, but we are on an important mission, so stay out of our way.\"",
+                      "\"I'm afraid I can't do that.\"",
+                      "Nadrus pushes him back. \"Then we will fight.\"",
+                      "He spins his staff in place. \"Very well then.\""]
+    journey1_part3 = ["He collapses onto the floor. \"Y-You'll hear from our Pontifex soon enough.\"",
+                      "Nadrus pushes him aside and walks into the Water Kingdom.",
+                      "\"Aurus, are you out here?\", he calls out.",
+                      "A man with eyes of blue steps out of an alley.",
+                      "\"Nadrus?\", he calls out. \"It's been a while.\"",
+                      "Nadrus nods. \"We need your help. I'm with " + player_name + ". He might be able to help us.\"",
+                      "He gasps. \"" + player_name + "? The chosen one?\"",
+                      "I smile. \"It's a pleasure to meet you, Aurus.\"",
+                      "He shakes your hand and gives a serious face. \"I'll help you.\"",
+                      "He sees your wounds on your body. \"You're wounded. I'll heal you up.\""]
 
 
 # some commands are commented out to skip ahead in progression.
-# current_commands.append("attack")
-# current_commands.append("block")
-# current_commands.append("ability")
-# weapon_type = 1
-# shield_type = 1
-# equipped_companion = 2
+current_commands.append("attack")
+current_commands.append("block")
+current_commands.append("ability")
+weapon_type = 2
+shield_type = 2
+equipped_companion = 1
+player_hp = 50
+player_max_hp = 50
+# gold = 20
 # companions.append(1)
-# enter_city("Earth")
+enter_city("Earth")
 # enter_battle(worm, 1)
-title_screen()
+# title_screen()
 time.sleep(100)
