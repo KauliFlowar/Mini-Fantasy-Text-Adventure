@@ -20,7 +20,7 @@ gold = 0
 current_commands = []
 location = ""
 travel_commands = []
-journey = 0
+journey = 1
 
 # enemy = ["Name", HP, minATK, maxATK, ability, dodgeChance, gold drop]
 worm = ["Worm", 10, 2, 2, 0, 0, 5]
@@ -125,9 +125,118 @@ journey1_part3 = ["He collapses onto the floor. \"Y-You'll hear from our Pontife
                   "Nadrus nods. \"We need your help. I'm with " + player_name + ". He might be able to help us.\"",
                   "He gasps. \"" + player_name + "? The chosen one?\"",
                   "I smile. \"It's a pleasure to meet you, Aurus.\"",
-                  "He shakes your hand and gives a serious face. \"I'll help you.\"",
+                  "He shakes your hand and gives a serious face. \"I'll help you.\"\n",
                   "He sees your wounds on your body. \"You're wounded. I'll heal you up.\""]
 journey1_part4 = ["\"Alright then\", I say. \"We should head back to Earth Kingdom.\""]
+journey2_part1 = ["Aurus sits at the table and looks me.",
+                  "\"I'm going to be completely honest\" he says. \"What if " + player_name + " was just some kid who called themself " + player_name + "?\"",
+                  "Nadrus puts his hand on Aurus's. \"I know you're on edge because all the Kingdoms have fallen, but we have to trust " + player_name + ".\"",
+                  "Nadrus looks at me. \"I never doubted you even since the time we met.\"",
+                  "I sigh in relief. \"Alright, what's are next plan of action?\", I ask.",
+                  "Aurus sits up straight. \"Maybe we should free Water Kingdom from the control of the Galatigos.\"",
+                  "\"What even are the Galatigos?\", I ask.",
+                  "Aurus looks at me. \"Well...\"\n",
+                  "The Galatigos are a group of organised cultists who try to spread their religion across Isuren.",
+                  "They worship the stars, planets, and galaxies above them. It's a fine religion, but they spread it in the wrong ways.",
+                  "The Galatigos bend the galaxy to their will, using the magic of the universe.",
+                  "Anyone who dares refuse to convert, they will attack them.",
+                  "Their Pontifex is the most powerful of them all. No one knows her location, so she remains mysterious.\n",
+                  "\"Alright then, let's free Water Kingdom then.\", Nadrus says.",
+                  "We start walking towards Water Kingdom.",
+                  "A person start walking up to the group.",
+                  "\"You'll pay for what you did to me last time\", he says.",
+                  "\"Rats!\", Nadrus curses. \"I knew we should have killed him.\"",
+                  "\"I'll end you once in for all!\", he says."]
+
+
+def setup_name():
+    global player_name
+    global tutorial_story4
+    global tutorial_story5
+    global journey1_part1
+    global journey1_part2
+    global journey1_part3
+    global journey2_part1
+    print("Type your name. Leave blank for the default name.")
+    player_name = input(">")
+    if player_name.lower() == "":
+        player_name = "Isa"
+    tutorial_story4 = ["\"" + player_name + "? I've heard that name before. You must be the hero.",
+                       "Me? A hero? What does he mean?",
+                       "\"Your name was the name that came from a prophecy, which a great mage has foreseen.\"",
+                       "he said.\n",
+                       "\"I'm a bit lost right now. I have no idea where I am.\", I said.",
+                       "\"You are in the Earth Kingdom's forest. I came down here because I heard a person went missing down here.\", he said.",
+                       "\"I am Nadrus, the Flame Knight. Pleased to meet you.\"",
+                       "He helped guide me out of the forest and gave me some food.\n",
+                       "\"Thank you\", I said. \"For everything you've done.\"",
+                       "Then another knight appeared. He was from the Earth Kingdom.",
+                       "\"Trespassers are not welcome here.\", he grunted.",
+                       "Flame Knight looks at you. " + player_name + "! I'll help you fight him off."]
+    tutorial_story5 = ["\"Grrr\", he grunts. \"You won't get away next time.\"",
+                       "Flame Knight looks at you. \"You fought well " + player_name + "\", he said.",
+                       "I look at Flame Knight and Smile."
+                       "\"It was nice knowing you. I must go now.\"",
+                       "\"" + player_name + "! Wait!\" he said.",
+                       "\"If you are the hero of Isuren, let me join you. I'll protect you.\"",
+                       "\"Why do want to help me?\", I asked.\n",
+                       "You see... Fire Kingdom once lived in peace.",
+                       "Ever since the fire crystal was stolen, our power shrank a lot.",
+                       "Warring kingdoms would attack us while they still had their crystal.",
+                       "Some of our people were tortured. Killed. Or worse.",
+                       "I cannot forgive this crystal thief. So I want to help you on this journey, " + player_name + "\n",
+                       "\"Alright\", I say. \"You may join me. On the journey to save Isuren...\""]
+    journey1_part1 = ["\"Hey " + player_name + ".\", said Nadrus.",
+                      "I look at Nadrus as he holds a piece of paper, smiling.",
+                      "\"What's up?\", I respond.",
+                      "He smirks and looks at me. \"I think we need more allies, don't you think?\"",
+                      "\"Yeah I guess so...\"",
+                      "\"I know a friend who can help us. He is from the Water Kingdom.\"",
+                      "\"Well we should go get him. No one is willing to leave the Kingdom walls ever since the crystal was stolen, right?\"",
+                      "He sighs and looks at the floor. \"You're right. Let's go. Even if there's a chance to die, we need to go.\"\n",
+                      "We make our way to a crossroad. Which direction should we go? (Left or Right)"]
+    journey1_part2 = ["It fell to the floor and fainted. We pushed it's corpse away and continued along the road.",
+                      "\"" + player_name + "!\", Nadrus called out. \"You picked the right way. There's Water Kingdom.\"",
+                      "\"Soon you'll meet my friend, Aurus. He is the Aqua Mage.\"",
+                      "Aqua Mage? If he is the Aqua Mage, then we would have a healer. I turn to Nadrus.",
+                      "\"I'm sure he will be of use.\", I say.\n",
+                      "\"Too bad you wont be able to see him\", a figure calls out.",
+                      "It walks up to us. It was a person who held a staff of the night sky.",
+                      "\"We, the Galatigos, have secured the Water Kingdom.\", he smiles.",
+                      "\"Surrender now or beg for mercy from our Pontifex.\"",
+                      "Nadrus stands in front of me. \"We have no idea what the Galatigos are, but we are on an important mission, so stay out of our way.\"",
+                      "\"I'm afraid I can't do that.\"",
+                      "Nadrus pushes him back. \"Then we will fight.\"",
+                      "He spins his staff in place. \"Very well then.\""]
+    journey1_part3 = ["He collapses onto the floor. \"Y-You'll hear from our Pontifex soon enough.\"",
+                      "Nadrus pushes him aside and walks into the Water Kingdom.",
+                      "\"Aurus, are you out here?\", he calls out.",
+                      "A man with eyes of blue steps out of an alley.",
+                      "\"Nadrus?\", he calls out. \"It's been a while.\"",
+                      "Nadrus nods. \"We need your help. I'm with " + player_name + ". He might be able to help us.\"",
+                      "He gasps. \"" + player_name + "? The chosen one?\"",
+                      "I smile. \"It's a pleasure to meet you, Aurus.\"\n",
+                      "He shakes your hand and gives a serious face. \"I'll help you.\"",
+                      "He sees your wounds on your body. \"You're wounded. I'll heal you up.\""]
+    journey2_part1 = ["Aurus sits at the table and looks me.",
+                      "\"I'm going to be completely honest\" he says. \"What if " + player_name + " was just some kid who called themself " + player_name + "?\"",
+                      "Nadrus puts his hand on Aurus's. \"I know you're on edge because all the Kingdoms have fallen, but we have to trust " + player_name + ".\"",
+                      "Nadrus looks at me. \"I never doubted you even since the time we met.\"",
+                      "I sigh in relief. \"Alright, what's are next plan of action?\", I ask.",
+                      "Aurus sits up straight. \"Maybe we should free Water Kingdom from the control of the Galatigos.\"",
+                      "\"What even are the Galatigos?\", I ask.",
+                      "Aurus looks at me. \"Well...\"\n",
+                      "The Galatigos are a group of organised cultists who try to spread their religion across Isuren.",
+                      "They worship the stars, planets, and galaxies above them. It's a fine religion, but they spread it in the wrong ways.",
+                      "The Galatigos bend the galaxy to their will, using the magic of the universe.",
+                      "Anyone who dares refuse to convert, they will attack them.",
+                      "Their Pontifex is the most powerful of them all. No one knows her location, so she remains mysterious.\n",
+                      "\"Alright then, let's free Water Kingdom then.\", Nadrus says.",
+                      "We start walking towards Water Kingdom.",
+                      "A person start walking up to the group.",
+                      "\"You'll pay for what you did to me last time\", he says.",
+                      "\"Rats!\", Nadrus curses. \"I knew we should have killed him.\"",
+                      "\"I'll end you once in for all!\", he says."]
 
 
 def title_screen():
@@ -227,6 +336,8 @@ def setup_game(story, text_speed, wait_time, output):
         enter_battle(galatigos_lackey, 5)
     if output == 11:
         heal(50)
+    if output == 12:
+        enter_battle(galatigos_lackey, 6)
 
 
 def enter_city(loc):
@@ -242,7 +353,8 @@ def enter_city(loc):
     global journey
     global shield_boost
     location = loc
-    print("\nGold: " + str(gold) + "       Kingdom:" + location)
+    print("\nGold: " + str(gold) + "       Kingdom:" + location + "      Health: " + str(player_hp) + "/" + str(
+        player_max_hp))
     if location == "Earth":
         travel_commands = ["shop", "medic", "hunt", "journey", "companions"]
         print("Commands:")
@@ -267,7 +379,6 @@ def enter_city(loc):
                     shield_type = 1
                     shield_boost = 30
                     player_max_hp = shield_boost + 20
-                    player_hp += shield_boost
                     if "block" not in current_commands:
                         current_commands.append("block")
                     print("You have bought Wooden Shield.")
@@ -296,7 +407,6 @@ def enter_city(loc):
                     shield_type = 2
                     shield_boost = 55
                     player_max_hp = shield_boost + 20
-                    player_hp += shield_boost
                     if "block" not in current_commands:
                         current_commands.append("block")
                     print("You have bought Iron Shield.")
@@ -356,12 +466,14 @@ def enter_city(loc):
             if "block" not in current_commands:
                 print("Buy a wooden shield before you start journeying!")
                 return enter_city("Earth")
-            journey += 1
             if journey == 1:
                 setup_game(journey1_part1, 0.04, 0.5, 7)
                 print("You can now set Aqua Mage as your active companion.")
                 companions.append(2)
-            print("Journey Complete!")
+                journey += 1
+                print("Journey Complete!")
+            if journey == 2:
+                setup_game(journey2_part1, 0.05, 0.5, 12)
             enter_city("Earth")
 
 
@@ -413,10 +525,16 @@ def battle(enemy, output):
     if weapon_type == 2:
         minATK = 5
         maxATK = 7
+    if weapon_type == 3:
+        minATK = 8
+        maxATK = 10
     # shields
     if shield_type == 1:
         min_block = 2
         max_block = 4
+    if shield_type == 2:
+        min_block = 9
+        max_block = 11
     # companions
     if equipped_companion == 1:
         companion_name = "Flame Knight"
@@ -469,7 +587,7 @@ def battle(enemy, output):
             ability = ""
             if companion_ability == 1:
                 print("Flame Enhancement!")
-                companion_boost += 2
+                companion_boost += 3
                 ability = "ATK_boost"
             if companion_ability == 2:
                 print("Aqua Surge!")
@@ -524,7 +642,7 @@ def battle(enemy, output):
                     ability = ""
                     if companion_ability == 1:
                         print("Flame Enhancement!")
-                        companion_boost += 2
+                        companion_boost += 3
                         ability = "ATK_boost"
                     if companion_ability == 2:
                         print("Aqua Surge!")
@@ -563,76 +681,6 @@ def heal(healing):
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(0.01)
-
-
-def setup_name():
-    global player_name
-    global tutorial_story4
-    global tutorial_story5
-    global journey1_part1
-    global journey1_part2
-    global journey1_part3
-    print("Type your name. Leave blank for the default name.")
-    player_name = input(">")
-    if player_name.lower() == "":
-        player_name = "Isa"
-    tutorial_story4 = ["\"" + player_name + "? I've heard that name before. You must be the hero.",
-                       "Me? A hero? What does he mean?",
-                       "\"Your name was the name that came from a prophecy, which a great mage has foreseen.\"",
-                       "he said.\n",
-                       "\"I'm a bit lost right now. I have no idea where I am.\", I said.",
-                       "\"You are in the Earth Kingdom's forest. I came down here because I heard a person went missing down here.\", he said.",
-                       "\"I am Nadrus, the Flame Knight. Pleased to meet you.\"",
-                       "He helped guide me out of the forest and gave me some food.\n",
-                       "\"Thank you\", I said. \"For everything you've done.\"",
-                       "Then another knight appeared. He was from the Earth Kingdom.",
-                       "\"Trespassers are not welcome here.\", he grunted.",
-                       "Flame Knight looks at you. " + player_name + "! I'll help you fight him off."]
-    tutorial_story5 = ["\"Grrr\", he grunts. \"You won't get away next time.\"",
-                       "Flame Knight looks at you. \"You fought well " + player_name + "\", he said.",
-                       "I look at Flame Knight and Smile."
-                       "\"It was nice knowing you. I must go now.\"",
-                       "\"" + player_name + "! Wait!\" he said.",
-                       "\"If you are the hero of Isuren, let me join you. I'll protect you.\"",
-                       "\"Why do want to help me?\", I asked.\n",
-                       "You see... Fire Kingdom once lived in peace.",
-                       "Ever since the fire crystal was stolen, our power shrank a lot.",
-                       "Warring kingdoms would attack us while they still had their crystal.",
-                       "Some of our people were tortured. Killed. Or worse.",
-                       "I cannot forgive this crystal thief. So I want to help you on this journey, " + player_name + "\n",
-                       "\"Alright\", I say. \"You may join me. On the journey to save Isuren...\""]
-    journey1_part1 = ["\"Hey " + player_name + ".\", said Nadrus.",
-                      "I look at Nadrus as he holds a piece of paper, smiling.",
-                      "\"What's up?\", I respond.",
-                      "He smirks and looks at me. \"I think we need more allies, don't you think?\"",
-                      "\"Yeah I guess so...\"",
-                      "\"I know a friend who can help us. He is from the Water Kingdom.\"",
-                      "\"Well we should go get him. No one is willing to leave the Kingdom walls ever since the crystal was stolen, right?\"",
-                      "He sighs and looks at the floor. \"You're right. Let's go. Even if there's a chance to die, we need to go.\"\n",
-                      "We make our way to a crossroad. Which direction should we go? (Left or Right)"]
-    journey1_part2 = ["It fell to the floor and fainted. We pushed it's corpse away and continued along the road.",
-                      "\"" + player_name + "!\", Nadrus called out. \"You picked the right way. There's Water Kingdom.\"",
-                      "\"Soon you'll meet my friend, Aurus. He is the Aqua Mage.\"",
-                      "Aqua Mage? If he is the Aqua Mage, then we would have a healer. I turn to Nadrus.",
-                      "\"I'm sure he will be of use.\", I say.\n",
-                      "\"Too bad you wont be able to see him\", a figure calls out.",
-                      "It walks up to us. It was a person who held a staff of the night sky.",
-                      "\"We, the Galatigos, have secured the Water Kingdom.\", he smiles.",
-                      "\"Surrender now or beg for mercy from our Pontifex.\"",
-                      "Nadrus stands in front of me. \"We have no idea what the Galatigos are, but we are on an important mission, so stay out of our way.\"",
-                      "\"I'm afraid I can't do that.\"",
-                      "Nadrus pushes him back. \"Then we will fight.\"",
-                      "He spins his staff in place. \"Very well then.\""]
-    journey1_part3 = ["He collapses onto the floor. \"Y-You'll hear from our Pontifex soon enough.\"",
-                      "Nadrus pushes him aside and walks into the Water Kingdom.",
-                      "\"Aurus, are you out here?\", he calls out.",
-                      "A man with eyes of blue steps out of an alley.",
-                      "\"Nadrus?\", he calls out. \"It's been a while.\"",
-                      "Nadrus nods. \"We need your help. I'm with " + player_name + ". He might be able to help us.\"",
-                      "He gasps. \"" + player_name + "? The chosen one?\"",
-                      "I smile. \"It's a pleasure to meet you, Aurus.\"",
-                      "He shakes your hand and gives a serious face. \"I'll help you.\"",
-                      "He sees your wounds on your body. \"You're wounded. I'll heal you up.\""]
 
 
 # some commands are commented out to skip ahead in progression.
