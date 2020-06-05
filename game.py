@@ -6,8 +6,28 @@ import os
 import time
 from random import *
 
+# no hecking clue what this does. you put it there and it's been there since the dawn of time
 screen_width = 100
 
+# These are player variables. player_name only changes after the setup_name() command. equipped companion is the number of the current companion in use.
+# It can be changed while in a city. Check the git folder for the companions.txt file for all info on companions including their number, their ability, and
+# their attack. Unlike a player weapon, companions can only deal flat damage. I preset some of the companion abilities already, including the enemy abilities
+# too. The var companions is a list, containing all the companions you have gotten along your journeys. It can be extended with the py command:
+# companions.append(x), where x is the number of the companion. player_max_hp is what it says it is. The player's max hp. It can be increased by buying
+# shields, which also give a block command (check battle() for the details). player_hp is the current hp the player is sitting at. weapon_type is the
+# current weapon the player is using. It is called upon when battle() occurs. It is an int var and it can be changed by buying weapons from a shop, or
+# some journey or hunt drops. It is like the companions, each number is a different weapon. I might create a txt file to list those weapons too later.
+# Unlike companions, they don't have a list to store the separate weapons. Once it is equipped, it stays, and the last weapon is destroyed.
+# shield_type is the exact same thing as weapon_type except with shields. don't worry about shield_boost. It is only called in battle() and all code
+# regarding shield_boost is already finished. Thinking about it, I might just move shield_boost to the battle() command itself. gold is the amount of gold
+# you currently have, and it's the currency of the game. The main way you can get it is by killing enemies, which list how much gold they drop. Every
+# similar enemy drops a certain amount of gold, so if you want to make the same enemy drop a different amount of gold, you will have to create a separate
+# enemy. Gold can be spent in shops. current_commands are the commands you can use during battle(). The only 3 items that should be on that list are
+# "attack", "ability", and "block". Each of those 3 items will be appended to that list along the story. "attack" is added once you pickup the first sword,
+# "ability" is added once Flame Knight joins your team, and "block" is added once you have bought a wooden shield. Note that you can't start journey without
+# getting a wooden shield. location is not too important. Check in with me if you want to do something with that. travel_commands are the commands
+# you can use once you are in a certain town. They might change depending on the town too. journey is the current journey you are on. Once you finish a
+# journey, it increases by 1 and you can start the next journey.
 player_name = "Isa"
 equipped_companion = 0
 companions = []
@@ -22,7 +42,12 @@ location = ""
 travel_commands = []
 journey = 1
 
-# enemy = ["Name", HP, minATK, maxATK, ability, dodgeChance, gold drop]
+# These are the enemy variables. They are all lists with 7 variables within. Name is a string, and it is the name of the enemy. It can be the same as another
+# enemy too. HP is how much hp they have. Simple. minATK and maxATK are the damage vars. Each battle, it will choose a number between minATK and maxATK.
+# ability is the enemy's ability. I have already preset some abilities already, as the abilities are quite tedious to make and require a bit of ctrl c + ctrl v
+# dodgeChance is the chance that it might dodge your attack. After you use the command "attack", a number between 0 and 100 generates and if the number is
+# bigger than dodgeChance, then your attack will miss. goldDrop is a flat number of gold that the enemy drops once defeated.
+# enemy = ["Name", HP, minATK, maxATK, ability, dodgeChance, goldDrop]
 worm = ["Worm", 10, 2, 2, 0, 0, 5]
 earth_knight = ["Earth Knight", 20, 3, 4, 0, 0, 15]
 dirt_elemental = ["Dirt Elemental", 15, 3, 3, 0, 0, 10]
@@ -32,6 +57,9 @@ minotaur = ["Minotaur", 40, 4, 6, 0, 0, 35]
 impish_demon = ["Impish Demon", 35, 4, 7, 0, 3, 35]
 galatigos_lackey = ["Galatigos Lackey", 50, 5, 6, 0, 0, 50]
 
+# These are the story lists. Each list has a story, and each line of the story is split into different instances in the list, divided by commas to make another
+# line. All stories including the var of player_name must be copy and pasted onto the setup_name() command, so that the name can change. By default the name
+# is Isa. Y A  B O I
 intro_story = ["Once upon a time, there was a world named Isuren, which was home to many amazing creatures.",
                "Isuren was divided into various kingdoms, each with their own element.",
                "Each kingdom's power rests in an elemental crystal, sealed within the kingdom.",
@@ -149,6 +177,8 @@ journey2_part1 = ["Aurus sits at the table and looks me.",
                   "\"I'll end you once in for all!\", he says."]
 
 
+# setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
+# the list into this command so that the name changes.
 def setup_name():
     global player_name
     global tutorial_story4
@@ -239,6 +269,7 @@ def setup_name():
                       "\"I'll end you once in for all!\", he says."]
 
 
+# You made this for the start screen, so you don't need to change it. I made get_command() based on the play and quit command get.
 def title_screen():
     print("█" * 16)
     print("█ Mini Fantasy █")
@@ -261,6 +292,9 @@ def title_screen():
             sys.exit()
 
 
+# setup_game() takes in 4 variables. The story, which is the story var you want to be reading through are the lists that I shown above. text_speed is the time
+# in between each character which is typed out. The base speed is usually 0.05. wait_time is the time in between each line. You can increase this for a more
+# dramatic effect. output is called upon at the end, and if the output is a certain number than the output might do different things.
 def setup_game(story, text_speed, wait_time, output):
     global player_name
     print("\n")
@@ -340,6 +374,8 @@ def setup_game(story, text_speed, wait_time, output):
         enter_battle(galatigos_lackey, 6)
 
 
+# enter_city takes in only 1 var, which must be a string. If that string is a certain city's name then you will enter that city.
+# for now, I only have Earth Kingdom. Check out the code on enter_city() a bit. You will understand more schematics of the game.
 def enter_city(loc):
     global weapon_type
     global shield_type
@@ -379,6 +415,7 @@ def enter_city(loc):
                     shield_type = 1
                     shield_boost = 30
                     player_max_hp = shield_boost + 20
+                    player_hp = player_max_hp
                     if "block" not in current_commands:
                         current_commands.append("block")
                     print("You have bought Wooden Shield.")
@@ -407,6 +444,7 @@ def enter_city(loc):
                     shield_type = 2
                     shield_boost = 55
                     player_max_hp = shield_boost + 20
+                    player_hp = player_max_hp
                     if "block" not in current_commands:
                         current_commands.append("block")
                     print("You have bought Iron Shield.")
@@ -477,6 +515,11 @@ def enter_city(loc):
             enter_city("Earth")
 
 
+# get_command() takes in a list. It will ask for a command, and if the command is in the list then it will return the command typed out. 2 rules when using
+# the get_command() function. 1. Do not use this if you don't NEED to type a command. 2. Always set a var as this command, as it returns a string.
+# ex: example_var = get_command(["yes", "no"])
+# if example_var == "yes":
+#   do_something()
 def get_command(commands):
     command = input("> ")
     if command.lower() in commands:
@@ -488,6 +531,11 @@ def get_command(commands):
             return command.lower()
 
 
+# The battle() command is the most complicated of them all. First, it lists a bunch of variables. Then, it asks you for a command
+# with command = get_command(current_commands). If a certain command is chosen, it will do certain things and then passes the turn to the enemy.
+# During the enemy's turn, it will attack you once and use it's ability(I haven't coded much of it yet so maybe I'll do it later). Then it repeats if
+# the player dies or the enemy dies. I haven't setup a system if the player dies yet, so for now, it just exits the game.
+# ALSO DO NOTICE!!! DO NOT CALL OUT THIS COMMAND. THERE IS A COMMAND THAT DOES IT FOR YOU. CHECK THE COMMAND BELOW.
 def battle(enemy, output):
     # all vars
     global player_hp
@@ -656,6 +704,8 @@ def battle(enemy, output):
                         print("Wait " + str(current_cooldown) + " more turns to use that ability!")
 
 
+# enter_battle() starts the battle and takes in 2 vars. The first var is the enemy that you will be attacking. The second is the output, which is the same
+# as the setup_game() output, only it triggers once the battle is over. If you want to return to Earth Kingdom after battle, use output 3
 def enter_battle(enemy, output):
     outcome = battle(enemy, output)
     if outcome == 1:
@@ -670,6 +720,7 @@ def enter_battle(enemy, output):
         setup_game(journey1_part3, 0.05, 0.5, 11)
 
 
+# heal() will heal you for a certain amount. player_hp cannot be bigger than player_max_hp.
 def heal(healing):
     global player_max_hp
     global player_hp
