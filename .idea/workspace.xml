@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23ee1d64-7d15-4b09-801d-64bb7c87e699" name="Default Changelist" comment="journey2 started">
+    <list default="true" id="23ee1d64-7d15-4b09-801d-64bb7c87e699" name="Default Changelist" comment="added some notes for page79">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591221592249</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added some notes for page79">
+      <created>1591377215180</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1591377215180</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -129,7 +135,8 @@
     <MESSAGE value="journey stuff" />
     <MESSAGE value="journey1 finished" />
     <MESSAGE value="journey2 started" />
-    <option name="LAST_COMMIT_MESSAGE" value="journey2 started" />
+    <MESSAGE value="added some notes for page79" />
+    <option name="LAST_COMMIT_MESSAGE" value="added some notes for page79" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590979778113">
@@ -156,6 +163,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1253" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591221596661" />
+    <state x="579" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591377187326">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="579" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1591377187326" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1591220142962">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
