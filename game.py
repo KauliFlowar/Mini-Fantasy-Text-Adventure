@@ -19,7 +19,8 @@ screen_width = 100
 # some journey or hunt drops. It is like the companions, each number is a different weapon. I might create a txt file to list those weapons too later.
 # Unlike companions, they don't have a list to store the separate weapons. Once it is equipped, it stays, and the last weapon is destroyed.
 # shield_type is the exact same thing as weapon_type except with shields. don't worry about shield_boost. It is only called in battle() and all code
-# regarding shield_boost is already finished. Thinking about it, I might just move shield_boost to the battle() command itself. gold is the amount of gold
+# regarding shield_boost is already finished. Thinking about it, I might just move shield_boost to the battle() command itself (EDIT: I found out that
+# shield_boost is actually the amount of extra max hp the current shield grants. This var can only change when a new shield is equipped). gold is the amount of gold
 # you currently have, and it's the currency of the game. The main way you can get it is by killing enemies, which list how much gold they drop. Every
 # similar enemy drops a certain amount of gold, so if you want to make the same enemy drop a different amount of gold, you will have to create a separate
 # enemy. Gold can be spent in shops. current_commands are the commands you can use during battle(). The only 3 items that should be on that list are
@@ -40,6 +41,7 @@ gold = 0
 current_commands = []
 location = ""
 travel_commands = []
+travel_destinations = ["earth"]
 journey = 1
 
 # These are the enemy variables. They are all lists with 7 variables within. Name is a string, and it is the name of the enemy. It can be the same as another
@@ -56,6 +58,7 @@ rock_monster = ["Rock Monster", 75, 7, 10, 0, 0, 80]
 minotaur = ["Minotaur", 40, 4, 6, 0, 0, 35]
 impish_demon = ["Impish Demon", 35, 4, 7, 0, 3, 35]
 galatigos_lackey = ["Galatigos Lackey", 50, 5, 6, 0, 0, 50]
+lithosphere_mage = ["Lithosphere Mage", 100, 4, 4, 1, 5, 100]
 
 # These are the story lists. Each list has a story, and each line of the story is split into different instances in the list, divided by commas to make another
 # line. All stories including the var of player_name must be copy and pasted onto the setup_name() command, so that the name can change. By default the name
@@ -171,10 +174,29 @@ journey2_part1 = ["Aurus sits at the table and looks me.",
                   "Their Pontifex is the most powerful of them all. No one knows her location, so she remains mysterious.\n",
                   "\"Alright then, let's free Water Kingdom then.\", Nadrus says.",
                   "We start walking towards Water Kingdom.",
-                  "A person start walking up to the group.",
+                  "A person starts walking up to our group.",
                   "\"You'll pay for what you did to me last time\", he says.",
                   "\"Rats!\", Nadrus curses. \"I knew we should have killed him.\"",
                   "\"I'll end you once in for all!\", he says."]
+journey2_part2 = ["Aurus looks at me. \"Jeez, what's his problem?\"",
+                  "Nadrus picks up the Galatigos lackey by his neck. \"Don't mess with us again.\" He quickly nods.",
+                  "Nadrus throws him to the ground. \"Alright let's start heading to Water Kingdom.\"\n",
+                  "We head to Water Kingdom, only to be stopped by a brigade of Galatigos soldiers and mages.",
+                  "There was a short mage at the head of the brigade, who held a ginormous stave, disproportionate to her petit size.",
+                  "We head up to the brigade, and all the soldiers turn their heads towards us.",
+                  "\"Halt!\", the tiny mage calls out. \"You may not enter Water Kingdom. Now turn back and leave!\"",
+                  "Aurus takes a step forward. \"Not a chance!\", he yells.",
+                  "The mage looks impatient. \"I am Lithosphere Mage, the 22nd Mooncaster. Turn back now or die under my power.\"",
+                  "Nadrus also takes a step forward. \"You heard the man! We are not turning back!\"",
+                  "The mage follows Nadrus's gaze. \"Very well then...\""]
+journey2_part3 = ["The mage falls to her knees. \"I underestimated your power.\"",
+                  "The Galatigos soldiers looked shocked at their squadron leader's defeat.",
+                  "Aurus looks at all the soldiers' faces and smiles at the mage. \"At least you fought fairly.\"",
+                  "The mage looked a little angered at Aurus and stands up.",
+                  "\"Consider this a tactical retreat. Be warned of the threats that are coming.\"",
+                  "She makes a hand gesture, and all the Galatigos soldiers leave the field.",
+                  "The people of Water Kingdom look outside their kingdom gates and looked surprised that the Galatigos have retreated.",
+                  "Aurus looks at me. \"Well what are you waiting for? Go inside our amazing kingdom!\""]
 
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
@@ -263,7 +285,7 @@ def setup_name():
                       "Their Pontifex is the most powerful of them all. No one knows her location, so she remains mysterious.\n",
                       "\"Alright then, let's free Water Kingdom then.\", Nadrus says.",
                       "We start walking towards Water Kingdom.",
-                      "A person start walking up to the group.",
+                      "A person starts walking up to our group.",
                       "\"You'll pay for what you did to me last time\", he says.",
                       "\"Rats!\", Nadrus curses. \"I knew we should have killed him.\"",
                       "\"I'll end you once in for all!\", he says."]
@@ -372,6 +394,8 @@ def setup_game(story, text_speed, wait_time, output):
         heal(50)
     if output == 12:
         enter_battle(galatigos_lackey, 6)
+    if output == 13:
+        enter_battle(lithosphere_mage, 7)
 
 
 # enter_city takes in only 1 var, which must be a string. If that string is a certain city's name then you will enter that city.
@@ -389,10 +413,10 @@ def enter_city(loc):
     global journey
     global shield_boost
     location = loc
-    print("\nGold: " + str(gold) + "       Kingdom:" + location + "      Health: " + str(player_hp) + "/" + str(
+    print("\nGold: " + str(gold) + "       Kingdom: " + location + "      Health: " + str(player_hp) + "/" + str(
         player_max_hp))
     if location == "Earth":
-        travel_commands = ["shop", "medic", "hunt", "journey", "companions"]
+        travel_commands = ["shop", "medic", "hunt", "journey", "companions", "travel"]
         print("Commands:")
         print(travel_commands)
         command = get_command(travel_commands)
@@ -471,48 +495,89 @@ def enter_city(loc):
             elif prey == preys[2]:
                 enter_battle(rock_monster, 3)
         if command.lower() == "companions":
-            companion_name = ""
-            if equipped_companion == 1:
-                companion_name = "Flame Knight"
-            if equipped_companion == 2:
-                companion_name = "Aqua Mage"
-            equipped_companion_name = companion_name
-            print("Active companion: " + companion_name)
-            print("Inactive companions: ")
-            length = len(companions)
-            for i in range(length):
-                if companions[i] == 1:
-                    companion_name = "Flame Knight"
-                elif companions[i] == 2:
-                    companion_name = "Aqua Mage"
-                print(str(i + 1) + ". " + companion_name)
-            print("Type the number of the companion to set it active. Type anything else to close.")
-            swap = ""
-            # i learn a new technique with every passing day
-            try:
-                swap = int(input("> "))
-            except ValueError:
-                enter_city("Earth")
-            if int(swap) <= length:
-                companions.append(equipped_companion)
-                equipped_companion = companions[int(swap) - 1]
-                companions.pop(int(swap) - 1)
-                print(equipped_companion_name + " has been swapped out.")
-            enter_city("Earth")
+            swap_companions(location)
         if command.lower() == "journey":
-            os.system('cls')
-            if "block" not in current_commands:
-                print("Buy a wooden shield before you start journeying!")
-                return enter_city("Earth")
-            if journey == 1:
-                setup_game(journey1_part1, 0.04, 0.5, 7)
-                print("You can now set Aqua Mage as your active companion.")
-                companions.append(2)
-                journey += 1
-                print("Journey Complete!")
-            if journey == 2:
-                setup_game(journey2_part1, 0.05, 0.5, 12)
+            begin_journey()
             enter_city("Earth")
+        if command.lower() == "travel":
+            travel_to()
+    if location == "Water":
+        travel_commands = ["companions", "travel", "journey"]
+        print("Commands:")
+        print(travel_commands)
+        command = get_command(travel_commands)
+        if command.lower() == "companions":
+            swap_companions(location)
+        if command.lower() == "journey":
+            begin_journey()
+            enter_city("Water")
+        if command.lower() == "travel":
+            travel_to()
+
+
+# This is the journey command. You can call it whenever you are in a town. The reason I made it a command was to be able to access it regardless of whatever
+# town you are in.
+def begin_journey():
+    global journey
+    os.system('cls')
+    if "block" not in current_commands:
+        print("Buy a wooden shield before you start journeying!")
+        return enter_city("Earth")
+    if journey == 1:
+        setup_game(journey1_part1, 0.04, 0.5, 7)
+        print("You can now set Aqua Mage as your active companion.")
+        companions.append(2)
+        journey += 1
+        return print("Journey Complete!")
+    if journey == 2:
+        setup_game(journey2_part1, 0.05, 0.5, 12)
+        journey += 1
+        print("You can now travel to Water Kingdom.")
+        travel_destinations.append("water")
+        return print("Journey Complete!")
+
+
+# Swaps companions. Same case as begin_journey(). current_city allows the command to exit once the command is done.
+def swap_companions(current_city):
+    global equipped_companion
+    companion_name = ""
+    if equipped_companion == 1:
+        companion_name = "Flame Knight"
+    if equipped_companion == 2:
+        companion_name = "Aqua Mage"
+    equipped_companion_name = companion_name
+    print("Active companion: " + companion_name)
+    print("Inactive companions: ")
+    length = len(companions)
+    for i in range(length):
+        if companions[i] == 1:
+            companion_name = "Flame Knight"
+        elif companions[i] == 2:
+            companion_name = "Aqua Mage"
+        print(str(i + 1) + ". " + companion_name)
+    print("Type the number of the companion to set it active. Type anything else to close.")
+    # i learn a new technique with every passing day
+    try:
+        swap = int(input("> "))
+    except ValueError:
+        return enter_city(current_city)
+    if int(swap) <= length:
+        companions.append(equipped_companion)
+        equipped_companion = companions[int(swap) - 1]
+        companions.pop(int(swap) - 1)
+        print(equipped_companion_name + " has been swapped out.")
+    enter_city(current_city)
+
+
+def travel_to():
+    print("Travel to:")
+    print(travel_destinations)
+    destination = get_command(travel_destinations)
+    if destination == "earth":
+        destination = "Earth"
+    if destination == "water":
+        destination = "Water"
+    enter_city(destination)
 
 
 # get_command() takes in a list. It will ask for a command, and if the command is in the list then it will return the command typed out. 2 rules when using
@@ -647,8 +712,8 @@ def battle(enemy, output):
             print(enemy_name + " has negated the ability's activation.")
     while enemy_hp > 0:
         if enemy_ability == 1:
-            enemy_extra_damage += 5
-            print(enemy_name + " has boosted their attack by " + enemy_extra_damage)
+            enemy_extra_damage += 2
+            print(enemy_name + " has boosted their attack by " + str(enemy_extra_damage))
         enemy_damage = (randint(enemy_minATK, enemy_maxATK) - blocked_damage) + enemy_extra_damage
         if enemy_damage < 0:
             enemy_damage = 0
@@ -718,6 +783,10 @@ def enter_battle(enemy, output):
         setup_game(journey1_part2, 0.05, 0.5, 10)
     if outcome == 5:
         setup_game(journey1_part3, 0.05, 0.5, 11)
+    if outcome == 6:
+        setup_game(journey2_part2, 0.05, 0.5, 13)
+    if outcome == 7:
+        setup_game(journey2_part3, 0.05, 0.5, 0)
 
 
 # heal() will heal you for a certain amount. player_hp cannot be bigger than player_max_hp.
@@ -744,7 +813,7 @@ equipped_companion = 1
 player_hp = 50
 player_max_hp = 50
 # gold = 20
-# companions.append(1)
+# companions.append(2)
 enter_city("Earth")
 # enter_battle(worm, 1)
 # title_screen()
