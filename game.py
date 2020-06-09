@@ -469,8 +469,6 @@ def enter_city(loc):
                     shield_boost = 55
                     player_max_hp = shield_boost + 20
                     player_hp = player_max_hp
-                    if "block" not in current_commands:
-                        current_commands.append("block")
                     print("You have bought Iron Shield.")
                     print("It has been automatically equipped.")
                     gold -= 150
@@ -480,7 +478,7 @@ def enter_city(loc):
                 print("Come again!")
             enter_city("Earth")
         if command.lower() == "medic":
-            heal(1000000)
+            heal("max")
             enter_city("Earth")
         if command.lower() == "hunt":
             preys = ["dirt elemental", "earth boar", "rock monster"]
@@ -561,7 +559,7 @@ def swap_companions(current_city):
         swap = int(input("> "))
     except ValueError:
         return enter_city(current_city)
-    if int(swap) <= length:
+    if int(swap) <= length and int(swap) != 0:
         companions.append(equipped_companion)
         equipped_companion = companions[int(swap) - 1]
         companions.pop(int(swap) - 1)
@@ -793,14 +791,24 @@ def enter_battle(enemy, output):
 def heal(healing):
     global player_max_hp
     global player_hp
-    player_hp += healing
-    if player_hp > player_max_hp:
-        player_hp = player_max_hp
     heal_statement = "You have been healed " + str(healing) + " and are now at " + str(player_hp) + " health.\n"
-    for char in heal_statement:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(0.01)
+    try:
+        if int(healing) > 0:
+            player_hp += healing
+            if player_hp > player_max_hp:
+                player_hp = player_max_hp
+            for char in heal_statement:
+                sys.stdout.write(char)
+                sys.stdout.flush()
+                time.sleep(0.01)
+    except ValueError:
+        if healing == "max":
+            heal_statement = "You have been fully healed and are now at " + str(player_hp) + " health.\n"
+            player_hp = player_max_hp
+            for char in heal_statement:
+                sys.stdout.write(char)
+                sys.stdout.flush()
+                time.sleep(0.01)
 
 
 # some commands are commented out to skip ahead in progression.
