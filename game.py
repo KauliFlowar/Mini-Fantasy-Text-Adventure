@@ -199,16 +199,16 @@ journey2_part3 = ["The mage falls to her knees. \"I underestimated your power.\"
                   "She makes a hand gesture, and all the Galatigos soldiers leave the field.",
                   "The people of Water Kingdom look outside their kingdom gates and looked surprised that the Galatigos have retreated.",
                   "Aurus looks at me. \"Well what are you waiting for? Go inside our amazing kingdom!\""]
-journey3_part1 = ["\"We better hurry\", says Aurus. \"Their gonna force the people to join their religion, and it would be chaos\"",
-                  "\"Wait, why today?\", I ask. Aurus screams back at me: \"THEY DO IT EVERY SINGLE TOTUROUS DAY YOU DOLT!\"",
+journey3_part1 = ["\"We better hurry\", says Aurus. \"They're going to force the people to join their religion, and it would be chaos\"",
+                  "\"Wait, why today?\", I ask. Aurus screams back at me: \"THEY DO IT EVERY SINGLE TORTUROUS DAY YOU DOLT!\"",
                   "\"Hey chill out Aurus, they'll notice us!\", said Nadrus. \"And also, be nice to the guy\"",
-                  "I give Nadrus a \"thank you\" nod. He nods back.",
+                  "I give Nadrus a \"thank you\" nod, and he nods back.",
                   "And, as if on cue, sadly, the Galatigos noticed us.",
                   "\"Way to expose us, Aurus\", said Nadrus.",
                   "\"You three! Stop right there!\", said a mage leading the group.",
                   "Nadrus stands firmly. \"Eh we ain't stopping without a fight\."",
                   "The Mage laughs. \"I am the 5th Mooncaster, Starcaster Mage. What thinks you can stop me?\"",
-                  "Nadrus counters with: \"And what makes you think if you're 5th, you're stronger?\"",
+                  "Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"",
                   "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
                   "\"Alright " + player_name + ", let's cream this guy\" says Nadrus."]
 
@@ -302,16 +302,16 @@ def setup_name():
                       "\"You'll pay for what you did to me last time\", he says.",
                       "\"Rats!\", Nadrus curses. \"I knew we should have killed him.\"",
                       "\"I'll end you once in for all!\", he says."]
-    journey3_part1 = ["\"We better hurry\", says Aurus. \"Their gonna force the people to join their religion, and it would be chaos\"",
-                     "\"Wait, why today?\", I ask. Aurus screams back at me: \"THEY DO IT EVERY SINGLE TOTUROUS DAY YOU DOLT!\"",
-                     "\"Hey chill out Aurus, they'll notice us!\", said Nadrus. \"And also, be nice to the guy\"",
-                     "I give Nadrus a \"thank you\" nod. He nods back.",
+    journey3_part1 = ["\"We better hurry\", says Aurus. \"They're going to force the people to join their religion, and it would be chaos\"",
+                     "\"Wait, why today?\", I ask. Aurus screams back at me: \"THEY DO IT EVERY SINGLE TORTUROUS DAY YOU DOLT!\"",
+                     "\"Hey chill out Aurus, they'll notice us!\", said Nadrus. \"And also, be nice to the guy.\"",
+                     "I give Nadrus a \"thank you\" nod, and he nods back.",
                      "And, as if on cue, sadly, the Galatigos noticed us.",
                      "\"Way to expose us, Aurus\", said Nadrus.",
                       "\"You three! Stop right there!\", said a mage leading the group.",
                      "Nadrus stands firmly. \"Eh we ain't stopping without a fight\."",
                      "The Mage laughs. \"I am the 5th Mooncaster, Starcaster Mage. What thinks you can stop me?\"",
-                     "Nadrus counters with: \"And what makes you think if you're 5th, you're stronger?\"",
+                     "Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"",
                      "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
                      "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
 
