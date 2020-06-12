@@ -59,6 +59,8 @@ minotaur = ["Minotaur", 40, 4, 6, 0, 0, 35]
 impish_demon = ["Impish Demon", 35, 4, 7, 0, 3, 35]
 galatigos_lackey = ["Galatigos Lackey", 50, 5, 6, 0, 0, 50]
 lithosphere_mage = ["Lithosphere Mage", 100, 4, 4, 1, 5, 100]
+starcaster_mage = ["Starcaster Mage", 125, 5, 5, 1, 5, 100]
+mooncaster_pontifex = ["Mooncaster Pontifex", 250, 6, 7, 1, 5, 250]
 
 # These are the story lists. Each list has a story, and each line of the story is split into different instances in the list, divided by commas to make another
 # line. All stories including the var of player_name must be copy and pasted onto the setup_name() command, so that the name can change. By default the name
@@ -197,7 +199,18 @@ journey2_part3 = ["The mage falls to her knees. \"I underestimated your power.\"
                   "She makes a hand gesture, and all the Galatigos soldiers leave the field.",
                   "The people of Water Kingdom look outside their kingdom gates and looked surprised that the Galatigos have retreated.",
                   "Aurus looks at me. \"Well what are you waiting for? Go inside our amazing kingdom!\""]
-
+journey3_part1 = ["\"We better hurry\", says Aurus. \"Their gonna force the people to join their religion, and it would be chaos\"",
+                  "\"Wait, why today?\", I ask. Aurus screams back at me: \"THEY DO IT EVERY SINGLE TOTUROUS DAY YOU DOLT!\"",
+                  "\"Hey chill out Aurus, they'll notice us!\", said Nadrus. \"And also, be nice to the guy\"",
+                  "I give Nadrus a \"thank you\" nod. He nods back.",
+                  "And, as if on cue, sadly, the Galatigos noticed us.",
+                  "\"Way to expose us, Aurus\", said Nadrus.",
+                  "\"You three! Stop right there!\", said a mage leading the group.",
+                  "Nadrus stands firmly. \"Eh we ain't stopping without a fight\."",
+                  "The Mage laughs. \"I am the 5th Mooncaster, Starcaster Mage. What thinks you can stop me?\"",
+                  "Nadrus counters with: \"And what makes you think if you're 5th, you're stronger?\"",
+                  "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
+                  "\"Alright " + player_name + ", let's cream this guy\" says Nadrus."]
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
 # the list into this command so that the name changes.
@@ -289,7 +302,18 @@ def setup_name():
                       "\"You'll pay for what you did to me last time\", he says.",
                       "\"Rats!\", Nadrus curses. \"I knew we should have killed him.\"",
                       "\"I'll end you once in for all!\", he says."]
-
+    journey3_part1 = ["\"We better hurry\", says Aurus. \"Their gonna force the people to join their religion, and it would be chaos\"",
+                     "\"Wait, why today?\", I ask. Aurus screams back at me: \"THEY DO IT EVERY SINGLE TOTUROUS DAY YOU DOLT!\"",
+                     "\"Hey chill out Aurus, they'll notice us!\", said Nadrus. \"And also, be nice to the guy\"",
+                     "I give Nadrus a \"thank you\" nod. He nods back.",
+                     "And, as if on cue, sadly, the Galatigos noticed us.",
+                     "\"Way to expose us, Aurus\", said Nadrus.",
+                      "\"You three! Stop right there!\", said a mage leading the group.",
+                     "Nadrus stands firmly. \"Eh we ain't stopping without a fight\."",
+                     "The Mage laughs. \"I am the 5th Mooncaster, Starcaster Mage. What thinks you can stop me?\"",
+                     "Nadrus counters with: \"And what makes you think if you're 5th, you're stronger?\"",
+                     "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
+                     "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
 
 # You made this for the start screen, so you don't need to change it. I made get_command() based on the play and quit command get.
 def title_screen():
@@ -396,7 +420,6 @@ def setup_game(story, text_speed, wait_time, output):
         enter_battle(galatigos_lackey, 6)
     if output == 13:
         enter_battle(lithosphere_mage, 7)
-
 
 # enter_city takes in only 1 var, which must be a string. If that string is a certain city's name then you will enter that city.
 # for now, I only have Earth Kingdom. Check out the code on enter_city() a bit. You will understand more schematics of the game.
