@@ -571,11 +571,8 @@ def travel_to():
     print("Travel to:")
     print(travel_destinations)
     destination = get_command(travel_destinations)
-    if destination == "earth":
-        destination = "Earth"
-    if destination == "water":
-        destination = "Water"
-    enter_city(destination)
+    cap = destination.capitalize()
+    enter_city(cap)
 
 
 # get_command() takes in a list. It will ask for a command, and if the command is in the list then it will return the command typed out. 2 rules when using
@@ -791,20 +788,21 @@ def enter_battle(enemy, output):
 def heal(healing):
     global player_max_hp
     global player_hp
-    heal_statement = "You have been healed " + str(healing) + " and are now at " + str(player_hp) + " health.\n"
+    heal_statement = ""
     try:
         if int(healing) > 0:
             player_hp += healing
             if player_hp > player_max_hp:
                 player_hp = player_max_hp
+                heal_statement = "You have been healed " + str(healing) + " and are now at " + str(player_hp) + " health.\n"
             for char in heal_statement:
                 sys.stdout.write(char)
                 sys.stdout.flush()
                 time.sleep(0.01)
     except ValueError:
         if healing == "max":
-            heal_statement = "You have been fully healed and are now at " + str(player_hp) + " health.\n"
             player_hp = player_max_hp
+            heal_statement = "You have been fully healed and are now at " + str(player_hp) + " health.\n"
             for char in heal_statement:
                 sys.stdout.write(char)
                 sys.stdout.flush()
@@ -815,13 +813,14 @@ def heal(healing):
 current_commands.append("attack")
 current_commands.append("block")
 current_commands.append("ability")
-weapon_type = 2
+weapon_type = 3
 shield_type = 2
 equipped_companion = 1
-player_hp = 50
-player_max_hp = 50
+player_hp = 75
+player_max_hp = 75
 # gold = 20
-# companions.append(2)
+journey = 2
+companions.append(2)
 enter_city("Earth")
 # enter_battle(worm, 1)
 # title_screen()
