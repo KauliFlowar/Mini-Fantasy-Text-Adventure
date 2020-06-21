@@ -59,8 +59,7 @@ minotaur = ["Minotaur", 40, 4, 6, 0, 0, 35]
 impish_demon = ["Impish Demon", 35, 4, 7, 0, 3, 35]
 galatigos_lackey = ["Galatigos Lackey", 50, 5, 6, 0, 0, 50]
 lithosphere_mage = ["Lithosphere Mage", 100, 4, 4, 1, 5, 100]
-starcaster_mage = ["Starcaster Mage", 125, 5, 5, 1, 5, 100]
-mooncaster_pontifex = ["Mooncaster Pontifex", 250, 6, 7, 1, 5, 250]
+saturn_marcher = ["Saturn Marcher"]
 
 # These are the story lists. Each list has a story, and each line of the story is split into different instances in the list, divided by commas to make another
 # line. All stories including the var of player_name must be copy and pasted onto the setup_name() command, so that the name can change. By default the name
@@ -199,15 +198,19 @@ journey2_part3 = ["The mage falls to her knees. \"I underestimated your power.\"
                   "She makes a hand gesture, and all the Galatigos soldiers leave the field.",
                   "The people of Water Kingdom look outside their kingdom gates and looked surprised that the Galatigos have retreated.",
                   "Aurus looks at me. \"Well what are you waiting for? Go inside our amazing kingdom!\""]
-journey3_part1 = ["\"We better hurry\", says Aurus. \"They're going to force the people to join their religion, and it would be chaos\"",
-                  "\"Wait, why today?\", I ask. Aurus screams back at me: \"THEY DO IT EVERY SINGLE TORTUROUS DAY YOU DOLT!\"",
-                  "\"Hey chill out Aurus, they'll notice us!\", said Nadrus. \"And also, be nice to the guy\"",
+journey3_part1 = ["Aurus looked distressed and turns to me.",
+                  "\"We better hurry\", says Aurus. \"They're going to force the people to join their religion, and it would be chaos.\"",
+                  "\"Wait, why today?\", I ask. Aurus crosses his arms. \"Two reasons.\"",
+                  "\"One, I know the Pontifex knows something about the crystal thief.\"",
+                  "\"Two, They already do this practice, every. Single. Day.\"\n",
+                  "Without question, we head out to a Galatigos church in order to gain answers.",
+                  "\"I'm so mad at them. So much my people have suffered...\", Aurus grunts."
+                  "\"Hey chill out Aurus, they'll notice us!\", said Nadrus.",
                   "I give Nadrus a \"thank you\" nod, and he nods back.",
                   "And, as if on cue, sadly, the Galatigos noticed us.",
-                  "\"Way to expose us, Aurus\", said Nadrus.",
                   "\"You three! Stop right there!\", said a mage leading the group.",
-                  "Nadrus stands firmly. \"Eh we ain't stopping without a fight\.",
-                  "The Mage laughs. \"I am the 5th Mooncaster, Starcaster Mage. What thinks you can stop me?\"",
+                  "Nadrus stands firmly. \"Eh we ain't stopping without a fight.",
+                  "The Mage laughs. \"I am the 5th Mooncaster, Saturn Marcher. What thinks you can stop me?\"",
                   "Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"",
                   "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
                   "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
@@ -304,18 +307,23 @@ def setup_name():
                       "\"You'll pay for what you did to me last time\", he says.",
                       "\"Rats!\", Nadrus curses. \"I knew we should have killed him.\"",
                       "\"I'll end you once in for all!\", he says."]
-    journey3_part1 = ["\"We better hurry\", says Aurus. \"They're going to force the people to join their religion, and it would be chaos\"",
-                     "\"Wait, why today?\", I ask. Aurus screams back at me: \"THEY DO IT EVERY SINGLE TORTUROUS DAY YOU DOLT!\"",
-                     "\"Hey chill out Aurus, they'll notice us!\", said Nadrus. \"And also, be nice to the guy.\"",
-                     "I give Nadrus a \"thank you\" nod, and he nods back.",
-                     "And, as if on cue, sadly, the Galatigos noticed us.",
-                     "\"Way to expose us, Aurus\", said Nadrus.",
+    journey3_part1 = ["Aurus looked distressed and turns to me.",
+                      "\"We better hurry\", says Aurus. \"They're going to force the people to join their religion, and it would be chaos.\"",
+                      "\"Wait, why today?\", I ask. Aurus crosses his arms. \"Two reasons.\"",
+                      "\"One, I know the Pontifex knows something about the crystal thief.\"",
+                      "\"Two, They already do this practice, every. Single. Day.\"\n",
+                      "Without question, we head out to a Galatigos church in order to gain answers.",
+                      "\"I'm so mad at them. So much my people have suffered...\", Aurus grunts."
+                      "\"Hey chill out Aurus, they'll notice us!\", said Nadrus.",
+                      "I give Nadrus a \"thank you\" nod, and he nods back.",
+                      "And, as if on cue, sadly, the Galatigos noticed us.",
                       "\"You three! Stop right there!\", said a mage leading the group.",
-                     "Nadrus stands firmly. \"Eh we ain't stopping without a fight\."",
-                     "The Mage laughs. \"I am the 5th Mooncaster, Starcaster Mage. What thinks you can stop me?\"",
-                     "Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"",
-                     "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
-                     "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
+                      "Nadrus stands firmly. \"Eh we ain't stopping without a fight.",
+                      "The Mage laughs. \"I am the 5th Mooncaster, Saturn Marcher. What thinks you can stop me?\"",
+                      "Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"",
+                      "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
+                      "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
+
 
 # You made this for the start screen, so you don't need to change it. I made get_command() based on the play and quit command get.
 def title_screen():
@@ -447,62 +455,7 @@ def enter_city(loc):
         print(travel_commands)
         command = get_command(travel_commands)
         if command.lower() == "shop":
-            items = ["wooden shield", "wooden sword"]
-            if journey >= 1:
-                items.append("iron sword")
-                items.append("iron shield")
-            items.append("leave")
-            print("Current items in stock:")
-            print("Wooden Shield - 10 gold")
-            print("Wooden Sword - 10 gold")
-            if journey >= 1:
-                print("Iron Sword - 150 gold")
-                print("Iron Shield - 150 gold")
-            print("Type \"Leave\" to leave.")
-            buy = get_command(items).lower()
-            if buy == items[0]:
-                if gold >= 10:
-                    shield_type = 1
-                    shield_boost = 30
-                    player_max_hp = shield_boost + 20
-                    player_hp = player_max_hp
-                    if "block" not in current_commands:
-                        current_commands.append("block")
-                    print("You have bought Wooden Shield.")
-                    print("It has been automatically equipped.")
-                    gold -= 10
-                else:
-                    print("You need more gold!")
-            if buy == items[1]:
-                if gold >= 10:
-                    weapon_type = 2
-                    print("You have bought Wooden Sword.")
-                    print("It has been automatically equipped.")
-                    gold -= 10
-                else:
-                    print("You need more gold!")
-            if buy == "iron sword":
-                if gold >= 150:
-                    weapon_type = 3
-                    print("You have bought Iron Sword.")
-                    print("It has been automatically equipped.")
-                    gold -= 150
-                else:
-                    print("You need more gold!")
-            if buy == "iron shield":
-                if gold >= 150:
-                    shield_type = 2
-                    shield_boost = 55
-                    player_max_hp = shield_boost + 20
-                    player_hp = player_max_hp
-                    print("You have bought Iron Shield.")
-                    print("It has been automatically equipped.")
-                    gold -= 150
-                else:
-                    print("You need more gold!")
-            if buy == items[-1]:
-                print("Come again!")
-            enter_city("Earth")
+            enter_shop("Earth")
         if command.lower() == "medic":
             heal("max")
             enter_city("Earth")
@@ -599,6 +552,71 @@ def travel_to():
     destination = get_command(travel_destinations)
     cap = destination.capitalize()
     enter_city(cap)
+
+
+def enter_shop(city):
+    global shield_type
+    global shield_boost
+    global weapon_type
+    global player_hp
+    global player_max_hp
+    global gold
+    items = ["wooden shield", "wooden sword"]
+    if journey >= 1:
+        items.append("iron sword")
+        items.append("iron shield")
+    items.append("leave")
+    print("Current items in stock:")
+    print("Wooden Shield - 10 gold")
+    print("Wooden Sword - 10 gold")
+    if journey >= 1:
+        print("Iron Sword - 150 gold")
+        print("Iron Shield - 150 gold")
+    print("Type \"Leave\" to leave.")
+    buy = get_command(items).lower()
+    if buy == items[0]:
+        if gold >= 10:
+            shield_type = 1
+            shield_boost = 30
+            player_max_hp = shield_boost + 20
+            player_hp = player_max_hp
+            if "block" not in current_commands:
+                current_commands.append("block")
+            print("You have bought Wooden Shield.")
+            print("It has been automatically equipped.")
+            gold -= 10
+        else:
+            print("You need more gold!")
+    if buy == items[1]:
+        if gold >= 10:
+            weapon_type = 2
+            print("You have bought Wooden Sword.")
+            print("It has been automatically equipped.")
+            gold -= 10
+        else:
+            print("You need more gold!")
+    if buy == "iron sword":
+        if gold >= 150:
+            weapon_type = 3
+            print("You have bought Iron Sword.")
+            print("It has been automatically equipped.")
+            gold -= 150
+        else:
+            print("You need more gold!")
+    if buy == "iron shield":
+        if gold >= 150:
+            shield_type = 2
+            shield_boost = 55
+            player_max_hp = shield_boost + 20
+            player_hp = player_max_hp
+            print("You have bought Iron Shield.")
+            print("It has been automatically equipped.")
+            gold -= 150
+        else:
+            print("You need more gold!")
+    if buy == items[-1]:
+        print("Come again!")
+    enter_city(city)
 
 
 # get_command() takes in a list. It will ask for a command, and if the command is in the list then it will return the command typed out. 2 rules when using

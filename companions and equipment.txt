@@ -1,0 +1,30 @@
+Companions -------------
+1 - Flame Knight:
+4 ATK
+atkboost 3
+
+2 - Aqua Mage
+18 ATK
+heal 8
+
+Weapons -----------------
+1 - Rusty Sword
+minATK = 3
+maxATK = 5
+
+2 - Wooden Sword
+minATK = 5
+maxATK = 7
+
+3 - Iron Sword
+minATK = 8
+maxATK = 10
+
+Shields -----------------
+1 - Wooden Shield
+min_block = 2
+max_block = 4
+
+2 - Iron Shield
+min_block = 9
+max_block = 11
