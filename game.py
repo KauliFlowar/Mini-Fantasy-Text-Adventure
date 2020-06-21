@@ -206,11 +206,12 @@ journey3_part1 = ["\"We better hurry\", says Aurus. \"Their gonna force the peop
                   "And, as if on cue, sadly, the Galatigos noticed us.",
                   "\"Way to expose us, Aurus\", said Nadrus.",
                   "\"You three! Stop right there!\", said a mage leading the group.",
-                  "Nadrus stands firmly. \"Eh we ain't stopping without a fight\."",
+                  "Nadrus stands firmly. \"Eh we ain't stopping without a fight\.",
                   "The Mage laughs. \"I am the 5th Mooncaster, Starcaster Mage. What thinks you can stop me?\"",
                   "Nadrus counters with: \"And what makes you think if you're 5th, you're stronger?\"",
                   "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
-                  "\"Alright " + player_name + ", let's cream this guy\" says Nadrus."]
+                  "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
+
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
 # the list into this command so that the name changes.
@@ -222,6 +223,7 @@ def setup_name():
     global journey1_part2
     global journey1_part3
     global journey2_part1
+    global journey3_part1
     print("Type your name. Leave blank for the default name.")
     player_name = input(">")
     if player_name.lower() == "":
@@ -303,17 +305,18 @@ def setup_name():
                       "\"Rats!\", Nadrus curses. \"I knew we should have killed him.\"",
                       "\"I'll end you once in for all!\", he says."]
     journey3_part1 = ["\"We better hurry\", says Aurus. \"Their gonna force the people to join their religion, and it would be chaos\"",
-                     "\"Wait, why today?\", I ask. Aurus screams back at me: \"THEY DO IT EVERY SINGLE TOTUROUS DAY YOU DOLT!\"",
-                     "\"Hey chill out Aurus, they'll notice us!\", said Nadrus. \"And also, be nice to the guy\"",
-                     "I give Nadrus a \"thank you\" nod. He nods back.",
-                     "And, as if on cue, sadly, the Galatigos noticed us.",
-                     "\"Way to expose us, Aurus\", said Nadrus.",
+                      "\"Wait, why today?\", I ask. Aurus screams back at me: \"THEY DO IT EVERY SINGLE TOTUROUS DAY YOU DOLT!\"",
+                      "\"Hey chill out Aurus, they'll notice us!\", said Nadrus. \"And also, be nice to the guy\"",
+                      "I give Nadrus a \"thank you\" nod. He nods back.",
+                      "And, as if on cue, sadly, the Galatigos noticed us.",
+                      "\"Way to expose us, Aurus\", said Nadrus.",
                       "\"You three! Stop right there!\", said a mage leading the group.",
-                     "Nadrus stands firmly. \"Eh we ain't stopping without a fight\."",
-                     "The Mage laughs. \"I am the 5th Mooncaster, Starcaster Mage. What thinks you can stop me?\"",
-                     "Nadrus counters with: \"And what makes you think if you're 5th, you're stronger?\"",
-                     "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
-                     "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
+                      "Nadrus stands firmly. \"Eh we ain't stopping without a fight\.",
+                      "The Mage laughs. \"I am the 5th Mooncaster, Starcaster Mage. What thinks you can stop me?\"",
+                      "Nadrus counters with: \"And what makes you think if you're 5th, you're stronger?\"",
+                      "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
+                      "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
+
 
 # You made this for the start screen, so you don't need to change it. I made get_command() based on the play and quit command get.
 def title_screen():
@@ -420,6 +423,7 @@ def setup_game(story, text_speed, wait_time, output):
         enter_battle(galatigos_lackey, 6)
     if output == 13:
         enter_battle(lithosphere_mage, 7)
+
 
 # enter_city takes in only 1 var, which must be a string. If that string is a certain city's name then you will enter that city.
 # for now, I only have Earth Kingdom. Check out the code on enter_city() a bit. You will understand more schematics of the game.
@@ -817,7 +821,8 @@ def heal(healing):
             player_hp += healing
             if player_hp > player_max_hp:
                 player_hp = player_max_hp
-                heal_statement = "You have been healed " + str(healing) + " and are now at " + str(player_hp) + " health.\n"
+                heal_statement = "You have been healed " + str(healing) + " and are now at " + str(
+                    player_hp) + " health.\n"
             for char in heal_statement:
                 sys.stdout.write(char)
                 sys.stdout.flush()
