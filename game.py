@@ -44,6 +44,8 @@ travel_commands = []
 travel_destinations = ["earth"]
 journey = 1
 
+save_file = 0
+
 # These are the enemy variables. They are all lists with 7 variables within. Name is a string, and it is the name of the enemy. It can be the same as another
 # enemy too. HP is how much hp they have. Simple. minATK and maxATK are the damage vars. Each battle, it will choose a number between minATK and maxATK.
 # ability is the enemy's ability. I have already preset some abilities already, as the abilities are quite tedious to make and require a bit of ctrl c + ctrl v
@@ -327,25 +329,69 @@ def setup_name():
 
 # You made this for the start screen, so you don't need to change it. I made get_command() based on the play and quit command get.
 def title_screen():
+    global save_file
+    global player_name
+    global equipped_companion
+    global companions
+    global player_max_hp
+    global player_hp
+    global weapon_type
+    global shield_type
+    global shield_boost
+    global gold
+    global current_commands
+    global location
+    global travel_commands
+    global travel_destinations
+    global journey
     print("█" * 16)
     print("█ Mini Fantasy █")
     print("█   Text Game  █")
     print("█" * 16)
-    print("    .:Play:.   ")
+    print("  .:New Game:.   ")
+    print("  .:Load Game:.   ")
     print("    .:Quit:.   ")
     # Allows the player to select menu options, which is case-sensitive.
-    option = input("> ")
-    if option.lower() == "play":
+    menu_commands = ["new game", "load game", "quit"]
+    option = get_command(menu_commands)
+    if option.lower() == "new game":
+        if os.path.exists("save_file.txt"):
+            os.remove("save_file.txt")
         setup_game(intro_story, 0.045, 1, 1)
-    elif option.lower() == "quit":
+    if option.lower() == "quit":
         sys.exit()
-    while option.lower() not in ['play', 'quit']:
-        print("Invalid command, please try again")
-        option = input("> ")
-        if option.lower() == "play":
+    if option.lower() == "load game":
+        if os.path.exists("save_file.txt"):
+            save_file = open("save_file.txt", "r")
+            player_name = save_file.readline()
+            equipped_companion = int(save_file.readline())
+            companions = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
+            if len(companions) > 1:
+                companions[0] = companions[0].replace(",", "")
+            player_max_hp = int(save_file.readline())
+            player_hp = int(save_file.readline())
+            weapon_type = int(save_file.readline())
+            shield_type = int(save_file.readline())
+            shield_boost = int(save_file.readline())
+            gold = int(save_file.readline())
+            current_commands = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
+            if len(current_commands) > 1:
+                current_commands[0] = current_commands[0].replace(",", "")
+            location = save_file.readline()
+            travel_commands = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
+            if len(travel_commands) > 1:
+                travel_commands[0] = travel_commands[0].replace(",", "")
+            travel_destinations = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
+            if len(travel_destinations) > 1:
+                travel_destinations[0] = travel_destinations[0].replace(',', '')
+            journey = int(save_file.readline())
+            save_file.close()
+            print("Load in which city?")
+            print(travel_destinations)
+            destination = get_command(travel_destinations)
+            enter_city(destination.capitalize())
+        else:
             setup_game(intro_story, 0.045, 1, 1)
-        elif option.lower() == "quit":
-            sys.exit()
 
 
 # setup_game() takes in 4 variables. The story, which is the story var you want to be reading through are the lists that I shown above. text_speed is the time
@@ -450,7 +496,7 @@ def enter_city(loc):
     print("\nGold: " + str(gold) + "       Kingdom: " + location + "      Health: " + str(player_hp) + "/" + str(
         player_max_hp))
     if location == "Earth":
-        travel_commands = ["shop", "medic", "hunt", "journey", "companions", "travel"]
+        travel_commands = ["shop", "medic", "hunt", "journey", "companions", "travel", "save"]
         print("Commands:")
         print(travel_commands)
         command = get_command(travel_commands)
@@ -478,6 +524,10 @@ def enter_city(loc):
             enter_city("Earth")
         if command.lower() == "travel":
             travel_to()
+        if command.lower() == "save":
+            save_game()
+            print("Game has been saved!")
+            enter_city("Earth")
     if location == "Water":
         travel_commands = ["companions", "travel", "journey"]
         print("Commands:")
@@ -562,14 +612,14 @@ def enter_shop(city):
     global player_max_hp
     global gold
     items = ["wooden shield", "wooden sword"]
-    if journey >= 1:
+    if journey >= 2:
         items.append("iron sword")
         items.append("iron shield")
     items.append("leave")
     print("Current items in stock:")
     print("Wooden Shield - 10 gold")
     print("Wooden Sword - 10 gold")
-    if journey >= 1:
+    if journey >= 2:
         print("Iron Sword - 150 gold")
         print("Iron Shield - 150 gold")
     print("Type \"Leave\" to leave.")
@@ -633,6 +683,18 @@ def get_command(commands):
         command = input(">")
         if command.lower() in commands:
             return command.lower()
+
+
+def save_game():
+    global save_file
+    save_file = open("save_file.txt", "w")
+    save_file.write(
+        player_name + "\n" + str(equipped_companion) + "\n" + str(companions) + "\n" + str(player_max_hp) + "\n" + str(
+            player_hp) + "\n" +
+        str(weapon_type) + "\n" + str(shield_type) + "\n" + str(shield_boost) + "\n" + str(gold) + "\n" + str(
+            current_commands) + "\n" +
+        location + "\n" + str(travel_commands) + "\n" + str(travel_destinations) + "\n" + str(journey))
+    save_file.close()
 
 
 # The battle() command is the most complicated of them all. First, it lists a bunch of variables. Then, it asks you for a command
@@ -853,32 +915,6 @@ def heal(healing):
                 sys.stdout.flush()
                 time.sleep(0.01)
 
-
-# save_file = 0
-# if os.path.exists("save_file.txt"):
-#     save_file = open("save_file.txt", "r")
-#     player_name = save_file.readline()
-#     equipped_companion = save_file.readline()
-#     companions = save_file.readline()
-#     player_max_hp = save_file.readline()
-#     player_hp = save_file.readline()
-#     weapon_type = save_file.readline()
-#     shield_type = save_file.readline()
-#     shield_boost = save_file.readline()
-#     gold = save_file.readline()
-#     current_commands = save_file.readline()
-#     location = save_file.readline()
-#     travel_commands = save_file.readline()
-#     travel_destinations = save_file.readline()
-#     journey = save_file.readline()
-#     save_file.close()
-#     enter_city(location)
-# else:
-#     save_file = open("save_file.txt", "a")
-#     save_file.write(player_name + "\n" + str(equipped_companion) + "\n" + str(companions) + "\n" + str(player_max_hp) + "\n" + str(player_hp) + "\n" +
-#                     str(weapon_type) + "\n" + str(shield_type) + "\n" + str(shield_boost) + "\n" + str(gold) + "\n" + str(current_commands) + "\n" +
-#                     location + "\n" + str(travel_commands) + "\n" + str(travel_destinations) + "\n" + str(journey))
-#     save_file.close()
 
 # some commands are commented out to skip ahead in progression.
 # current_commands.append("attack")
