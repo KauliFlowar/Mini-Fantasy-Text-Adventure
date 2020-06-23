@@ -854,19 +854,45 @@ def heal(healing):
                 time.sleep(0.01)
 
 
+# save_file = 0
+# if os.path.exists("save_file.txt"):
+#     save_file = open("save_file.txt", "r")
+#     player_name = save_file.readline()
+#     equipped_companion = save_file.readline()
+#     companions = save_file.readline()
+#     player_max_hp = save_file.readline()
+#     player_hp = save_file.readline()
+#     weapon_type = save_file.readline()
+#     shield_type = save_file.readline()
+#     shield_boost = save_file.readline()
+#     gold = save_file.readline()
+#     current_commands = save_file.readline()
+#     location = save_file.readline()
+#     travel_commands = save_file.readline()
+#     travel_destinations = save_file.readline()
+#     journey = save_file.readline()
+#     save_file.close()
+#     enter_city(location)
+# else:
+#     save_file = open("save_file.txt", "a")
+#     save_file.write(player_name + "\n" + str(equipped_companion) + "\n" + str(companions) + "\n" + str(player_max_hp) + "\n" + str(player_hp) + "\n" +
+#                     str(weapon_type) + "\n" + str(shield_type) + "\n" + str(shield_boost) + "\n" + str(gold) + "\n" + str(current_commands) + "\n" +
+#                     location + "\n" + str(travel_commands) + "\n" + str(travel_destinations) + "\n" + str(journey))
+#     save_file.close()
+
 # some commands are commented out to skip ahead in progression.
-current_commands.append("attack")
-current_commands.append("block")
-current_commands.append("ability")
-weapon_type = 3
-shield_type = 2
-equipped_companion = 1
-player_hp = 75
-player_max_hp = 75
+# current_commands.append("attack")
+# current_commands.append("block")
+# current_commands.append("ability")
+# weapon_type = 3
+# shield_type = 2
+# equipped_companion = 1
+# player_hp = 75
+# player_max_hp = 75
 # gold = 20
-journey = 2
-companions.append(2)
-enter_city("Earth")
+# journey = 2
+# companions.append(2)
+# enter_city("Earth")
 # enter_battle(worm, 1)
-# title_screen()
+title_screen()
 time.sleep(100)

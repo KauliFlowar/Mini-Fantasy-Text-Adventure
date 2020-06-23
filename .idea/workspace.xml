@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23ee1d64-7d15-4b09-801d-64bb7c87e699" name="Default Changelist" comment="optimizations and bugfixes">
-      <change afterPath="$PROJECT_DIR$/companions and equipment.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/save_file.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,9 +45,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Python shit/nametest.py" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.game">
     <configuration name="game" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Mini-Fantasy-Text-Adventure" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -68,9 +69,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="nametest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Mini-Fantasy-Text-Adventure" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Desktop/Python shit" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/Desktop/Python shit/nametest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.game" />
+        <item itemvalue="Python.nametest" />
       </list>
     </recent_temporary>
   </component>
@@ -169,33 +192,33 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1590979778113" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1590979799980">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1592888150985">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590979799980" />
-    <state width="1250" height="2" key="GridCell.Tab.0.bottom" timestamp="1591934609254">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592888150985" />
+    <state width="1247" height="4" key="GridCell.Tab.0.bottom" timestamp="1592888498316">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1250" height="2" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591934609254" />
-    <state width="1250" height="2" key="GridCell.Tab.0.center" timestamp="1591934609253">
+    <state width="1247" height="4" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592888498316" />
+    <state width="1247" height="4" key="GridCell.Tab.0.center" timestamp="1592888498316">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1250" height="2" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591934609253" />
-    <state width="1250" height="2" key="GridCell.Tab.0.left" timestamp="1591934609253">
+    <state width="1247" height="4" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592888498316" />
+    <state width="1247" height="4" key="GridCell.Tab.0.left" timestamp="1592888498316">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1250" height="2" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591934609253" />
-    <state width="1250" height="2" key="GridCell.Tab.0.right" timestamp="1591934609254">
+    <state width="1247" height="4" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592888498316" />
+    <state width="1247" height="4" key="GridCell.Tab.0.right" timestamp="1592888498316">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1250" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591934609254" />
+    <state width="1247" height="4" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592888498316" />
     <state x="579" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591377187326">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="579" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1591377187326" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1591493424297">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1592887742297">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1591493424297" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1592887742297" />
   </component>
 </project>
