@@ -687,9 +687,10 @@ def get_command(commands):
 
 def save_game():
     global save_file
+    os.remove("save_file.txt")
     save_file = open("save_file.txt", "w")
     save_file.write(
-        player_name + "\n" + str(equipped_companion) + "\n" + str(companions) + "\n" + str(player_max_hp) + "\n" + str(
+        player_name + str(equipped_companion) + "\n" + str(companions) + "\n" + str(player_max_hp) + "\n" + str(
             player_hp) + "\n" +
         str(weapon_type) + "\n" + str(shield_type) + "\n" + str(shield_boost) + "\n" + str(gold) + "\n" + str(
             current_commands) + "\n" +
