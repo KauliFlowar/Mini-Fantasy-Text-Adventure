@@ -1,0 +1,14 @@
+Loser
+1
+[]
+50
+50
+2
+1
+30
+0
+['attack', 'ability', 'block']
+Earth
+['shop', 'medic', 'hunt', 'journey', 'companions', 'travel', 'save']
+['earth']
+1

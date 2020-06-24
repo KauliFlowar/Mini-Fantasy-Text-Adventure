@@ -364,7 +364,7 @@ def title_screen():
     if option.lower() == "load game":
         if os.path.exists("save_file.txt"):
             save_file = open("save_file.txt", "r")
-            player_name = save_file.readline()
+            player_name = save_file.readline().replace("\n","")
             equipped_companion = int(save_file.readline())
             companions = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
             if len(companions) > 1:
@@ -693,6 +693,7 @@ def get_command(commands):
 
 def save_game():
     global save_file
+    global player_name
     if os.path.exists("save_file.txt"):
         os.remove("save_file.txt")
     save_file = open("save_file.txt", "w")
@@ -703,6 +704,7 @@ def save_game():
             current_commands) + "\n" +
         location + "\n" + str(travel_commands) + "\n" + str(travel_destinations) + "\n" + str(journey))
     save_file.close()
+    print(player_name)
 
 
 # The battle() command is the most complicated of them all. First, it lists a bunch of variables. Then, it asks you for a command
