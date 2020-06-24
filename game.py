@@ -220,7 +220,7 @@ journey3_part1 = ["Aurus looked distressed and turns to me.",
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
 # the list into this command so that the name changes.
-def setup_name():
+def setup_name(saved):
     global player_name
     global tutorial_story4
     global tutorial_story5
@@ -229,10 +229,11 @@ def setup_name():
     global journey1_part3
     global journey2_part1
     global journey3_part1
-    print("Type your name. Leave blank for the default name.")
-    player_name = input(">")
-    if player_name.lower() == "":
-        player_name = "Isa"
+    if not saved:
+        print("Type your name. Leave blank for the default name.")
+        player_name = input(">")
+        if player_name.lower() == "":
+            player_name = "Isa"
     tutorial_story4 = ["\"" + player_name + "? I've heard that name before. You must be the hero.",
                        "Me? A hero? What does he mean?",
                        "\"Your name was the name that came from a prophecy, which a great mage has foreseen.\"",
@@ -367,7 +368,8 @@ def title_screen():
             equipped_companion = int(save_file.readline())
             companions = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
             if len(companions) > 1:
-                companions[0] = companions[0].replace(",", "")
+                for a in range(len(companions)):
+                    companions[a-1] = companions[a-1].replace(",", "")
             player_max_hp = int(save_file.readline())
             player_hp = int(save_file.readline())
             weapon_type = int(save_file.readline())
@@ -376,16 +378,20 @@ def title_screen():
             gold = int(save_file.readline())
             current_commands = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
             if len(current_commands) > 1:
-                current_commands[0] = current_commands[0].replace(",", "")
+                for x in range(len(current_commands)):
+                    current_commands[x-1] = current_commands[x-1].replace(",", "")
             location = save_file.readline()
             travel_commands = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
             if len(travel_commands) > 1:
-                travel_commands[0] = travel_commands[0].replace(",", "")
+                for c in range(len(travel_commands)):
+                    travel_commands[c-1] = travel_commands[c-1].replace(",", "")
             travel_destinations = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
             if len(travel_destinations) > 1:
-                travel_destinations[0] = travel_destinations[0].replace(',', '')
+                for d in range(len(travel_destinations)):
+                    travel_destinations[d-1] = travel_destinations[d-1].replace(',', '')
             journey = int(save_file.readline())
             save_file.close()
+            setup_name(True)
             print("Load in which city?")
             print(travel_destinations)
             destination = get_command(travel_destinations)
@@ -439,7 +445,7 @@ def setup_game(story, text_speed, wait_time, output):
         print("Tip: When using a command, make sure you spell the command properly. Or else nothing will happen.")
         enter_battle(worm, 1)
     if output == 4:
-        setup_name()
+        setup_name(False)
         setup_game(tutorial_story4, 0.05, 0.5, 5)
     if output == 5:
         global equipped_companion
@@ -687,10 +693,11 @@ def get_command(commands):
 
 def save_game():
     global save_file
-    os.remove("save_file.txt")
+    if os.path.exists("save_file.txt"):
+        os.remove("save_file.txt")
     save_file = open("save_file.txt", "w")
     save_file.write(
-        player_name + str(equipped_companion) + "\n" + str(companions) + "\n" + str(player_max_hp) + "\n" + str(
+        player_name + "\n" + str(equipped_companion) + "\n" + str(companions) + "\n" + str(player_max_hp) + "\n" + str(
             player_hp) + "\n" +
         str(weapon_type) + "\n" + str(shield_type) + "\n" + str(shield_boost) + "\n" + str(gold) + "\n" + str(
             current_commands) + "\n" +
