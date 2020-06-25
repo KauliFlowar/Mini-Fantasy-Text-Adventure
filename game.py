@@ -44,6 +44,9 @@ travel_commands = []
 travel_destinations = ["earth"]
 journey = 1
 
+text_speed_multiplier = 1
+wait_speed_multiplier = 1
+
 save_file = 0
 
 # These are the enemy variables. They are all lists with 7 variables within. Name is a string, and it is the name of the enemy. It can be the same as another
@@ -351,9 +354,10 @@ def title_screen():
     print("█" * 16)
     print("  .:New Game:.   ")
     print("  .:Load Game:.   ")
+    print("  .:Settings:.   ")
     print("    .:Quit:.   ")
     # Allows the player to select menu options, which is case-sensitive.
-    menu_commands = ["new game", "load game", "quit"]
+    menu_commands = ["new game", "load game", "quit", "settings"]
     option = get_command(menu_commands)
     if option.lower() == "new game":
         if os.path.exists("save_file.txt"):
@@ -364,12 +368,12 @@ def title_screen():
     if option.lower() == "load game":
         if os.path.exists("save_file.txt"):
             save_file = open("save_file.txt", "r")
-            player_name = save_file.readline().replace("\n","")
+            player_name = save_file.readline().replace("\n", "")
             equipped_companion = int(save_file.readline())
             companions = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
             if len(companions) > 1:
                 for a in range(len(companions)):
-                    companions[a-1] = companions[a-1].replace(",", "")
+                    companions[a - 1] = companions[a - 1].replace(",", "")
             player_max_hp = int(save_file.readline())
             player_hp = int(save_file.readline())
             weapon_type = int(save_file.readline())
@@ -379,16 +383,16 @@ def title_screen():
             current_commands = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
             if len(current_commands) > 1:
                 for x in range(len(current_commands)):
-                    current_commands[x-1] = current_commands[x-1].replace(",", "")
+                    current_commands[x - 1] = current_commands[x - 1].replace(",", "")
             location = save_file.readline()
             travel_commands = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
             if len(travel_commands) > 1:
                 for c in range(len(travel_commands)):
-                    travel_commands[c-1] = travel_commands[c-1].replace(",", "")
+                    travel_commands[c - 1] = travel_commands[c - 1].replace(",", "")
             travel_destinations = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
             if len(travel_destinations) > 1:
                 for d in range(len(travel_destinations)):
-                    travel_destinations[d-1] = travel_destinations[d-1].replace(',', '')
+                    travel_destinations[d - 1] = travel_destinations[d - 1].replace(',', '')
             journey = int(save_file.readline())
             save_file.close()
             setup_name(True)
@@ -398,6 +402,28 @@ def title_screen():
             enter_city(destination.capitalize())
         else:
             setup_game(intro_story, 0.045, 1, 1)
+    if option.lower() == "settings":
+        global text_speed_multiplier
+        global wait_speed_multiplier
+        print("Text Speed Multiplier: x" + str(text_speed_multiplier))
+        print("Wait Speed Multiplier: x" + str(wait_speed_multiplier))
+        print("Change Text Speed Multiplier?")
+        try:
+            text_speed_multiplier = float(input("> "))
+        except ValueError:
+            print("Has been set to the default value.")
+            text_speed_multiplier = 1
+        print("Change Wait Speed Multiplier?")
+        try:
+            wait_speed_multiplier = float(input("> "))
+        except ValueError:
+            print("Has been set to the default value.")
+            wait_speed_multiplier = 1
+        print("Text Speed Multiplier is now " + str(text_speed_multiplier))
+        print("Wait Speed Multiplier is now " + str(wait_speed_multiplier))
+        time.sleep(1)
+        os.system('cls')
+        title_screen()
 
 
 # setup_game() takes in 4 variables. The story, which is the story var you want to be reading through are the lists that I shown above. text_speed is the time
@@ -405,6 +431,8 @@ def title_screen():
 # dramatic effect. output is called upon at the end, and if the output is a certain number than the output might do different things.
 def setup_game(story, text_speed, wait_time, output):
     global player_name
+    global text_speed_multiplier
+    global wait_speed_multiplier
     print("\n")
     story_num = int(len(story))
     story_current = 0
@@ -412,8 +440,8 @@ def setup_game(story, text_speed, wait_time, output):
         for char in story[story_current]:
             sys.stdout.write(char)
             sys.stdout.flush()
-            time.sleep(text_speed)
-        time.sleep(wait_time)
+            time.sleep(text_speed * text_speed_multiplier)
+        time.sleep(wait_time * wait_speed_multiplier)
         sys.stdout.write("\n")
         story_current = story_current + 1
     print("\n")
