@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23ee1d64-7d15-4b09-801d-64bb7c87e699" name="Default Changelist" comment="stuff">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/kaul1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/kaul1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-    </list>
+    <list default="true" id="23ee1d64-7d15-4b09-801d-64bb7c87e699" name="Default Changelist" comment="stuff" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -185,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593035265996</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Nice little touchup with settings">
+      <created>1593057358607</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1593057358607</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -193,7 +196,34 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="Page79" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="Page79" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
@@ -213,7 +243,8 @@
     <MESSAGE value="FINISHED SAVING OMGGGG" />
     <MESSAGE value="stuff" />
     <MESSAGE value="wowzers i fixed the annoying player_name bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="wowzers i fixed the annoying player_name bug" />
+    <MESSAGE value="Nice little touchup with settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nice little touchup with settings" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="90" key="#Inspections" timestamp="1591973640074">
@@ -228,22 +259,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1592888150985" />
-    <state width="1241" height="34" key="GridCell.Tab.0.bottom" timestamp="1593057078409">
+    <state width="1241" height="2" key="GridCell.Tab.0.bottom" timestamp="1593057361504">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1241" height="34" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593057078409" />
-    <state width="1241" height="34" key="GridCell.Tab.0.center" timestamp="1593057078409">
+    <state width="1241" height="2" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593057361504" />
+    <state width="1241" height="2" key="GridCell.Tab.0.center" timestamp="1593057361504">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1241" height="34" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593057078409" />
-    <state width="1241" height="34" key="GridCell.Tab.0.left" timestamp="1593057078409">
+    <state width="1241" height="2" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593057361504" />
+    <state width="1241" height="2" key="GridCell.Tab.0.left" timestamp="1593057361503">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1241" height="34" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593057078409" />
-    <state width="1241" height="34" key="GridCell.Tab.0.right" timestamp="1593057078409">
+    <state width="1241" height="2" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593057361503" />
+    <state width="1241" height="2" key="GridCell.Tab.0.right" timestamp="1593057361504">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1241" height="34" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593057078409" />
+    <state width="1241" height="2" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593057361504" />
     <state width="761" height="2" key="GridCell.Tab.1.bottom" timestamp="1592935354312">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
