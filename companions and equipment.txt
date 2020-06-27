@@ -20,11 +20,26 @@ maxATK = 7
 minATK = 8
 maxATK = 10
 
+4 - Enchanted Staff
+minATK = 14
+maxATK = 19
+
+5 - Aqua Staff
+minATK = 15
+maxATK = 18
+
 Shields -----------------
 1 - Wooden Shield
 min_block = 2
 max_block = 4
+shield_boost = 30
 
 2 - Iron Shield
 min_block = 9
 max_block = 11
+shield_boost = 55
+
+3 - Heavy Shield
+min_block = 14
+max_block = 17
+shield_boost = 105

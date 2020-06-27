@@ -209,7 +209,7 @@ journey3_part1 = ["Aurus looked distressed and turns to me.",
                   "\"One, I know the Pontifex knows something about the crystal thief.\"",
                   "\"Two, They already do this practice, every. Single. Day.\"\n",
                   "Without question, we head out to a Galatigos church in order to gain answers.",
-                  "\"I'm so mad at them. So much my people have suffered...\", Aurus grunts."
+                  "\"I'm so mad at them. So much of my people have suffered...\", Aurus grunts."
                   "\"Hey chill out Aurus, they'll notice us!\", said Nadrus.",
                   "I give Nadrus a \"thank you\" nod, and he nods back.",
                   "And, as if on cue, sadly, the Galatigos noticed us.",
@@ -217,7 +217,7 @@ journey3_part1 = ["Aurus looked distressed and turns to me.",
                   "Nadrus stands firmly. \"Eh we ain't stopping without a fight.",
                   "The Mage laughs. \"I am the 5th Mooncaster, Saturn Marcher. What thinks you can stop me?\"",
                   "Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"",
-                  "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
+                  "The Mage stops laughing. \"Shaddup! Let's fight and see who's stronger!\"",
                   "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
 
 
@@ -319,7 +319,7 @@ def setup_name(saved):
                       "\"One, I know the Pontifex knows something about the crystal thief.\"",
                       "\"Two, They already do this practice, every. Single. Day.\"\n",
                       "Without question, we head out to a Galatigos church in order to gain answers.",
-                      "\"I'm so mad at them. So much my people have suffered...\", Aurus grunts."
+                      "\"I'm so mad at them. So much of my people have suffered...\", Aurus grunts."
                       "\"Hey chill out Aurus, they'll notice us!\", said Nadrus.",
                       "I give Nadrus a \"thank you\" nod, and he nods back.",
                       "And, as if on cue, sadly, the Galatigos noticed us.",
@@ -327,7 +327,7 @@ def setup_name(saved):
                       "Nadrus stands firmly. \"Eh we ain't stopping without a fight.",
                       "The Mage laughs. \"I am the 5th Mooncaster, Saturn Marcher. What thinks you can stop me?\"",
                       "Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"",
-                      "The Mage stops laughing. \"Shaddup!, let's fight and see who's stronger!\"",
+                      "The Mage stops laughing. \"Shaddup! Let's fight and see who's stronger!\"",
                       "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
 
 
@@ -540,17 +540,7 @@ def enter_city(loc):
             heal("max")
             enter_city("Earth")
         if command.lower() == "hunt":
-            preys = ["dirt elemental", "earth boar", "rock monster"]
-            print("1 - Dirt Elemental")
-            print("2 - Earth Boar")
-            print("3 - Rock Monster")
-            prey = get_command(preys)
-            if prey == preys[0]:
-                enter_battle(dirt_elemental, 3)
-            elif prey == preys[1]:
-                enter_battle(earth_boar, 3)
-            elif prey == preys[2]:
-                enter_battle(rock_monster, 3)
+            begin_hunt("Earth")
         if command.lower() == "companions":
             swap_companions(location)
         if command.lower() == "journey":
@@ -609,8 +599,7 @@ def swap_companions(current_city):
     equipped_companion_name = companion_name
     print("Active companion: " + companion_name)
     print("Inactive companions: ")
-    length = len(companions)
-    for i in range(length):
+    for i in range(len(companions)):
         if companions[i] == 1:
             companion_name = "Flame Knight"
         elif companions[i] == 2:
@@ -622,12 +611,30 @@ def swap_companions(current_city):
         swap = int(input("> "))
     except ValueError:
         return enter_city(current_city)
-    if int(swap) <= length and int(swap) != 0:
+    if int(swap) <= len(companions) and int(swap) != 0:
         companions.append(equipped_companion)
         equipped_companion = companions[int(swap) - 1]
         companions.pop(int(swap) - 1)
         print(equipped_companion_name + " has been swapped out.")
     enter_city(current_city)
+
+
+def begin_hunt(city):
+    preys = []
+    if city == "Earth":
+        preys.append("dirt elemental")
+        preys.append("earth boar")
+        preys.append("rock monster")
+    for x in range(len(preys)):
+        print(str(x + 1) + " - " + str(preys[x]).title())
+    prey = get_command(preys)
+    if prey == "dirt elemental":
+        enter_battle(dirt_elemental, 3)
+    elif prey == "earth boar":
+        enter_battle(earth_boar, 3)
+    elif prey == "rock monster":
+        enter_battle(rock_monster, 3)
+    enter_city(city)
 
 
 def travel_to():
@@ -636,6 +643,41 @@ def travel_to():
     destination = get_command(travel_destinations)
     cap = destination.capitalize()
     enter_city(cap)
+
+
+class Item:
+    def __init__(self, name, item_type, item_num, gold_cost, buy_phrase, bought_shield_boost):
+        self.name = name
+        self.item_type = item_type
+        self.item_num = item_num
+        self.gold_cost = gold_cost
+        self.buy_phrase = buy_phrase
+        self.bought_shield_boost = bought_shield_boost
+
+    def do_shop(self):
+        global weapon_type
+        global shield_type
+        global shield_boost
+        global gold
+        global player_hp
+        global player_max_hp
+        if gold >= self.gold_cost:
+            if self.item_type == "weapon":
+                weapon_type = self.item_num
+            elif self.item_type == "shield":
+                shield_type = self.item_num
+                shield_boost = self.bought_shield_boost
+                player_max_hp = shield_boost + 20
+                player_hp = player_max_hp
+                if "block" not in current_commands:
+                    current_commands.append("block")
+            else:
+                print("item_type is neither!")
+            print("You have bought " + self.name.title() + ".")
+            print(self.buy_phrase)
+            gold -= self.gold_cost
+        else:
+            print("You need more gold!")
 
 
 def enter_shop(city):
@@ -649,6 +691,10 @@ def enter_shop(city):
     if journey >= 2:
         items.append("iron sword")
         items.append("iron shield")
+    if journey >= 3:
+        items.append("enchanted staff")
+        items.append("aqua staff")
+        items.append("heavy shield")
     items.append("leave")
     print("Current items in stock:")
     print("Wooden Shield - 10 gold")
@@ -656,48 +702,36 @@ def enter_shop(city):
     if journey >= 2:
         print("Iron Sword - 150 gold")
         print("Iron Shield - 150 gold")
+    if journey >= 3:
+        if city == "Earth":
+            print("Enchanted Staff - 350 gold")
+        if city == "Water":
+            print("Aqua Staff - 350 gold")
+        print("Heavy Shield - 400 gold")
     print("Type \"Leave\" to leave.")
+    default_buy_phrase = "It has been automatically equipped."
+    s1 = Item("Wooden Shield", "shield", 1, 10, default_buy_phrase, 30)
+    w2 = Item("Wooden Sword", "weapon", 2, 10, default_buy_phrase, None)
+    w3 = Item("Iron Sword", "weapon", 3, 150, default_buy_phrase, None)
+    s2 = Item("Iron Shield", "shield", 2, 150, default_buy_phrase, 55)
+    w4 = Item("Enchanted Staff", "weapon", 4, 350, "Let the power flow within you.", None)
+    w5 = Item("Aqua Staff", "weapon", 5, 350, "Let the power flow within you.", None)
+    s3 = Item("Heavy Shield", "shield", 3, 400, default_buy_phrase, 105)
     buy = get_command(items).lower()
-    if buy == items[0]:
-        if gold >= 10:
-            shield_type = 1
-            shield_boost = 30
-            player_max_hp = shield_boost + 20
-            player_hp = player_max_hp
-            if "block" not in current_commands:
-                current_commands.append("block")
-            print("You have bought Wooden Shield.")
-            print("It has been automatically equipped.")
-            gold -= 10
-        else:
-            print("You need more gold!")
-    if buy == items[1]:
-        if gold >= 10:
-            weapon_type = 2
-            print("You have bought Wooden Sword.")
-            print("It has been automatically equipped.")
-            gold -= 10
-        else:
-            print("You need more gold!")
+    if buy == "wooden shield":
+        s1.do_shop()
+    if buy == "wooden sword":
+        w2.do_shop()
     if buy == "iron sword":
-        if gold >= 150:
-            weapon_type = 3
-            print("You have bought Iron Sword.")
-            print("It has been automatically equipped.")
-            gold -= 150
-        else:
-            print("You need more gold!")
+        w3.do_shop()
     if buy == "iron shield":
-        if gold >= 150:
-            shield_type = 2
-            shield_boost = 55
-            player_max_hp = shield_boost + 20
-            player_hp = player_max_hp
-            print("You have bought Iron Shield.")
-            print("It has been automatically equipped.")
-            gold -= 150
-        else:
-            print("You need more gold!")
+        s2.do_shop()
+    if buy == "enchanted staff":
+        w4.do_shop()
+    if buy == "aqua staff":
+        w5.do_shop()
+    if buy == "heavy shield":
+        s3.do_shop()
     if buy == items[-1]:
         print("Come again!")
     enter_city(city)
@@ -780,6 +814,12 @@ def battle(enemy, output):
     if weapon_type == 3:
         minATK = 8
         maxATK = 10
+    if weapon_type == 4:
+        minATK = 14
+        maxATK = 19
+    if weapon_type == 5:
+        minATK = 15
+        maxATK = 18
     # shields
     if shield_type == 1:
         min_block = 2
@@ -787,6 +827,9 @@ def battle(enemy, output):
     if shield_type == 2:
         min_block = 9
         max_block = 11
+    if shield_type == 3:
+        min_block = 14
+        max_block = 17
     # companions
     if equipped_companion == 1:
         companion_name = "Flame Knight"
@@ -862,7 +905,7 @@ def battle(enemy, output):
         print(enemy_name + " attacked you for " + str(enemy_damage) + " damage!")
         if player_hp <= 0:
             print("You have died!")
-            time.sleep(50)
+            time.sleep(2)
             sys.exit()
         if player_hp > 0:
             print("You have " + str(player_hp) + " health left.")
@@ -954,19 +997,5 @@ def heal(healing):
                 time.sleep(0.01)
 
 
-# some commands are commented out to skip ahead in progression.
-# current_commands.append("attack")
-# current_commands.append("block")
-# current_commands.append("ability")
-# weapon_type = 3
-# shield_type = 2
-# equipped_companion = 1
-# player_hp = 75
-# player_max_hp = 75
-# gold = 20
-# journey = 2
-# companions.append(2)
-# enter_city("Earth")
-# enter_battle(worm, 1)
 title_screen()
 time.sleep(100)
