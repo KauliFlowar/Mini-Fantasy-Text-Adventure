@@ -6,6 +6,12 @@ atkboost 3
 2 - Aqua Mage
 18 ATK
 heal 8
+ability_cooldown = 1
+
+3 - Thunder Knight
+35 ATK
+damage 60
+ability_cooldown = 1
 
 Weapons -----------------
 1 - Rusty Sword

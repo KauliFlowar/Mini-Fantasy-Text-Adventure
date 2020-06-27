@@ -1,0 +1,14 @@
+Kauli
+2
+[1, 3]
+125
+125
+4
+3
+105
+355
+['attack', 'ability', 'block']
+Earth
+['shop', 'medic', 'hunt', 'journey', 'companions', 'travel', 'save']
+['earth', 'water']
+4

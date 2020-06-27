@@ -1,6 +1,6 @@
 # importing important things
-import cmd
-import textwrap
+# import cmd
+# import textwrap
 import sys
 import os
 import time
@@ -64,7 +64,8 @@ minotaur = ["Minotaur", 40, 4, 6, 0, 0, 35]
 impish_demon = ["Impish Demon", 35, 4, 7, 0, 3, 35]
 galatigos_lackey = ["Galatigos Lackey", 50, 5, 6, 0, 0, 50]
 lithosphere_mage = ["Lithosphere Mage", 100, 4, 4, 1, 5, 100]
-saturn_marcher = ["Saturn Marcher"]
+saturn_marcher = ["Saturn Marcher", 120, 12, 16, 0, 2, 150]
+universe_paladin = ["Universe Paladin", 150, 14, 20, 0, 3, 200]
 
 # These are the story lists. Each list has a story, and each line of the story is split into different instances in the list, divided by commas to make another
 # line. All stories including the var of player_name must be copy and pasted onto the setup_name() command, so that the name can change. By default the name
@@ -219,6 +220,26 @@ journey3_part1 = ["Aurus looked distressed and turns to me.",
                   "Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"",
                   "The Mage stops laughing. \"Shaddup! Let's fight and see who's stronger!\"",
                   "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
+journey3_part2 = ["Nadrus grabs the Mooncaster by her neck and looks at her with murderous intent.",
+                  "\"Tell us where the Pontifex is NOW.\"",
+                  "\"I don't know, I swear I don't know.\", she struggles.",
+                  "Aurus looks intently at her. \"She is telling the truth.\"",
+                  "Nadrus knocks her out. \"Come on, let's see if anyone inside knows.\"",
+                  "We head on inside and a man gets up from what looks to be a throne and another man tied to a chair.",
+                  "\"Do you know where the Pontifex is?\", Aurus asks.",
+                  "\"Of course I do\", he says.",
+                  "\"As the second hand of the Pontifex, I will not fail.\""]
+journey3_part3 = ["\"I have failed. I deserve to die. I have failed you, my lord.\"",
+                  "Aurus helps him up. \"Now tell us where the Pontifex is.\"",
+                  "He takes a pencil and circles a part on Aurus's map.",
+                  "\"This is a shrine of the Galatigos. We have about 20 Galatigos guarding the place. That's all I know.\"",
+                  "\"You are a true gentleman.\", Aurus says. \"Thank you.\"",
+                  "We release the guy tied to the chair.",
+                  "He points to me. \"I know you already.\"",
+                  "\"" + player_name + ", right? The prophecy?\"",
+                  "\"Yeah...\", I said.",
+                  "\"I'm Rayden, the Thunder Knight. Please let me join you. I need to get a burden off my chest.\"",
+                  "\"If you say so.\", I said. \"Good to have you on the team.\""]
 
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
@@ -232,6 +253,7 @@ def setup_name(saved):
     global journey1_part3
     global journey2_part1
     global journey3_part1
+    global journey3_part3
     if not saved:
         print("Type your name. Leave blank for the default name.")
         player_name = input(">")
@@ -329,9 +351,21 @@ def setup_name(saved):
                       "Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"",
                       "The Mage stops laughing. \"Shaddup! Let's fight and see who's stronger!\"",
                       "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
+    journey3_part3 = ["\"I have failed. I deserve to die. I have failed you, my lord.\"",
+                      "Aurus helps him up. \"Now tell us where the Pontifex is.\"",
+                      "He takes a pencil and circles a part on Aurus's map.",
+                      "\"This is a shrine of the Galatigos. We have about 20 Galatigos guarding the place. That's all I know.\"",
+                      "\"You are a true gentleman.\", Aurus says. \"Thank you.\"",
+                      "We release the guy tied to the chair.",
+                      "He points to me. \"I know you already.\"",
+                      "\"" + player_name + ", right? The prophecy?\"",
+                      "\"Yeah...\", I said.",
+                      "\"I'm Rayden, the Thunder Knight. Please let me join you. I need to get a burden off my chest.\"",
+                      "\"If you say so.\", I said. \"Good to have you on the team.\""]
 
 
 # You made this for the start screen, so you don't need to change it. I made get_command() based on the play and quit command get.
+# noinspection PyTypeChecker,PyTypeChecker
 def title_screen():
     global save_file
     global player_name
@@ -373,7 +407,9 @@ def title_screen():
             companions = save_file.readline().replace("[", "").replace("]", "").replace("'", "").split()
             if len(companions) > 1:
                 for a in range(len(companions)):
-                    companions[a - 1] = companions[a - 1].replace(",", "")
+                    companions[a - 1] = int(companions[a - 1].replace(",", ""))
+            if len(companions) == 1:
+                companions[0] = int(companions[0])
             player_max_hp = int(save_file.readline())
             player_hp = int(save_file.readline())
             weapon_type = int(save_file.readline())
@@ -510,6 +546,10 @@ def setup_game(story, text_speed, wait_time, output):
         enter_battle(galatigos_lackey, 6)
     if output == 13:
         enter_battle(lithosphere_mage, 7)
+    if output == 14:
+        enter_battle(saturn_marcher, 8)
+    if output == 15:
+        enter_battle(universe_paladin, 9)
 
 
 # enter_city takes in only 1 var, which must be a string. If that string is a certain city's name then you will enter that city.
@@ -553,7 +593,7 @@ def enter_city(loc):
             print("Game has been saved!")
             enter_city("Earth")
     if location == "Water":
-        travel_commands = ["companions", "travel", "journey"]
+        travel_commands = ["companions", "travel", "journey", "shop"]
         print("Commands:")
         print(travel_commands)
         command = get_command(travel_commands)
@@ -564,6 +604,8 @@ def enter_city(loc):
             enter_city("Water")
         if command.lower() == "travel":
             travel_to()
+        if command.lower() == "shop":
+            enter_shop("Water")
 
 
 # This is the journey command. You can call it whenever you are in a town. The reason I made it a command was to be able to access it regardless of whatever
@@ -586,6 +628,12 @@ def begin_journey():
         print("You can now travel to Water Kingdom.")
         travel_destinations.append("water")
         return print("Journey Complete!")
+    if journey == 3:
+        setup_game(journey3_part1, 0.05, 0.5, 14)
+        journey += 1
+        print("You can now set Thunder Knight as your active companion.")
+        companions.append(3)
+        return print("Journey Complete!")
 
 
 # Swaps companions. Same case as begin_journey(). current_city allows the command to exit once the command is done.
@@ -596,6 +644,8 @@ def swap_companions(current_city):
         companion_name = "Flame Knight"
     if equipped_companion == 2:
         companion_name = "Aqua Mage"
+    if equipped_companion == 3:
+        companion_name = "Thunder Knight"
     equipped_companion_name = companion_name
     print("Active companion: " + companion_name)
     print("Inactive companions: ")
@@ -604,6 +654,8 @@ def swap_companions(current_city):
             companion_name = "Flame Knight"
         elif companions[i] == 2:
             companion_name = "Aqua Mage"
+        elif companions[i] == 3:
+            companion_name = "Thunder Knight"
         print(str(i + 1) + ". " + companion_name)
     print("Type the number of the companion to set it active. Type anything else to close.")
     # i learn a new technique with every passing day
@@ -840,6 +892,11 @@ def battle(enemy, output):
         companion_ATK = 18
         companion_ability = 2
         ability_cooldown = 1
+    if equipped_companion == 3:
+        companion_name = "Thunder Knight"
+        companion_ATK = 35
+        companion_ability = 3
+        ability_cooldown = 1
     combat_start = randint(1, 5)
     start_text = ""
     if combat_start == 1:
@@ -869,17 +926,13 @@ def battle(enemy, output):
             print("You attacked " + enemy_name + " for " + str(damage) + " damage!")
             if equipped_companion != 0:
                 print(companion_name + " attacked " + enemy_name + " for " + str(companion_ATK) + " damage!")
-            if enemy_hp <= 0:
-                print("You have defeated " + enemy_name + "!")
-                print("You earned " + str(enemy_gold_drop) + " gold.")
-                gold += enemy_gold_drop
-                return output
     if command.lower() == "block":
         blocked_damage = randint(min_block, max_block)
         print("You blocked " + str(blocked_damage) + " damage!")
     if command.lower() == "ability":
         if enemy_ability != 2:
             ability = ""
+            dmg = 0
             if companion_ability == 1:
                 print("Flame Enhancement!")
                 companion_boost += 3
@@ -887,11 +940,23 @@ def battle(enemy, output):
             if companion_ability == 2:
                 print("Aqua Surge!")
                 heal(8)
+            if companion_ability == 3:
+                print("Zap!")
+                enemy_hp -= 60
+                ability = "Damage"
+                dmg = 60
             current_cooldown = ability_cooldown + 1
             if ability == "ATK_boost":
                 print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
+            if ability == "Damage":
+                print(companion_name + " dealt " + str(dmg))
         else:
             print(enemy_name + " has negated the ability's activation.")
+    if enemy_hp <= 0:
+        print("You have defeated " + enemy_name + "!")
+        print("You earned " + str(enemy_gold_drop) + " gold.")
+        gold += enemy_gold_drop
+        return output
     while enemy_hp > 0:
         if enemy_ability == 1:
             enemy_extra_damage += 2
@@ -924,16 +989,12 @@ def battle(enemy, output):
                     print("You attacked " + enemy_name + " for " + str(damage) + " damage!")
                     if equipped_companion != 0:
                         print(companion_name + " attacked " + enemy_name + " for " + str(companion_ATK) + " damage!")
-                    if enemy_hp <= 0:
-                        print("You have defeated " + enemy_name + "!")
-                        print("You earned " + str(enemy_gold_drop) + " gold.")
-                        gold += enemy_gold_drop
-                        return output
             if command.lower() == "block":
                 blocked_damage = randint(min_block, max_block)
                 print("You blocked " + str(blocked_damage) + " damage!")
             if command.lower() == "ability":
                 if enemy_ability != 2 and current_cooldown == 0:
+                    dmg = 0
                     ability = ""
                     if companion_ability == 1:
                         print("Flame Enhancement!")
@@ -942,13 +1003,26 @@ def battle(enemy, output):
                     if companion_ability == 2:
                         print("Aqua Surge!")
                         heal(8)
+                    if companion_ability == 3:
+                        print("Zap!")
+                        enemy_hp -= 60
+                        dmg = 60
+                        ability = "Damage"
                     if ability == "ATK_boost":
                         print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
+                    current_cooldown = ability_cooldown + 1
+                    if ability == "Damage":
+                        print(companion_name + " dealt " + str(dmg))
                 else:
                     if enemy_ability == 2:
                         print(enemy_name + " has negated the ability's activation.")
                     else:
                         print("Wait " + str(current_cooldown) + " more turns to use that ability!")
+            if enemy_hp <= 0:
+                print("You have defeated " + enemy_name + "!")
+                print("You earned " + str(enemy_gold_drop) + " gold.")
+                gold += enemy_gold_drop
+                return output
 
 
 # enter_battle() starts the battle and takes in 2 vars. The first var is the enemy that you will be attacking. The second is the output, which is the same
@@ -969,6 +1043,10 @@ def enter_battle(enemy, output):
         setup_game(journey2_part2, 0.05, 0.5, 13)
     if outcome == 7:
         setup_game(journey2_part3, 0.05, 0.5, 0)
+    if outcome == 8:
+        setup_game(journey3_part2, 0.05, 0.5, 15)
+    if outcome == 9:
+        setup_game(journey3_part3, 0.05, 0.5, 0)
 
 
 # heal() will heal you for a certain amount. player_hp cannot be bigger than player_max_hp.
@@ -983,18 +1061,14 @@ def heal(healing):
                 player_hp = player_max_hp
                 heal_statement = "You have been healed " + str(healing) + " and are now at " + str(
                     player_hp) + " health.\n"
-            for char in heal_statement:
-                sys.stdout.write(char)
-                sys.stdout.flush()
-                time.sleep(0.01)
     except ValueError:
         if healing == "max":
             player_hp = player_max_hp
             heal_statement = "You have been fully healed and are now at " + str(player_hp) + " health.\n"
-            for char in heal_statement:
-                sys.stdout.write(char)
-                sys.stdout.flush()
-                time.sleep(0.01)
+    for char in heal_statement:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.01)
 
 
 title_screen()
