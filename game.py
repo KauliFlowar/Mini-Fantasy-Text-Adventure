@@ -1,6 +1,4 @@
 # importing important things
-# import cmd
-# import textwrap
 import sys
 import os
 import time
@@ -66,6 +64,7 @@ galatigos_lackey = ["Galatigos Lackey", 50, 5, 6, 0, 0, 50]
 lithosphere_mage = ["Lithosphere Mage", 100, 4, 4, 1, 5, 100]
 saturn_marcher = ["Saturn Marcher", 120, 12, 16, 0, 2, 150]
 universe_paladin = ["Universe Paladin", 150, 14, 20, 0, 3, 200]
+mooncaster_pontifex = ["Mooncaster Pontifex"]
 
 # These are the story lists. Each list has a story, and each line of the story is split into different instances in the list, divided by commas to make another
 # line. All stories including the var of player_name must be copy and pasted onto the setup_name() command, so that the name can change. By default the name
@@ -145,7 +144,8 @@ journey3_part2 = ["Nadrus grabs the Mooncaster by her neck and looks at her with
                   "\"Of course I do\", he says.",
                   "\"As the second hand of the Pontifex, I will not fail.\""]
 journey3_part3 = []
-journey4_part4 = []
+journey4_part1 = []
+
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
 # the list into this command so that the name changes.
@@ -846,7 +846,7 @@ def battle(enemy, output):
                 print("Aqua Surge!")
                 heal(8)
             if companion_ability == 3:
-                print("Zap!")
+                print("Lightning Strike!")
                 enemy_hp -= 60
                 ability = "Damage"
                 dmg = 60
@@ -909,7 +909,7 @@ def battle(enemy, output):
                         print("Aqua Surge!")
                         heal(8)
                     if companion_ability == 3:
-                        print("Zap!")
+                        print("Lightning Strike!")
                         enemy_hp -= 60
                         dmg = 60
                         ability = "Damage"
