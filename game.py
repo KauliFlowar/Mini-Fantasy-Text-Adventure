@@ -149,8 +149,11 @@ journey4_part1 = ["We head to the shrine Universe Paladin told us about.",
                   "\"We need a distraction, there are like 20 guards holed up there,\" said Rayden.",
                   "\"I'll make a distraction, so that you guys can break in,\" said Aurus.",
                   "\"Ok,\" I said. \"Let's do it.\"",
-                  "Aurus went to distract the guards. We waited until the guards left, and we went to the shrine, ready to smack the Pontifex upside the head."]
-
+                  "Aurus went to distract the guards. We waited until the guards left, and we went to the shrine, ready to smack the Pontifex upside the head.",
+                  "Until one of the guards came back to guard the shrine.",
+                  "\"Hey you! You're the people who Saturn Marcher told me about. You guys need to be executed!\"",
+                  "\"Hey! I'm back!\" Aurus was running toward us. \"Oh, a stray. Let's pummel him!\"",
+                  "\"I'd like to see you try!\" said the guard."]
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
 # the list into this command so that the name changes.
