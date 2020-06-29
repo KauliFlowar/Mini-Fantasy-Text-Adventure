@@ -155,6 +155,7 @@ journey4_part1 = ["We head to the shrine Universe Paladin told us about.",
                   "\"Hey! I'm back!\" Aurus was running toward us. \"Oh, a stray. Let's pummel him!\"",
                   "\"I'd like to see you try!\" said the guard."]
 
+
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
 # the list into this command so that the name changes.
 def setup_name(saved):
