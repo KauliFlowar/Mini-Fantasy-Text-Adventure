@@ -101,40 +101,9 @@ tutorial_story3 = ["The worm fled me.",
                    "I come out. \"Hello\" was all I could say to him.",
                    "\"What's your name?\", he asks.",
                    "My name? My name is..."]
-tutorial_story4 = ["\"" + player_name + "? I've heard that name before. You must be the hero.",
-                   "Me? A hero? What does he mean?",
-                   "\"Your name was the name that came from a prophecy, which a great mage has foreseen.\"",
-                   "he said.\n",
-                   "\"I'm a bit lost right now. I have no idea where I am.\", I said.",
-                   "\"You are in the Earth Kingdom's forest. I came down here because I heard a person went missing down here.\", he said.",
-                   "\"I am Nadrus, the Flame Knight. Pleased to meet you.\"",
-                   "He helped guide me out of the forest and gave me some food.\n",
-                   "\"Thank you\", I said. \"For everything you've done.\"",
-                   "Then another knight appeared. He was from the Earth Kingdom.",
-                   "\"Trespassers are not welcome here.\", he grunted.",
-                   "Flame Knight looks at you. " + player_name + "! I'll help you fight him off."]
-tutorial_story5 = ["\"Grrr\", he grunts. \"You won't get away next time.\"",
-                   "Flame Knight looks at you. \"You fought well " + player_name + "\", he said.",
-                   "I look at Flame Knight and Smile."
-                   "\"It was nice knowing you. I must go now.\"",
-                   "\"" + player_name + "! Wait!\" he said.",
-                   "\"If you are the hero of Isuren, let me join you. I'll protect you.\"",
-                   "\"Why do want to help me?\", I asked.\n",
-                   "You see... Fire Kingdom once lived in peace.",
-                   "Ever since the fire crystal was stolen, our power shrank a lot.",
-                   "Warring kingdoms would attack us while they still had their crystal.",
-                   "Some of our people were tortured. Killed. Or worse.",
-                   "I cannot forgive this crystal thief. So I want to help you on this journey, " + player_name + "\n",
-                   "\"Alright\", I say. \"You may join me. On the journey to save Isuren...\""]
-journey1_part1 = ["\"Hey " + player_name + ".\", said Nadrus.",
-                  "I look at Nadrus as he holds a piece of paper, smiling.",
-                  "\"What's up?\", I respond.",
-                  "He smirks and looks at me. \"I think we need more allies, don't you think?\"",
-                  "\"Yeah I guess so...\"",
-                  "\"I know a friend who can help us. He is from the Water Kingdom.\"",
-                  "\"Well we should go get him. No one is willing to leave the Kingdom walls ever since the crystal was stolen, right?\"",
-                  "He sighs and looks at the floor. \"You're right. Let's go. Even if there's a chance to die, we need to go.\"\n",
-                  "We make our way to a crossroad. Which direction should we go? (Left or Right)"]
+tutorial_story4 = []
+tutorial_story5 = []
+journey1_part1 = []
 journey1_part1left = ["\"Let's go left.\", I say. \"I have a good feeling it's this way.\"",
                       "Nadrus nods and walks ahead to the left road.",
                       "A giant Minotaur walks in front of us. \"You chose the wrong way\", it said."]
@@ -142,49 +111,10 @@ journey1_part1right = ["\"Right is always the right way\", I say. \"I just have 
                        "Nadrus nods and walks ahead to the right road",
                        "Suddenly, a impish demon pounces on us. \"I might be small, but I pack a punch\", it says as it gnaws on Nadrus's right foot.",
                        "He kicks it off. \"Then show us what you got!\""]
-journey1_part2 = ["It fell to the floor and fainted. We pushed it's corpse away and continued along the road.",
-                  "\"" + player_name + "!\", Nadrus called out. \"You picked the right way. There's Water Kingdom.\"",
-                  "\"Soon you'll meet my friend, Aurus. He is the Aqua Mage.\"",
-                  "Aqua Mage? If he is the Aqua Mage, then we would have a healer. I turn to Nadrus.",
-                  "\"I'm sure he will be of use.\", I say.\n",
-                  "\"Too bad you wont be able to see him\", a figure calls out.",
-                  "It walks up to us. It was a person who held a staff of the night sky.",
-                  "\"We, the Galatigos, have secured the Water Kingdom.\", he smiles.",
-                  "\"Surrender now or beg for mercy from our Pontifex.\"",
-                  "Nadrus stands in front of me. \"We have no idea what the Galatigos are, but we are on an important mission, so stay out of our way.\"",
-                  "\"I'm afraid I can't do that.\"",
-                  "Nadrus pushes him back. \"Then we will fight.\"",
-                  "He spins his staff in place. \"Very well then.\""]
-journey1_part3 = ["He collapses onto the floor. \"Y-You'll hear from our Pontifex soon enough.\"",
-                  "Nadrus pushes him aside and walks into the Water Kingdom.",
-                  "\"Aurus, are you out here?\", he calls out.",
-                  "A man with eyes of blue steps out of an alley.",
-                  "\"Nadrus?\", he calls out. \"It's been a while.\"",
-                  "Nadrus nods. \"We need your help. I'm with " + player_name + ". He might be able to help us.\"",
-                  "He gasps. \"" + player_name + "? The chosen one?\"",
-                  "I smile. \"It's a pleasure to meet you, Aurus.\"",
-                  "He shakes your hand and gives a serious face. \"I'll help you.\"\n",
-                  "He sees your wounds on your body. \"You're wounded. I'll heal you up.\""]
+journey1_part2 = []
+journey1_part3 = []
 journey1_part4 = ["\"Alright then\", I say. \"We should head back to Earth Kingdom.\""]
-journey2_part1 = ["Aurus sits at the table and looks me.",
-                  "\"I'm going to be completely honest\" he says. \"What if " + player_name + " was just some kid who called themself " + player_name + "?\"",
-                  "Nadrus puts his hand on Aurus's. \"I know you're on edge because all the Kingdoms have fallen, but we have to trust " + player_name + ".\"",
-                  "Nadrus looks at me. \"I never doubted you even since the time we met.\"",
-                  "I sigh in relief. \"Alright, what's are next plan of action?\", I ask.",
-                  "Aurus sits up straight. \"Maybe we should free Water Kingdom from the control of the Galatigos.\"",
-                  "\"What even are the Galatigos?\", I ask.",
-                  "Aurus looks at me. \"Well...\"\n",
-                  "The Galatigos are a group of organised cultists who try to spread their religion across Isuren.",
-                  "They worship the stars, planets, and galaxies above them. It's a fine religion, but they spread it in the wrong ways.",
-                  "The Galatigos bend the galaxy to their will, using the magic of the universe.",
-                  "Anyone who dares refuse to convert, they will attack them.",
-                  "Their Pontifex is the most powerful of them all. No one knows her location, so she remains mysterious.\n",
-                  "\"Alright then, let's free Water Kingdom then.\", Nadrus says.",
-                  "We start walking towards Water Kingdom.",
-                  "A person starts walking up to our group.",
-                  "\"You'll pay for what you did to me last time\", he says.",
-                  "\"Rats!\", Nadrus curses. \"I knew we should have killed him.\"",
-                  "\"I'll end you once in for all!\", he says."]
+journey2_part1 = []
 journey2_part2 = ["Aurus looks at me. \"Jeez, what's his problem?\"",
                   "Nadrus picks up the Galatigos lackey by his neck. \"Don't mess with us again.\" He quickly nods.",
                   "Nadrus throws him to the ground. \"Alright let's start heading to Water Kingdom.\"\n",
@@ -204,22 +134,7 @@ journey2_part3 = ["The mage falls to her knees. \"I underestimated your power.\"
                   "She makes a hand gesture, and all the Galatigos soldiers leave the field.",
                   "The people of Water Kingdom look outside their kingdom gates and looked surprised that the Galatigos have retreated.",
                   "Aurus looks at me. \"Well what are you waiting for? Go inside our amazing kingdom!\""]
-journey3_part1 = ["Aurus looked distressed and turns to me.",
-                  "\"We better hurry\", says Aurus. \"They're going to force the people to join their religion, and it would be chaos.\"",
-                  "\"Wait, why today?\", I ask. Aurus crosses his arms. \"Two reasons.\"",
-                  "\"One, I know the Pontifex knows something about the crystal thief.\"",
-                  "\"Two, They already do this practice, every. Single. Day.\"\n",
-                  "Without question, we head out to a Galatigos church in order to gain answers.",
-                  "\"I'm so mad at them. So much of my people have suffered...\", Aurus grunts."
-                  "\"Hey chill out Aurus, they'll notice us!\", said Nadrus.",
-                  "I give Nadrus a \"thank you\" nod, and he nods back.",
-                  "And, as if on cue, sadly, the Galatigos noticed us.",
-                  "\"You three! Stop right there!\", said a mage leading the group.",
-                  "Nadrus stands firmly. \"Eh we ain't stopping without a fight.",
-                  "The Mage laughs. \"I am the 5th Mooncaster, Saturn Marcher. What thinks you can stop me?\"",
-                  "Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"",
-                  "The Mage stops laughing. \"Shaddup! Let's fight and see who's stronger!\"",
-                  "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
+journey3_part1 = []
 journey3_part2 = ["Nadrus grabs the Mooncaster by her neck and looks at her with murderous intent.",
                   "\"Tell us where the Pontifex is NOW.\"",
                   "\"I don't know, I swear I don't know.\", she struggles.",
@@ -229,18 +144,8 @@ journey3_part2 = ["Nadrus grabs the Mooncaster by her neck and looks at her with
                   "\"Do you know where the Pontifex is?\", Aurus asks.",
                   "\"Of course I do\", he says.",
                   "\"As the second hand of the Pontifex, I will not fail.\""]
-journey3_part3 = ["\"I have failed. I deserve to die. I have failed you, my lord.\"",
-                  "Aurus helps him up. \"Now tell us where the Pontifex is.\"",
-                  "He takes a pencil and circles a part on Aurus's map.",
-                  "\"This is a shrine of the Galatigos. We have about 20 Galatigos guarding the place. That's all I know.\"",
-                  "\"You are a true gentleman.\", Aurus says. \"Thank you.\"",
-                  "We release the guy tied to the chair.",
-                  "He points to me. \"I know you already.\"",
-                  "\"" + player_name + ", right? The prophecy?\"",
-                  "\"Yeah...\", I said.",
-                  "\"I'm Rayden, the Thunder Knight. Please let me join you. I need to get a burden off my chest.\"",
-                  "\"If you say so.\", I said. \"Good to have you on the team.\""]
-
+journey3_part3 = []
+journey4_part4 = []
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
 # the list into this command so that the name changes.
@@ -681,11 +586,11 @@ def begin_hunt(city):
         print(str(x + 1) + " - " + str(preys[x]).title())
     prey = get_command(preys)
     if prey == "dirt elemental":
-        enter_battle(dirt_elemental, 3)
+        enter_battle(dirt_elemental, 0)
     elif prey == "earth boar":
-        enter_battle(earth_boar, 3)
+        enter_battle(earth_boar, 0)
     elif prey == "rock monster":
-        enter_battle(rock_monster, 3)
+        enter_battle(rock_monster, 0)
     enter_city(city)
 
 
