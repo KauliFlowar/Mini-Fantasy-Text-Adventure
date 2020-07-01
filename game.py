@@ -64,8 +64,9 @@ galatigos_lackey = ["Galatigos Lackey", 50, 5, 6, 0, 0, 50]
 lithosphere_mage = ["Lithosphere Mage", 100, 4, 4, 1, 5, 100]
 saturn_marcher = ["Saturn Marcher", 120, 12, 16, 0, 2, 150]
 universe_paladin = ["Universe Paladin", 150, 14, 20, 0, 3, 200]
-
-mooncaster_pontifex = ["Mooncaster Pontifex"]
+planet_shaper = ["Planet Shaper", 150, 12, 17, 1, 3, 300]
+universe_darkness = ["Universe Darkness", 200, 14, 17, 1, 3, 500]
+mooncaster_pontifex = ["Mooncaster Pontifex", 300, 21, 21, 2, 3, 800]
 
 # These are the story lists. Each list has a story, and each line of the story is split into different instances in the list, divided by commas to make another
 # line. All stories including the var of player_name must be copy and pasted onto the setup_name() command, so that the name can change. By default the name
@@ -146,14 +147,30 @@ journey3_part2 = ["Nadrus grabs the Mooncaster by her neck and looks at her with
                   "\"As the second hand of the Pontifex, I will not fail.\""]
 journey3_part3 = []
 journey4_part1 = ["We head to the shrine Universe Paladin told us about.",
-                  "\"We need a distraction, there are like 20 guards holed up there,\" said Rayden.",
-                  "\"I'll make a distraction, so that you guys can break in,\" said Aurus.",
+                  "\"We need a plan, there are about 20 guards holed up there.\" said Rayden.",
+                  "\"I'll make a distraction, so that you guys can break in\", said Aurus.",
                   "\"Ok,\" I said. \"Let's do it.\"",
-                  "Aurus went to distract the guards. We waited until the guards left, and we went to the shrine, ready to smack the Pontifex upside the head.",
+                  "Aurus went to distract the guards while we waited until the guards left.",
+                  "We went to the shrine, ready to take on whatever the Pontifex has in store.",
                   "Until one of the guards came back to guard the shrine.",
                   "\"Hey you! You're the people who Saturn Marcher told me about. You guys need to be executed!\"",
-                  "\"Hey! I'm back!\" Aurus was running toward us. \"Oh, a stray. Let's pummel him!\"",
+                  "\"Hey! I'm back!\", Aurus said as he was running toward us. \"Oh, a stray. Let's pummel him!\"",
                   "\"I'd like to see you try!\" said the guard."]
+journey4_part2 = ["We walk ahead into the chamber, ready to take on the Pontifex.",
+                  "Nadrus busts the door open and we walk into a dark and spacious room.",
+                  "\"For centuries no one has found this place\", said a voice. \"Well done on that behalf.\"",
+                  "Rayden walks forward. \"Pontifex! Give me back my family which you enslaved.\"",
+                  "\"I wouldn't say enslaved, dear.\", she responded. \"I simply opened their eyes.\"",
+                  "Rayden clenched his fists."
+                  "\"Well aren't you looking for a fight.\", she said. \"And let me guess...\"",
+                  "\"You want to know about the crystal thief?\"",
+                  "She smiled. \"The Galatigos play by the rules. We like to settle things once and for all.\"",
+                  "\"If you can beat me, I will free your family, and tell you all I know about the crystal thief. Lose, and you join us.\"",
+                  "\"Very well\", Rayden said.",
+                  "She snaps her fingers and a faceless soldier appears in front of her.",
+                  "\"Bring it on!\", Nadrus shouts."]
+journey4_part3 = []
+journey4_part4 = []
 
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
@@ -168,10 +185,12 @@ def setup_name(saved):
     global journey2_part1
     global journey3_part1
     global journey3_part3
+    global journey4_part3
+    global journey4_part4
     if not saved:
         print("Type your name. Leave blank for the default name.")
         player_name = input(">")
-        if player_name.lower() == "":
+        if player_name.lower().strip() == "":
             player_name = "Isa"
     tutorial_story4 = ["\"" + player_name + "? I've heard that name before. You must be the hero.",
                        "Me? A hero? What does he mean?",
@@ -276,6 +295,36 @@ def setup_name(saved):
                       "\"Yeah...\", I said.",
                       "\"I'm Rayden, the Thunder Knight. Please let me join you. I need to get a burden off my chest.\"",
                       "\"If you say so.\", I said. \"Good to have you on the team.\""]
+    journey4_part3 = ["The soldier explodes into pieces and Aurus is knocked down by the impact.",
+                      "\"My oh my.\", the Pontifex said. \"Your healer has already fallen. Looks like I've won.\"",
+                      "\"Don't get too cocky...\", Aurus said as he crawled on the floor.",
+                      "Everyone turns towards Aurus, who is miraculously alive.",
+                      "\"" + player_name + "! I will heal you with the rest of my power!\"",
+                      "He grabs my leg and sends healing magic through my body.",
+                      "I get up and look at the Pontifex. \"We will win!\", I yelled.",
+                      "She smiles. \"Your magic is useless. Show me everything you've got.\""]
+    journey4_part4 = ["\"I... I lost\", said the Pontifex. She gets up and looks at me.",
+                      "\"You are simply more powerful than me. You have earned my respect.\"",
+                      "Nadrus stand firmly. \"Now tell us what you know about the crystal thief\"",
+                      "\"Alright\", she said.\n",
+                      "One quiet evening I stumbled upon a girl who came to my shrine covered in dirt and demonic ectoplasm.",
+                      "I brought her in, as another new member to Galatigos is always welcome.",
+                      "She never said anything. And I could easily tell that she was 9 years, 8 months, and 16 days old.",
+                      "She didn't know her name either. It was so strange."
+                      "As I tried to touch her, some energy shocked me, burned me, and suffocated me all at the same time.",
+                      "As I backed off, she smiled at me, and stood in place as she waited for me to get up.",
+                      "I let her stay at my shrine and she trained alongside some of my strongest lackeys.",
+                      "Time passed quickly, and she easily learned how to absorb magic like me.",
+                      "About 3 months later, on the day of her birthday, she mysteriously snuck out of the shrine without any guards knowing.",
+                      "If trained well, I knew she would surpass the strongest one day.\n",
+                      "\"That was several years ago.\", she said. \"I have no doubt that's who you are looking for.\"",
+                      "\"Thank you Pontifex\", I said.",
+                      "She turns to Rayden. \"You have some people waiting for you at home.\"",
+                      "Rayden smiles. \"Thank you so much...\"",
+                      "Rayden's look becomes stern. \"" + player_name + ". Although my family are at home waiting for me,\"",
+                      "\"I will fight alongside you until the end.\"",
+                      "I smile and Rayden smiles back.",
+                      "\"This is only the beginning of our adventure...\""]
 
 
 # You made this for the start screen, so you don't need to change it. I made get_command() based on the play and quit command get.
@@ -464,6 +513,13 @@ def setup_game(story, text_speed, wait_time, output):
         enter_battle(saturn_marcher, 8)
     if output == 15:
         enter_battle(universe_paladin, 9)
+    if output == 16:
+        enter_battle(planet_shaper, 10)
+    if output == 17:
+        enter_battle(universe_darkness, 11)
+    if output == 18:
+        heal(1000)
+        enter_battle(mooncaster_pontifex, 12)
 
 
 # enter_city takes in only 1 var, which must be a string. If that string is a certain city's name then you will enter that city.
@@ -547,6 +603,11 @@ def begin_journey():
         journey += 1
         print("You can now set Thunder Knight as your active companion.")
         companions.append(3)
+        return print("Journey Complete!")
+    if journey == 4:
+        setup_game(journey4_part1, 0.05, 0.5, 16)
+        journey += 1
+        print("You have beaten Mooncaster Pontifex.")
         return print("Journey Complete!")
 
 
@@ -863,7 +924,7 @@ def battle(enemy, output):
             if ability == "ATK_boost":
                 print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
             if ability == "Damage":
-                print(companion_name + " dealt " + str(dmg))
+                print(companion_name + " dealt " + str(dmg) + " damage!")
         else:
             print(enemy_name + " has negated the ability's activation.")
     if enemy_hp <= 0:
@@ -926,7 +987,7 @@ def battle(enemy, output):
                         print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
                     current_cooldown = ability_cooldown + 1
                     if ability == "Damage":
-                        print(companion_name + " dealt " + str(dmg))
+                        print(companion_name + " dealt " + str(dmg) + " damage!")
                 else:
                     if enemy_ability == 2:
                         print(enemy_name + " has negated the ability's activation.")
@@ -961,6 +1022,12 @@ def enter_battle(enemy, output):
         setup_game(journey3_part2, 0.05, 0.5, 15)
     if outcome == 9:
         setup_game(journey3_part3, 0.05, 0.5, 0)
+    if outcome == 10:
+        setup_game(journey4_part2, 0.05, 0.5, 17)
+    if outcome == 11:
+        setup_game(journey4_part3, 0.05, 0.5, 18)
+    if outcome == 12:
+        setup_game(journey4_part4, 0.05, 0.5, 0)
 
 
 # heal() will heal you for a certain amount. player_hp cannot be bigger than player_max_hp.
