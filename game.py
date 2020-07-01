@@ -58,6 +58,9 @@ earth_knight = ["Earth Knight", 20, 3, 4, 0, 0, 15]
 dirt_elemental = ["Dirt Elemental", 15, 3, 3, 0, 0, 10]
 earth_boar = ["Earth Boar", 30, 4, 6, 0, 5, 25]
 rock_monster = ["Rock Monster", 75, 7, 10, 0, 0, 80]
+giant_toad = ["Giant Toad", 100, 8, 10, 0, 0, 100]
+sea_hydra = ["Sea Hydra", 150, 9, 13, 0, 0, 150]
+flying_whale = ["Flying Whale", 300, 14, 16, 0, 2, 225]
 minotaur = ["Minotaur", 40, 4, 6, 0, 0, 35]
 impish_demon = ["Impish Demon", 35, 4, 7, 0, 3, 35]
 galatigos_lackey = ["Galatigos Lackey", 50, 5, 6, 0, 0, 50]
@@ -541,41 +544,29 @@ def enter_city(loc):
         player_max_hp))
     if location == "Earth":
         travel_commands = ["shop", "medic", "hunt", "journey", "companions", "travel", "save"]
-        print("Commands:")
-        print(travel_commands)
-        command = get_command(travel_commands)
-        if command.lower() == "shop":
-            enter_shop("Earth")
-        if command.lower() == "medic":
-            heal("max")
-            enter_city("Earth")
-        if command.lower() == "hunt":
-            begin_hunt("Earth")
-        if command.lower() == "companions":
-            swap_companions(location)
-        if command.lower() == "journey":
-            begin_journey()
-            enter_city("Earth")
-        if command.lower() == "travel":
-            travel_to()
-        if command.lower() == "save":
-            save_game()
-            print("Game has been saved!")
-            enter_city("Earth")
     if location == "Water":
-        travel_commands = ["companions", "travel", "journey", "shop"]
-        print("Commands:")
-        print(travel_commands)
-        command = get_command(travel_commands)
-        if command.lower() == "companions":
-            swap_companions(location)
-        if command.lower() == "journey":
-            begin_journey()
-            enter_city("Water")
-        if command.lower() == "travel":
-            travel_to()
-        if command.lower() == "shop":
-            enter_shop("Water")
+        travel_commands = ["shop", "medic", "hunt", "journey", "companions", "travel", "save"]
+    print("Commands:")
+    print(travel_commands)
+    command = get_command(travel_commands)
+    if command.lower() == "shop":
+        enter_shop(location)
+    if command.lower() == "medic":
+        heal("max")
+        enter_city(location)
+    if command.lower() == "hunt":
+        begin_hunt(location)
+    if command.lower() == "companions":
+        swap_companions(location)
+    if command.lower() == "journey":
+        begin_journey()
+        enter_city(location)
+    if command.lower() == "travel":
+        travel_to()
+    if command.lower() == "save":
+        save_game()
+        print("Game has been saved!")
+        enter_city(location)
 
 
 # This is the journey command. You can call it whenever you are in a town. The reason I made it a command was to be able to access it regardless of whatever
@@ -652,6 +643,11 @@ def begin_hunt(city):
         preys.append("dirt elemental")
         preys.append("earth boar")
         preys.append("rock monster")
+    if city == "Water":
+        preys.append("giant toad")
+        preys.append("sea hydra")
+        preys.append("flying whale")
+    preys.append("leave")
     for x in range(len(preys)):
         print(str(x + 1) + " - " + str(preys[x]).title())
     prey = get_command(preys)
@@ -661,6 +657,12 @@ def begin_hunt(city):
         enter_battle(earth_boar, 0)
     elif prey == "rock monster":
         enter_battle(rock_monster, 0)
+    elif prey == "giant toad":
+        enter_battle(giant_toad, 0)
+    elif prey == "sea hydra":
+        enter_battle(sea_hydra, 0)
+    elif prey == "flying whale":
+        enter_battle(flying_whale, 0)
     enter_city(city)
 
 
