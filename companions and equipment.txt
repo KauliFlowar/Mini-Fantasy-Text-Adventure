@@ -1,51 +1,60 @@
 Companions -------------
-1 - Flame Knight:
+1 - Flame Knight - tutorial
 4 ATK
 atkboost 3
 
-2 - Aqua Mage
+2 - Aqua Mage - journey1
 18 ATK
 heal 8
 ability_cooldown = 1
 
-3 - Thunder Knight
+3 - Thunder Knight - journey3
 35 ATK
 damage 60
 ability_cooldown = 1
 
 Weapons -----------------
-1 - Rusty Sword
+1 - Rusty Sword - tutorial
 minATK = 3
 maxATK = 5
 
-2 - Wooden Sword
+2 - Wooden Sword - 10g
 minATK = 5
 maxATK = 7
 
-3 - Iron Sword
+3 - Iron Sword - 150g
 minATK = 8
 maxATK = 10
 
-4 - Enchanted Staff
+4 - Enchanted Staff - 350g
 minATK = 14
 maxATK = 19
 
-5 - Aqua Staff
+5 - Aqua Staff - 350g
 minATK = 15
 maxATK = 18
 
+6 - Bloody War Axe - 1000g
+minATK = 23
+maxATK = 29
+
 Shields -----------------
-1 - Wooden Shield
+1 - Wooden Shield - 10g
 min_block = 2
 max_block = 4
 shield_boost = 30
 
-2 - Iron Shield
+2 - Iron Shield - 150g
 min_block = 9
 max_block = 11
 shield_boost = 55
 
-3 - Heavy Shield
+3 - Heavy Shield - 400g
 min_block = 14
 max_block = 17
 shield_boost = 105
+
+4 - Mighty Shield - 1000g
+min_block = 16
+max_block = 21
+shield_boost = 180

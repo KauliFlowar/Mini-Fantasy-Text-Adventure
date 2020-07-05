@@ -164,7 +164,7 @@ journey4_part2 = ["We walk ahead into the chamber, ready to take on the Pontifex
                   "\"For centuries no one has found this place\", said a voice. \"Well done on that behalf.\"",
                   "Rayden walks forward. \"Pontifex! Give me back my family which you enslaved.\"",
                   "\"I wouldn't say enslaved, dear.\", she responded. \"I simply opened their eyes.\"",
-                  "Rayden clenched his fists."
+                  "Rayden clenched his fists.",
                   "\"Well aren't you looking for a fight.\", she said. \"And let me guess...\"",
                   "\"You want to know about the crystal thief?\"",
                   "She smiled. \"The Galatigos play by the rules. We like to settle things once and for all.\"",
@@ -174,6 +174,12 @@ journey4_part2 = ["We walk ahead into the chamber, ready to take on the Pontifex
                   "\"Bring it on!\", Nadrus shouts."]
 journey4_part3 = []
 journey4_part4 = []
+journey5_part1 = ["\"Where do we start this hunt for the crystal thief?\", Nadrus asks.",
+                  "\"The Pontifex said that the girl was covered in Demonic Ectoplasm\", I said.",
+                  "\"Does that mean we are going to the Demon realm?\", Aurus asks.",
+                  "\"That seems to be out best chance.\", I sighed.",
+                  "\"None of us can access the demon realm though. We need to find someone who can.\"",
+                  ""]
 
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
@@ -670,8 +676,7 @@ def travel_to():
     print("Travel to:")
     print(travel_destinations)
     destination = get_command(travel_destinations)
-    cap = destination.capitalize()
-    enter_city(cap)
+    enter_city(destination.capitalize())
 
 
 class Item:
@@ -709,6 +714,19 @@ class Item:
             print("You need more gold!")
 
 
+# weapons and shields
+default_buy_phrase = "It has been automatically equipped."
+s1 = Item("Wooden Shield", "shield", 1, 10, default_buy_phrase, 30)
+w2 = Item("Wooden Sword", "weapon", 2, 10, default_buy_phrase, None)
+w3 = Item("Iron Sword", "weapon", 3, 150, default_buy_phrase, None)
+s2 = Item("Iron Shield", "shield", 2, 150, default_buy_phrase, 55)
+w4 = Item("Enchanted Staff", "weapon", 4, 350, "Let the power flow within you.", None)
+w5 = Item("Aqua Staff", "weapon", 5, 350, "Let the power flow within you.", None)
+s3 = Item("Heavy Shield", "shield", 3, 400, default_buy_phrase, 105)
+w6 = Item("Bloody War Axe", "weapon", 6, 1000, default_buy_phrase, None)
+s4 = Item("Mighty Shield", "shield", 4, 1000, default_buy_phrase, 180)
+
+
 def enter_shop(city):
     global shield_type
     global shield_boost
@@ -721,9 +739,14 @@ def enter_shop(city):
         items.append("iron sword")
         items.append("iron shield")
     if journey >= 3:
-        items.append("enchanted staff")
-        items.append("aqua staff")
+        if city == "Earth":
+            items.append("enchanted staff")
+        if city == "Water":
+            items.append("aqua staff")
         items.append("heavy shield")
+    if journey >= 4:
+        items.append("bloody war axe")
+        items.append("mighty shield")
     items.append("leave")
     print("Current items in stock:")
     print("Wooden Shield - 10 gold")
@@ -737,15 +760,10 @@ def enter_shop(city):
         if city == "Water":
             print("Aqua Staff - 350 gold")
         print("Heavy Shield - 400 gold")
+    if journey >= 4:
+        print("Bloody War Axe - 1000 gold")
+        print("Mighty Shield - 1000 gold")
     print("Type \"Leave\" to leave.")
-    default_buy_phrase = "It has been automatically equipped."
-    s1 = Item("Wooden Shield", "shield", 1, 10, default_buy_phrase, 30)
-    w2 = Item("Wooden Sword", "weapon", 2, 10, default_buy_phrase, None)
-    w3 = Item("Iron Sword", "weapon", 3, 150, default_buy_phrase, None)
-    s2 = Item("Iron Shield", "shield", 2, 150, default_buy_phrase, 55)
-    w4 = Item("Enchanted Staff", "weapon", 4, 350, "Let the power flow within you.", None)
-    w5 = Item("Aqua Staff", "weapon", 5, 350, "Let the power flow within you.", None)
-    s3 = Item("Heavy Shield", "shield", 3, 400, default_buy_phrase, 105)
     buy = get_command(items).lower()
     if buy == "wooden shield":
         s1.do_shop()
@@ -761,6 +779,10 @@ def enter_shop(city):
         w5.do_shop()
     if buy == "heavy shield":
         s3.do_shop()
+    if buy == "bloody war axe":
+        w6.do_shop()
+    if buy == "mighty shield":
+        s4.do_shop()
     if buy == items[-1]:
         print("Come again!")
     enter_city(city)
