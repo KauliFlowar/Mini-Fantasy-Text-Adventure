@@ -680,13 +680,15 @@ def travel_to():
 
 
 class Item:
-    def __init__(self, name, item_type, item_num, gold_cost, buy_phrase, bought_shield_boost):
+    def __init__(self, name, item_type, item_num, gold_cost, buy_phrase, bought_shield_boost, min_stat, max_stat):
         self.name = name
         self.item_type = item_type
         self.item_num = item_num
         self.gold_cost = gold_cost
         self.buy_phrase = buy_phrase
         self.bought_shield_boost = bought_shield_boost
+        self.min_stat = min_stat
+        self.max_stat = max_stat
 
     def do_shop(self):
         global weapon_type
@@ -696,6 +698,16 @@ class Item:
         global player_hp
         global player_max_hp
         if gold >= self.gold_cost:
+            prev_type = ""
+            if self.item_type == "weapon":
+                prev_type = "w"
+            elif self.item_type == "shield":
+                prev_type = "s"
+            outcome = swap_item(prev_type, self.item_num)
+            if outcome is True:
+                print("You have bought " + self.name.title() + ".")
+                print(self.buy_phrase)
+                gold -= self.gold_cost
             if self.item_type == "weapon":
                 weapon_type = self.item_num
             elif self.item_type == "shield":
@@ -707,24 +719,23 @@ class Item:
                     current_commands.append("block")
             else:
                 print("item_type is neither!")
-            print("You have bought " + self.name.title() + ".")
-            print(self.buy_phrase)
-            gold -= self.gold_cost
         else:
             print("You need more gold!")
 
 
 # weapons and shields
 default_buy_phrase = "It has been automatically equipped."
-s1 = Item("Wooden Shield", "shield", 1, 10, default_buy_phrase, 30)
-w2 = Item("Wooden Sword", "weapon", 2, 10, default_buy_phrase, None)
-w3 = Item("Iron Sword", "weapon", 3, 150, default_buy_phrase, None)
-s2 = Item("Iron Shield", "shield", 2, 150, default_buy_phrase, 55)
-w4 = Item("Enchanted Staff", "weapon", 4, 350, "Let the power flow within you.", None)
-w5 = Item("Aqua Staff", "weapon", 5, 350, "Let the power flow within you.", None)
-s3 = Item("Heavy Shield", "shield", 3, 400, default_buy_phrase, 105)
-w6 = Item("Bloody War Axe", "weapon", 6, 1000, default_buy_phrase, None)
-s4 = Item("Mighty Shield", "shield", 4, 1000, default_buy_phrase, 180)
+s0 = Item("None", "shield", 0, 0, None, 0, 0, 0)
+w1 = Item("Rusty Sword", "weapon", 1, 0, None, 0, 3, 5)
+s1 = Item("Wooden Shield", "shield", 1, 10, default_buy_phrase, 30, 2, 4)
+w2 = Item("Wooden Sword", "weapon", 2, 10, default_buy_phrase, 0, 5, 7)
+w3 = Item("Iron Sword", "weapon", 3, 150, default_buy_phrase, 0, 8, 10)
+s2 = Item("Iron Shield", "shield", 2, 150, default_buy_phrase, 55, 9, 11)
+w4 = Item("Enchanted Staff", "weapon", 4, 350, "Let the power flow within you.", 0, 14, 19)
+w5 = Item("Aqua Staff", "weapon", 5, 350, "Let the power flow within you.", 0, 15, 18)
+s3 = Item("Heavy Shield", "shield", 3, 400, default_buy_phrase, 105, 14, 17)
+w6 = Item("Bloody War Axe", "weapon", 6, 1000, default_buy_phrase, 0, 23, 29)
+s4 = Item("Mighty Shield", "shield", 4, 1000, default_buy_phrase, 180, 16, 21)
 
 
 def enter_shop(city):
@@ -788,6 +799,41 @@ def enter_shop(city):
     enter_city(city)
 
 
+def swap_item(prev_type, swap_num):
+    global weapon_type
+    global shield_type
+    global shield_boost
+    prev_num = 0
+    item_type = ""
+    if prev_type == "w":
+        prev_num = weapon_type
+        item_type = "Attack"
+    elif prev_type == "s":
+        prev_num = shield_type
+        item_type = "Block"
+    exec("print(" + prev_type + str(prev_num) + ".name + ' => ' + " + prev_type + str(swap_num) + ".name)")
+    exec("print('Min " + item_type + ": ' + str(" + prev_type + str(prev_num) + ".min_stat) + ' => ' + str(" + prev_type + str(swap_num) + ".min_stat))")
+    exec("print('Max " + item_type + ": ' + str(" + prev_type + str(prev_num) + ".max_stat) + ' => ' + str(" + prev_type + str(swap_num) + ".max_stat))")
+    if prev_type == "s":
+        exec("print('Max Health: ' + str(int(" + prev_type + str(prev_num) + ".bought_shield_boost) + 20) + ' => ' + str(int(" + prev_type + str(swap_num) + ".bought_shield_boost) + 20))")
+    # assume prev_type = s, prev_num = 1, swap_num = 2
+    # print(s1.name + ' => ' + s2.name)
+    # print('Min Block: ' + str(s1.min_stat) + ' => ' + str(s2.min_stat))
+    # print('Max Block: ' + str(s1.max_stat) + ' => ' + str(s2.max_stat))
+    # print('Max Health: ' + str(int(s1.bought_shield_boost) + 20) + ' => ' + str(int(s2.bought_shield_boost) + 20))
+    commands = ["swap", "cancel"]
+    print(commands)
+    command = get_command(commands)
+    if command == "swap":
+        if prev_type == "w":
+            weapon_type = swap_num
+        if prev_type == "s":
+            shield_type = swap_num
+        return True
+    elif command == "cancel":
+        return False
+
+
 # get_command() takes in a list. It will ask for a command, and if the command is in the list then it will return the command typed out. 2 rules when using
 # the get_command() function. 1. Do not use this if you don't NEED to type a command. 2. Always set a var as this command, as it returns a string.
 # ex: example_var = get_command(["yes", "no"])
@@ -820,6 +866,11 @@ def save_game():
     print(player_name)
 
 
+# vars for battle()
+minATK = 0
+maxATK = 0
+
+
 # The battle() command is the most complicated of them all. First, it lists a bunch of variables. Then, it asks you for a command
 # with command = get_command(current_commands). If a certain command is chosen, it will do certain things and then passes the turn to the enemy.
 # During the enemy's turn, it will attack you once and use it's ability(I haven't coded much of it yet so maybe I'll do it later). Then it repeats if
@@ -834,10 +885,10 @@ def battle(enemy, output):
     global shield_type
     global equipped_companion
     global gold
+    global minATK
+    global maxATK
     print("\n")
     blocked_damage = 0
-    minATK = 0
-    maxATK = 0
     min_block = 0
     max_block = 0
     companion_name = ""
@@ -855,32 +906,14 @@ def battle(enemy, output):
     enemy_gold_drop = enemy[6]
     enemy_extra_damage = 0
     # weapons
-    if weapon_type == 1:
-        minATK = 3
-        maxATK = 5
-        # print(minATK)
-    if weapon_type == 2:
-        minATK = 5
-        maxATK = 7
-    if weapon_type == 3:
-        minATK = 8
-        maxATK = 10
-    if weapon_type == 4:
-        minATK = 14
-        maxATK = 19
-    if weapon_type == 5:
-        minATK = 15
-        maxATK = 18
+    ATK_change = 'global minATK; global maxATK; minATK = w' + str(weapon_type) + '.min_stat\nmaxATK = w' + str(
+        weapon_type) + '.max_stat\nprint(minATK)\nprint(maxATK)'
+    print(ATK_change)
+    exec(ATK_change.strip())
     # shields
-    if shield_type == 1:
-        min_block = 2
-        max_block = 4
-    if shield_type == 2:
-        min_block = 9
-        max_block = 11
-    if shield_type == 3:
-        min_block = 14
-        max_block = 17
+    if shield_type > 0:
+        shield_change = "min_block=s" + str(shield_type) + ".min_stat\nmax_block=s" + str(shield_type) + ".max_stat"
+        exec(shield_change)
     # companions
     if equipped_companion == 1:
         companion_name = "Flame Knight"
