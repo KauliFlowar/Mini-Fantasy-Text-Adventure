@@ -708,6 +708,8 @@ class Item:
                 print("You have bought " + self.name.title() + ".")
                 print(self.buy_phrase)
                 gold -= self.gold_cost
+            elif not outcome:
+                return
             if self.item_type == "weapon":
                 weapon_type = self.item_num
             elif self.item_type == "shield":
