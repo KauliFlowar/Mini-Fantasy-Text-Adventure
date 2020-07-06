@@ -177,11 +177,16 @@ journey4_part4 = []
 journey5_part1 = ["\"Where do we start this hunt for the crystal thief?\", Nadrus asks.",
                   "\"The Pontifex said that the girl was covered in Demonic Ectoplasm\", I said.",
                   "\"Does that mean we are going to the Demon realm?\", Aurus asks.",
-                  "\"That seems to be out best chance.\", I sighed.",
+                  "\"That seems to be our best chance.\", I sighed.",
                   "\"None of us can access the demon realm though. We need to find someone who can.\"",
-                  ""]
-
-
+                  "\"I think I can help...\""
+                  "We all jumped."
+                  "\"Who's there?\" asked Nadrus."
+                  "It is I, the master of inventions, Oro!\" a voice said."
+                  "We still couldn't see him."
+                  "\"I'm on the ceiling, you idiots!\" said Oro."
+                  "We all looked up, wondering why he was on the ceiling."
+                  
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
 # the list into this command so that the name changes.
 def setup_name(saved):
