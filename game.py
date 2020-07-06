@@ -179,14 +179,15 @@ journey5_part1 = ["\"Where do we start this hunt for the crystal thief?\", Nadru
                   "\"Does that mean we are going to the Demon realm?\", Aurus asks.",
                   "\"That seems to be our best chance.\", I sighed.",
                   "\"None of us can access the demon realm though. We need to find someone who can.\"",
-                  "\"I think I can help...\""
+                  "\"I think I can help...\", a voice called out."
                   "We all jumped."
-                  "\"Who's there?\" asked Nadrus."
-                  "It is I, the master of inventions, Oro!\" a voice said."
+                  "\"Who's there?\", asked Nadrus."
+                  "It is I, the master of inventions, Oro!\", the voice said."
                   "We still couldn't see him."
                   "\"I'm on the ceiling, you idiots!\" said Oro."
-                  "We all looked up, wondering why he was on the ceiling."
-                  
+                  "We all looked up, wondering why he was on the ceiling."]
+
+
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
 # the list into this command so that the name changes.
 def setup_name(saved):
@@ -819,10 +820,14 @@ def swap_item(prev_type, swap_num):
         prev_num = shield_type
         item_type = "Block"
     exec("print(" + prev_type + str(prev_num) + ".name + ' => ' + " + prev_type + str(swap_num) + ".name)")
-    exec("print('Min " + item_type + ": ' + str(" + prev_type + str(prev_num) + ".min_stat) + ' => ' + str(" + prev_type + str(swap_num) + ".min_stat))")
-    exec("print('Max " + item_type + ": ' + str(" + prev_type + str(prev_num) + ".max_stat) + ' => ' + str(" + prev_type + str(swap_num) + ".max_stat))")
+    exec("print('Min " + item_type + ": ' + str(" + prev_type + str(
+        prev_num) + ".min_stat) + ' => ' + str(" + prev_type + str(swap_num) + ".min_stat))")
+    exec("print('Max " + item_type + ": ' + str(" + prev_type + str(
+        prev_num) + ".max_stat) + ' => ' + str(" + prev_type + str(swap_num) + ".max_stat))")
     if prev_type == "s":
-        exec("print('Max Health: ' + str(int(" + prev_type + str(prev_num) + ".bought_shield_boost) + 20) + ' => ' + str(int(" + prev_type + str(swap_num) + ".bought_shield_boost) + 20))")
+        exec("print('Max Health: ' + str(int(" + prev_type + str(
+            prev_num) + ".bought_shield_boost) + 20) + ' => ' + str(int(" + prev_type + str(
+            swap_num) + ".bought_shield_boost) + 20))")
     # assume prev_type = s, prev_num = 1, swap_num = 2
     # print(s1.name + ' => ' + s2.name)
     # print('Min Block: ' + str(s1.min_stat) + ' => ' + str(s2.min_stat))
@@ -915,11 +920,13 @@ def battle(enemy, output):
     enemy_gold_drop = enemy[6]
     enemy_extra_damage = 0
     # weapons
-    ATK_change = 'global minATK; global maxATK; minATK = w' + str(weapon_type) + '.min_stat\nmaxATK = w' + str(weapon_type) + '.max_stat'
+    ATK_change = 'global minATK; global maxATK; minATK = w' + str(weapon_type) + '.min_stat\nmaxATK = w' + str(
+        weapon_type) + '.max_stat'
     exec(ATK_change.strip())
     # shields
     if shield_type > 0:
-        shield_change = "global min_block; global max_block; min_block=s" + str(shield_type) + ".min_stat\nmax_block=s" + str(shield_type) + ".max_stat"
+        shield_change = "global min_block; global max_block; min_block=s" + str(
+            shield_type) + ".min_stat\nmax_block=s" + str(shield_type) + ".max_stat"
         exec(shield_change)
     # companions
     if equipped_companion == 1:
