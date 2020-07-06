@@ -67,9 +67,9 @@ galatigos_lackey = ["Galatigos Lackey", 50, 5, 6, 0, 0, 50]
 lithosphere_mage = ["Lithosphere Mage", 100, 4, 4, 1, 5, 100]
 saturn_marcher = ["Saturn Marcher", 120, 12, 16, 0, 2, 150]
 universe_paladin = ["Universe Paladin", 150, 14, 20, 0, 3, 200]
-planet_shaper = ["Planet Shaper", 150, 12, 17, 1, 3, 300]
-universe_darkness = ["Universe Darkness", 200, 14, 17, 1, 3, 500]
-mooncaster_pontifex = ["Mooncaster Pontifex", 300, 21, 21, 2, 3, 800]
+planet_shaper = ["Planet Shaper", 200, 16, 21, 1, 3, 300]
+universe_darkness = ["Universe Darkness", 275, 17, 20, 1, 3, 500]
+mooncaster_pontifex = ["Mooncaster Pontifex", 400, 25, 25, 2, 3, 800]
 
 # These are the story lists. Each list has a story, and each line of the story is split into different instances in the list, divided by commas to make another
 # line. All stories including the var of player_name must be copy and pasted onto the setup_name() command, so that the name can change. By default the name
@@ -726,7 +726,7 @@ class Item:
 
 
 # weapons and shields
-default_buy_phrase = "It has been automatically equipped."
+default_buy_phrase = "It has been equipped."
 s0 = Item("None", "shield", 0, 0, None, 0, 0, 0)
 w1 = Item("Rusty Sword", "weapon", 1, 0, None, 0, 3, 5)
 s1 = Item("Wooden Shield", "shield", 1, 10, default_buy_phrase, 30, 2, 4)
@@ -823,10 +823,10 @@ def swap_item(prev_type, swap_num):
     # print('Min Block: ' + str(s1.min_stat) + ' => ' + str(s2.min_stat))
     # print('Max Block: ' + str(s1.max_stat) + ' => ' + str(s2.max_stat))
     # print('Max Health: ' + str(int(s1.bought_shield_boost) + 20) + ' => ' + str(int(s2.bought_shield_boost) + 20))
-    commands = ["swap", "cancel"]
+    commands = ["equip", "cancel"]
     print(commands)
     command = get_command(commands)
-    if command == "swap":
+    if command == "equip":
         if prev_type == "w":
             weapon_type = swap_num
         if prev_type == "s":
@@ -871,6 +871,8 @@ def save_game():
 # vars for battle()
 minATK = 0
 maxATK = 0
+min_block = 0
+max_block = 0
 
 
 # The battle() command is the most complicated of them all. First, it lists a bunch of variables. Then, it asks you for a command
@@ -890,9 +892,9 @@ def battle(enemy, output):
     global minATK
     global maxATK
     print("\n")
+    global min_block
+    global max_block
     blocked_damage = 0
-    min_block = 0
-    max_block = 0
     companion_name = ""
     companion_ATK = 0
     companion_boost = 0
@@ -908,13 +910,11 @@ def battle(enemy, output):
     enemy_gold_drop = enemy[6]
     enemy_extra_damage = 0
     # weapons
-    ATK_change = 'global minATK; global maxATK; minATK = w' + str(weapon_type) + '.min_stat\nmaxATK = w' + str(
-        weapon_type) + '.max_stat\nprint(minATK)\nprint(maxATK)'
-    print(ATK_change)
+    ATK_change = 'global minATK; global maxATK; minATK = w' + str(weapon_type) + '.min_stat\nmaxATK = w' + str(weapon_type) + '.max_stat'
     exec(ATK_change.strip())
     # shields
     if shield_type > 0:
-        shield_change = "min_block=s" + str(shield_type) + ".min_stat\nmax_block=s" + str(shield_type) + ".max_stat"
+        shield_change = "global min_block; global max_block; min_block=s" + str(shield_type) + ".min_stat\nmax_block=s" + str(shield_type) + ".max_stat"
         exec(shield_change)
     # companions
     if equipped_companion == 1:
