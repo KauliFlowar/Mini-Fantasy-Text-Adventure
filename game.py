@@ -182,7 +182,7 @@ journey5_part1 = ["\"Where do we start this hunt for the crystal thief?\", Nadru
                   "\"I think I can help...\", a voice called out."
                   "We all jumped."
                   "\"Who's there?\", asked Nadrus."
-                  "It is I, the master of inventions, Oro!\", the voice said."
+                  "It is I, the master of creations, Oro!\", the voice said."
                   "We still couldn't see him."
                   "\"I'm on the ceiling, you idiots!\" said Oro."
                   "We all looked up, wondering why he was on the ceiling."]
