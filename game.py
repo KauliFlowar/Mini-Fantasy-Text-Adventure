@@ -185,7 +185,15 @@ journey5_part1 = ["\"Where do we start this hunt for the crystal thief?\", Nadru
                   "It is I, the master of creations, Oro!\", the voice said."
                   "We still couldn't see him."
                   "\"I'm on the ceiling, you idiots!\" said Oro."
-                  "We all looked up, wondering why he was on the ceiling."]
+                  "We all looked up, wondering why he was on the ceiling.",
+                  "\"I can help,\" Oro says. \"but I need to get to my lab, which has been infested with monsters.\"",
+                  "\"Why is it infested with monsters though?\" I asked.",
+                  "Oro sighs. \"Some thieves have wanted to steal my creations so they can learn about it, thus making their own.\"",
+                  "Oro continued. \"I have an ultra super weapon im working on, and they heard about it, but thankfully...\"",
+                  "\"...my lab can never be broken into, and I have a extraordinary security system!\"",
+                  "He kept bragging how great his lab was.",
+                  "\"Ahem,\" I said. \"Now we are in a hurry, would you mind guiding us to your amazing lab?\"",
+                  "\"Ah yes!\" Oro said. \"Follow me!\",
 
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
