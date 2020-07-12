@@ -13,6 +13,21 @@ ability_cooldown = 1
 damage 60
 ability_cooldown = 1
 
+4 - Oro - journey5
+0 ATK
+random 1-5:
+1. Evolution Burst:
+companion_ATK += 10
+2. Disarm:
+permanent_block += 8
+3. Influx:
+heal 30
+4. Pulse:
+selfdamage 10
+atkboost 20
+5. Power Gauntlet:
+damage 100
+
 Weapons -----------------
 1 - Rusty Sword - tutorial
 minATK = 3

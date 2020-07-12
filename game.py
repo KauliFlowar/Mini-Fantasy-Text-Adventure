@@ -640,6 +640,8 @@ def swap_companions(current_city):
         companion_name = "Aqua Mage"
     if equipped_companion == 3:
         companion_name = "Thunder Knight"
+    if equipped_companion == 4:
+        companion_name = "Oro"
     equipped_companion_name = companion_name
     print("Active companion: " + companion_name)
     print("Inactive companions: ")
@@ -650,6 +652,8 @@ def swap_companions(current_city):
             companion_name = "Aqua Mage"
         elif companions[i] == 3:
             companion_name = "Thunder Knight"
+        elif companions[i] == 4:
+            companion_name = "Oro"
         print(str(i + 1) + ". " + companion_name)
     print("Type the number of the companion to set it active. Type anything else to close.")
     # i learn a new technique with every passing day
@@ -935,6 +939,7 @@ def battle(enemy, output):
     enemy_dodge_chance = enemy[5]
     enemy_gold_drop = enemy[6]
     enemy_extra_damage = 0
+    permanent_block = 0
     # weapons
     ATK_change = 'global minATK; global maxATK; minATK = w' + str(weapon_type) + '.min_stat\nmaxATK = w' + str(
         weapon_type) + '.max_stat'
@@ -959,6 +964,10 @@ def battle(enemy, output):
         companion_ATK = 35
         companion_ability = 3
         ability_cooldown = 1
+    if equipped_companion == 4:
+        companion_name = "Oro"
+        companion_ATK = 0
+        companion_ability = 4
     combat_start = randint(1, 5)
     start_text = ""
     if combat_start == 1:
@@ -1007,11 +1016,46 @@ def battle(enemy, output):
                 enemy_hp -= 60
                 ability = "Damage"
                 dmg = 60
+            if companion_ability == 4:
+                using_ability = randint(0, 5)
+                if using_ability == 0:
+                    using_ability = randint(0, 5)
+                    while using_ability == 0:
+                        using_ability = randint(0, 5)
+                if using_ability == 1:
+                    print("Evolution Burst!")
+                    companion_ATK += 10
+                    ability = "companion_boost"
+                elif using_ability == 2:
+                    print("Disarm!")
+                    permanent_block += 8
+                    ability = "permanent_block_increase"
+                elif using_ability == 3:
+                    print("Influx!")
+                    heal(30)
+                elif using_ability == 4:
+                    print("Pulse!")
+                    if player_hp < 10:
+                        print("You don't have enough health to use this ability!")
+                        return
+                    player_hp -= 10
+                    print("You took 10 damage!")
+                    companion_boost += 20
+                    ability = "ATK_boost"
+                elif using_ability == 5:
+                    print("Power Gauntlet!")
+                    enemy_hp -= 100
+                    dmg = 100
+                    ability = "Damage"
             current_cooldown = ability_cooldown + 1
             if ability == "ATK_boost":
                 print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
             if ability == "Damage":
                 print(companion_name + " dealt " + str(dmg) + " damage!")
+            if ability == "companion_boost":
+                print(companion_name + " boosted their own attack to " + str(companion_ATK) + "!")
+            if ability == "permanent_block_increase":
+                print(companion_name + " has crippled " + enemy_name + " by " + str(permanent_block))
         else:
             print(enemy_name + " has negated the ability's activation.")
     if enemy_hp <= 0:
@@ -1023,7 +1067,7 @@ def battle(enemy, output):
         if enemy_ability == 1:
             enemy_extra_damage += 2
             print(enemy_name + " has boosted their attack by " + str(enemy_extra_damage))
-        enemy_damage = (randint(enemy_minATK, enemy_maxATK) - blocked_damage) + enemy_extra_damage
+        enemy_damage = (randint(enemy_minATK, enemy_maxATK) - blocked_damage - permanent_block) + enemy_extra_damage
         if enemy_damage < 0:
             enemy_damage = 0
         player_hp = player_hp - enemy_damage
@@ -1070,11 +1114,46 @@ def battle(enemy, output):
                         enemy_hp -= 60
                         dmg = 60
                         ability = "Damage"
+                    if companion_ability == 4:
+                        using_ability = randint(0, 5)
+                        if using_ability == 0:
+                            using_ability = randint(0, 5)
+                            while using_ability == 0:
+                                using_ability = randint(0, 5)
+                        if using_ability == 1:
+                            print("Evolution Burst!")
+                            companion_ATK += 10
+                            ability = "companion_boost"
+                        elif using_ability == 2:
+                            print("Disarm!")
+                            permanent_block += 8
+                            ability = "permanent_block_increase"
+                        elif using_ability == 3:
+                            print("Influx!")
+                            heal(30)
+                        elif using_ability == 4:
+                            print("Pulse!")
+                            if player_hp < 10:
+                                print("You don't have enough health to use this ability!")
+                                return
+                            player_hp -= 10
+                            print("You took 10 damage!")
+                            companion_boost += 20
+                            ability = "ATK_boost"
+                        elif using_ability == 5:
+                            print("Power Gauntlet!")
+                            enemy_hp -= 100
+                            dmg = 100
+                            ability = "Damage"
                     if ability == "ATK_boost":
                         print(companion_name + " has boosted your attack by " + str(companion_boost) + "!")
                     current_cooldown = ability_cooldown + 1
                     if ability == "Damage":
                         print(companion_name + " dealt " + str(dmg) + " damage!")
+                    if ability == "companion_boost":
+                        print(companion_name + " boosted their own attack to " + str(companion_ATK) + "!")
+                    if ability == "permanent_block_increase":
+                        print(companion_name + " has crippled " + enemy_name + " by " + str(permanent_block))
                 else:
                     if enemy_ability == 2:
                         print(enemy_name + " has negated the ability's activation.")
