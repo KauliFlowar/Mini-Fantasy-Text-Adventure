@@ -70,6 +70,8 @@ universe_paladin = ["Universe Paladin", 150, 14, 20, 0, 3, 200]
 planet_shaper = ["Planet Shaper", 200, 16, 21, 1, 3, 300]
 universe_darkness = ["Universe Darkness", 275, 17, 20, 1, 3, 500]
 mooncaster_pontifex = ["Mooncaster Pontifex", 400, 25, 25, 2, 3, 800]
+demon_scout1 = ["Demon Scout", 300, 16, 20, 0, 5, 600]
+demon_raider1 = ["Demon Raider", 350, 18, 24, 0, 6, 700]
 
 # These are the story lists. Each list has a story, and each line of the story is split into different instances in the list, divided by commas to make another
 # line. All stories including the var of player_name must be copy and pasted onto the setup_name() command, so that the name can change. By default the name
@@ -202,6 +204,8 @@ journey5_part1 = ["\"Where do we start this hunt for the crystal thief?\", Nadru
                   "\"Looks like it.\", Rayden said. \"Let's take 'em down\"",
                   "The demon sharpened it's fangs.",
                   "\"You sh-tand no sh-ance!\", The demon hissed."]
+journey5_part2 = ["The demon fell to the floor, right before disappearing into mist.",
+                  ""]
 
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
@@ -764,6 +768,8 @@ w5 = Item("Aqua Staff", "weapon", 5, 350, "Let the power flow within you.", 0, 1
 s3 = Item("Heavy Shield", "shield", 3, 400, default_buy_phrase, 105, 14, 17)
 w6 = Item("Bloody War Axe", "weapon", 6, 1000, default_buy_phrase, 0, 23, 29)
 s4 = Item("Mighty Shield", "shield", 4, 1000, default_buy_phrase, 180, 16, 21)
+w7 = Item("", "weapon", 7, 2000, "", 0, 27, 37)
+s5 = Item("", "shield", 5, 2000, "", 280, 18, 23)
 
 
 def enter_shop(city):
