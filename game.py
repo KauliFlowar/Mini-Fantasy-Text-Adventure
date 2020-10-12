@@ -637,28 +637,28 @@ def begin_journey():
 # Swaps companions. Same case as begin_journey(). current_city allows the command to exit once the command is done.
 def swap_companions(current_city):
     global equipped_companion
-    companion_name = ""
+    companion_names = ""
     if equipped_companion == 1:
-        companion_name = "Flame Knight"
+        companion_names = "Flame Knight"
     if equipped_companion == 2:
-        companion_name = "Aqua Mage"
+        companion_names = "Aqua Mage"
     if equipped_companion == 3:
-        companion_name = "Thunder Knight"
+        companion_names = "Thunder Knight"
     if equipped_companion == 4:
-        companion_name = "Oro"
-    equipped_companion_name = companion_name
-    print("Active companion: " + companion_name)
+        companion_names = "Oro"
+    equipped_companion_name = companion_names
+    print("Active companion: " + companion_names)
     print("Inactive companions: ")
     for i in range(len(companions)):
         if companions[i] == 1:
-            companion_name = "Flame Knight"
+            companion_names = "Flame Knight"
         elif companions[i] == 2:
-            companion_name = "Aqua Mage"
+            companion_names = "Aqua Mage"
         elif companions[i] == 3:
-            companion_name = "Thunder Knight"
+            companion_names = "Thunder Knight"
         elif companions[i] == 4:
-            companion_name = "Oro"
-        print(str(i + 1) + ". " + companion_name)
+            companion_names = "Oro"
+        print(str(i + 1) + ". " + companion_names)
     print("Type the number of the companion to set it active. Type anything else to close.")
     # i learn a new technique with every passing day
     try:
@@ -768,7 +768,7 @@ w5 = Item("Aqua Staff", "weapon", 5, 350, "Let the power flow within you.", 0, 1
 s3 = Item("Heavy Shield", "shield", 3, 400, default_buy_phrase, 105, 14, 17)
 w6 = Item("Bloody War Axe", "weapon", 6, 1000, default_buy_phrase, 0, 23, 29)
 s4 = Item("Mighty Shield", "shield", 4, 1000, default_buy_phrase, 180, 16, 21)
-w7 = Item("", "weapon", 7, 2000, "", 0, 27, 37)
+w7 = Item("Spear of Water", "weapon", 7, 2000, "", 0, 27, 37)
 s5 = Item("", "shield", 5, 2000, "", 280, 18, 23)
 
 
@@ -909,6 +909,9 @@ minATK = 0
 maxATK = 0
 min_block = 0
 max_block = 0
+companion_name = ""
+companion_ATK = 0
+companion_ability = 0
 
 
 # The battle() command is the most complicated of them all. First, it lists a bunch of variables. Then, it asks you for a command
@@ -927,14 +930,14 @@ def battle(enemy, output):
     global gold
     global minATK
     global maxATK
+    global companion_ATK
+    global companion_name
+    global companion_ability
     print("\n")
     global min_block
     global max_block
     blocked_damage = 0
-    companion_name = ""
-    companion_ATK = 0
     companion_boost = 0
-    companion_ability = 0
     ability_cooldown = 0
     current_cooldown = 0
     enemy_name = enemy[0]
@@ -956,24 +959,22 @@ def battle(enemy, output):
             shield_type) + ".min_stat\nmax_block=s" + str(shield_type) + ".max_stat"
         exec(shield_change)
     # companions
-    if equipped_companion == 1:
-        companion_name = "Flame Knight"
-        companion_ATK = 4
-        companion_ability = 1
-    if equipped_companion == 2:
-        companion_name = "Aqua Mage"
-        companion_ATK = 18
-        companion_ability = 2
-        ability_cooldown = 1
-    if equipped_companion == 3:
-        companion_name = "Thunder Knight"
-        companion_ATK = 35
-        companion_ability = 3
-        ability_cooldown = 1
-    if equipped_companion == 4:
-        companion_name = "Oro"
-        companion_ATK = 0
-        companion_ability = 4
+    companion_stats = ["companion_name = 'Flame Knight'\n"  # 1
+                       "companion_ATK = 4\n"
+                       "companion_ability = 1",
+                       "companion_name = 'Aqua Mage'\n"  # 2
+                       "companion_ATK = 18\n"
+                       "companion_ability = 2",
+                       "companion_name = 'Thunder Knight'\n"  # 3
+                       "companion_ATK = 35\n"
+                       "companion_ability = 3",
+                       "companion_name = 'Oro'\n"  # 4
+                       "companion_ATK = 0\n"
+                       "companion_ability = 4"]
+    if equipped_companion != 0:
+        exec("global companion_name;global companion_ATK; global companion_ability;" + companion_stats[
+            equipped_companion - 1])
+        # print(companion_stats[equipped_companion - 1])
     combat_start = randint(1, 5)
     start_text = ""
     if combat_start == 1:
