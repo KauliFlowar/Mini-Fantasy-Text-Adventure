@@ -1,0 +1,94 @@
+~t0
+Once upon a time, there was a world named Isuren, which was home to many amazing creatures.
+Isuren was divided into various kingdoms, each with their own element.
+Each kingdom's power rests in an elemental crystal, sealed within the kingdom.
+One day, an elemental crystal was stolen and the kingdom's power slowly faded away.
+Within a few years, multiple different elemental crystals were stolen and their kingdoms fell.
+Soon enough, every single kingdom had lost their elemental crystal.
+Then, a prophecy has been spoken about a young hero, who can find and return the crystals from the thief.
+Isuren will be saved one day...
+~t1
+I open my eyes.
+I feel as if they have been closed for an eternity.
+Where am I...?\n
+I see a sword right in front of me.
+I guess I have no choice but to take it, as it is my only defence out here.
+~t2
+Suddenly, a hissing sound came from a bush
+A worm comes out of the bush and jumps at me
+I guess I have no choice but to fight it!
+~t3
+The worm fled me.
+I guess I'm ok for now.\n
+I make my way navigating the forest. It wasn't easy.
+I was starving. I didn't think it was possible to escape anymore.
+Then I hear a voice...
+\"Who's there? Come out now.\"
+I take a peak. It was a knight in red armor. He must be from the Fire Kingdom.
+He spots me and looks surprised.
+\"It's ok\", he says. \"I'm not here to hurt you.\"
+I come out. \"Hello\" was all I could say to him.
+\"What's your name?\", he asks.
+My name? My name is...
+~t4
+\"{0}"? I've heard that name before. You must be the hero.
+Me? A hero? What does he mean?
+\"Your name was the name that came from a prophecy, which a great mage has foreseen.\"
+he said.\n
+\"I'm a bit lost right now. I have no idea where I am.\", I said.
+\"You are in the Earth Kingdom's forest. I came down here because I heard a person went missing down here.\", he said.
+\"I am Nadrus, the Flame Knight. Pleased to meet you.\"
+He helped guide me out of the forest and gave me some food.\n
+\"Thank you\", I said. \"For everything you've done.\"
+Then another knight appeared. He was from the Earth Kingdom.
+\"Trespassers are not welcome here.\", he grunted.
+Flame Knight looks at you. "{0}"! I'll help you fight him off.
+~t5
+\"Grrr\", he grunts. \"You won't get away next time.\"
+Flame Knight looks at you. \"You fought well, {0}\", he said.
+I look at Flame Knight and Smile
+\"It was nice knowing you. I must go now.\"
+\"{0}! Wait!\" he said.
+\"If you are the hero of Isuren, let me join you. I'll protect you.\"
+\"Why do want to help me?\", I asked.\n
+You see... Fire Kingdom once lived in peace.
+Ever since the fire crystal was stolen, our power shrank a lot.
+Warring kingdoms would attack us while they still had their crystal.
+Some of our people were tortured. Killed. Or worse.
+I cannot forgive this crystal thief. So I want to help you on this journey, " + player_name + "\n
+\"Alright\", I say. \"You may join me. On the journey to save Isuren...\"
+~j1p1
+\"Hey {0}.\", said Nadrus.
+I look at Nadrus as he holds a piece of paper, smiling.
+\"What's up?\", I respond.
+He smirks and looks at me. \"I think we need more allies, don't you think?\"
+\"Yeah I guess so...\"
+\"I know a friend who can help us. He is from the Water Kingdom.\"
+\"Well we should go get him. No one is willing to leave the Kingdom walls ever since the crystal was stolen, right?\"
+He sighs and looks at the floor. \"You're right. Let's go. Even if there's a chance to die, we need to go.\"\n
+We make our way to a crossroad. Which direction should we go? (Left or Right)
+~j1p2
+It fell to the floor and fainted. We pushed it's corpse away and continued along the road.
+\"{0}!\", Nadrus called out. \"You picked the right way. There's Water Kingdom.\"
+\"Soon you'll meet my friend, Aurus. He is the Aqua Mage.\"
+Aqua Mage? If he is the Aqua Mage, then we would have a healer. I turn to Nadrus.
+\"I'm sure he will be of use.\", I say.\n
+\"Too bad you wont be able to see him\", a figure calls out.
+It walks up to us. It was a person who held a staff of the night sky.
+\"We, the Galatigos, have secured the Water Kingdom.\", he smiles.
+\"Surrender now or beg for mercy from our Pontifex.\"
+Nadrus stands in front of me. \"We have no idea what the Galatigos are, but we are on an important mission, so stay out of our way.\"
+\"I'm afraid I can't do that.\"
+Nadrus pushes him back. \"Then we will fight.\"
+He spins his staff in place. \"Very well then.\"
+~j1p3
+He collapses onto the floor. \"Y-You'll hear from our Pontifex soon enough.\"
+Nadrus pushes him aside and walks into the Water Kingdom.
+\"Aurus, are you out here?\", he calls out.
+A man with eyes of blue steps out of an alley.
+\"Nadrus?\", he calls out. \"It's been a while.\"
+Nadrus nods. \"We need your help. I'm with " + player_name + ". He might be able to help us.\"
+He gasps. \"" + player_name + "? The chosen one?\"
+I smile. \"It's a pleasure to meet you, Aurus.\"\n
+He shakes your hand and gives a serious face. \"I'll help you.\"
+He sees your wounds on your body. \"You're wounded. I'll heal you up.\"
