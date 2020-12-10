@@ -92,3 +92,24 @@ He gasps. \"" + player_name + "? The chosen one?\"
 I smile. \"It's a pleasure to meet you, Aurus.\"\n
 He shakes your hand and gives a serious face. \"I'll help you.\"
 He sees your wounds on your body. \"You're wounded. I'll heal you up.\"
+~j2p1
+Aurus sits at the table and looks me.
+\"I'm going to be completely honest\" he says. \"What if " + player_name + " was just some kid who called themself " + player_name + "?\"
+Nadrus puts his hand on Aurus's. \"I know you're on edge because all the Kingdoms have fallen, but we have to trust " + player_name + ".\"
+Nadrus looks at me. \"I never doubted you even since the time we met.\"
+I sigh in relief. \"Alright, what's are next plan of action?\", I ask.
+Aurus sits up straight. \"Maybe we should free Water Kingdom from the control of the Galatigos.\"
+\"What even are the Galatigos?\", I ask.
+Aurus looks at me. \"Well...\"\n
+The Galatigos are a group of organised cultists who try to spread their religion across Isuren.
+They worship the stars, planets, and galaxies above them. It's a fine religion, but they spread it in the wrong ways.
+The Galatigos bend the galaxy to their will, using the magic of the universe.
+Anyone who dares refuse to convert, they will attack them.
+Their Pontifex is the most powerful of them all. No one knows her location, so she remains mysterious.\n
+\"Alright then, let's free Water Kingdom then.\", Nadrus says.
+We start walking towards Water Kingdom.
+A person starts walking up to our group.
+\"You'll pay for what you did to me last time\", he says.
+\"Rats!\", Nadrus curses. \"I knew we should have killed him.\"
+\"I'll end you once in for all!\", he says.
+~end
