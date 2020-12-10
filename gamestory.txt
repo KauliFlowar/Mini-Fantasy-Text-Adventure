@@ -112,4 +112,150 @@ A person starts walking up to our group.
 \"You'll pay for what you did to me last time\", he says.
 \"Rats!\", Nadrus curses. \"I knew we should have killed him.\"
 \"I'll end you once in for all!\", he says.
+~j2p2
+Aurus looks at me. \"Jeez, what's his problem?\"
+Nadrus picks up the Galatigos lackey by his neck. \"Don't mess with us again.\" He quickly nods.
+Nadrus throws him to the ground. \"Alright let's start heading to Water Kingdom.\"\n
+We head to Water Kingdom, only to be stopped by a brigade of Galatigos soldiers and mages.
+There was a short mage at the head of the brigade, who held a ginormous stave, disproportionate to her petit size.
+We head up to the brigade, and all the soldiers turn their heads towards us.
+\"Halt!\", the tiny mage calls out. \"You may not enter Water Kingdom. Now turn back and leave!\"
+Aurus takes a step forward. \"Not a chance!\", he yells.
+The mage looks impatient. \"I am Lithosphere Mage, the 22nd Mooncaster. Turn back now or die under my power.\"
+Nadrus also takes a step forward. \"You heard the man! We are not turning back!\"
+The mage follows Nadrus's gaze. \"Very well then...\"
+~j2p3
+The mage falls to her knees. \"I underestimated your power.\"
+The Galatigos soldiers looked shocked at their squadron leader's defeat.
+Aurus looks at all the soldiers' faces and smiles at the mage. \"At least you fought fairly.\"
+The mage looked a little angered at Aurus and stands up.
+\"Consider this a tactical retreat. Be warned of the threats that are coming.\"
+She makes a hand gesture, and all the Galatigos soldiers leave the field.
+The people of Water Kingdom look outside their kingdom gates and looked surprised that the Galatigos have retreated.
+Aurus looks at me. \"Well what are you waiting for? Go inside our amazing kingdom!\"
+~j3p1
+Aurus looked distressed and turns to me.",
+\"We better hurry\", says Aurus. \"They're going to force the people to join their religion, and it would be chaos.\"
+\"Wait, why today?\", I ask. Aurus crosses his arms. \"Two reasons.\"
+\"One, I know the Pontifex knows something about the crystal thief.\"
+\"Two, They already do this practice, every. Single. Day.\"\n
+Without question, we head out to a Galatigos church in order to gain answers.
+\"I'm so mad at them. So much of my people have suffered...\", Aurus grunts.
+\"Hey chill out Aurus, they'll notice us!\", said Nadrus.
+I give Nadrus a \"thank you\" nod, and he nods back.
+And, as if on cue, sadly, the Galatigos noticed us.
+\"You three! Stop right there!\", said a mage leading the group.
+Nadrus stands firmly. \"Eh we ain't stopping without a fight.
+The Mage laughs. \"I am the 5th Mooncaster, Saturn Marcher. What thinks you can stop me?\"
+Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"
+The Mage stops laughing. \"Shaddup! Let's fight and see who's stronger!\"
+\"Alright " + player_name + ", let's cream this guy!\" says Nadrus.
+~j3p2
+Nadrus grabs the Mooncaster by her neck and looks at her with murderous intent.
+\"Tell us where the Pontifex is NOW.\"
+\"I don't know, I swear I don't know.\", she struggles.
+Aurus looks intently at her. \"She is telling the truth.\"
+Nadrus knocks her out. \"Come on, let's see if anyone inside knows.\"
+We head on inside and a man gets up from what looks to be a throne and also see another man tied to a chair.
+\"Do you know where the Pontifex is?\", Aurus asks.
+\"Of course I do\", he says.
+\"As the second hand of the Pontifex, I will not fail.\"
+~j3p3
+\"I have failed. I deserve to die. I have failed you, my lord.\"
+Aurus helps him up. \"Now tell us where the Pontifex is.\"
+He takes a pencil and circles a part on Aurus's map.
+\"This is a shrine of the Galatigos. We have about 20 Galatigos guarding the place. That's all I know.\"
+\"You are a true gentleman.\", Aurus says. \"Thank you.\"
+We release the guy tied to the chair.
+He points to me. \"I know you already.\"
+\"" + player_name + ", right? The prophecy?\"
+\"Yeah...\", I said.
+\"I'm Rayden, the Thunder Knight. Please let me join you. I need to get a burden off my chest.\"
+\"If you say so.\", I said. \"Good to have you on the team.\"
+~j4p1
+We head to the shrine Universe Paladin told us about.
+\"We need a plan, there are about 20 guards holed up there.\" said Rayden.
+\"I'll make a distraction, so that you guys can break in\", said Aurus.
+\"Ok,\" I said. \"Let's do it.\"
+Aurus went to distract the guards while we waited until the guards left.
+We went to the shrine, ready to take on whatever the Pontifex has in store.
+Until one of the guards came back to guard the shrine.
+\"Hey you! You're the people who Saturn Marcher told me about. You guys need to be executed!\"
+\"Hey! I'm back!\", Aurus said as he was running toward us. \"Oh, a stray. Let's pummel him!\"
+\"I'd like to see you try!\" said the guard.
+~j4p2
+We walk ahead into the chamber, ready to take on the Pontifex.
+Nadrus busts the door open and we walk into a dark and spacious room.
+\"For centuries no one has found this place\", said a voice. \"Well done on that behalf.\"
+Rayden walks forward. \"Pontifex! Give me back my family which you enslaved.\"
+\"I wouldn't say enslaved, dear.\", she responded. \"I simply opened their eyes.\"
+Rayden clenched his fists.
+\"Well aren't you looking for a fight.\", she said. \"And let me guess...\"
+\"You want to know about the crystal thief?\"
+She smiled. \"The Galatigos play by the rules. We like to settle things once and for all.\"
+\"If you can beat me, I will free your family, and tell you all I know about the crystal thief. Lose, and you join us.\"
+\"Very well\", Rayden said.
+She snaps her fingers and a faceless soldier appears in front of her.
+\"Bring it on!\", Nadrus shouts.
+~j4p3
+The soldier explodes into pieces and Aurus is knocked down by the impact.
+\"My oh my.\", the Pontifex said. \"Your healer has already fallen. Looks like I've won.\"
+\"Don't get too cocky...\", Aurus said as he crawled on the floor.
+Everyone turns towards Aurus, who is miraculously alive.
+\"" + player_name + "! I will heal you with the rest of my power!\"
+He grabs my leg and sends healing magic through my body.
+I get up and look at the Pontifex. \"We will win!\", I yelled.
+She smiles. \"Your magic is useless. Show me everything you've got.\"
+~j4p4
+\"I... I lost\", said the Pontifex. She gets up and looks at me.
+\"You are simply more powerful than me. You have earned my respect.\"
+Nadrus stand firmly. \"Now tell us what you know about the crystal thief\"
+\"Alright\", she said.\n
+One quiet evening I stumbled upon a girl who came to my shrine covered in dirt and demonic ectoplasm.
+I brought her in, as another new member to Galatigos is always welcome.
+She never said anything. And I could easily tell that she was 9 years, 8 months, and 16 days old.
+She didn't know her name either. It was so strange
+As I tried to touch her, some energy shocked me, burned me, and suffocated me all at the same time.
+As I backed off, she smiled at me, and stood in place as she waited for me to get up.
+I let her stay at my shrine and she trained alongside some of my strongest lackeys.
+Time passed quickly, and she easily learned how to absorb magic like me.
+About 3 months later, on the day of her birthday, she mysteriously snuck out of the shrine without any guards knowing.
+If trained well, I knew she would surpass the strongest one day.\n
+\"That was several years ago.\", she said. \"I have no doubt that's who you are looking for.\"
+\"Thank you Pontifex\", I said.
+She turns to Rayden. \"You have some people waiting for you at home.\"
+Rayden smiles. \"Thank you so much...\"
+Rayden's look becomes stern. \"" + player_name + ". Although my family are at home waiting for me,\"
+\"I will fight alongside you until the end.\"
+I smile and Rayden smiles back.
+\"This is only the beginning of our adventure...\"
+~j5p1
+\"Where do we start this hunt for the crystal thief?\", Nadrus asks.
+\"The Pontifex said that the girl was covered in Demonic Ectoplasm\", I said.
+\"Does that mean we are going to the Demon realm?\", Aurus asks.
+\"That seems to be our best chance.\", I sighed.
+\"None of us can access the demon realm though. We need to find someone who can.\"
+\"I might be of some assistance...\", a voice called out.
+We all jumped. \"Who's there?\", asked Nadrus.
+It's me, Oro! The master of creations!\", the voice said.
+We looked around but still couldn't see him.
+\"Try looking up.\", said Oro.
+We all looked up, and wondered why he was on the ceiling.
+\"I can help,\" Oro says. \"But I need to get to my lab, which has been raided by thieves.\"
+\"Why is it raided by thieves though?\" I asked.
+Oro sighs. \"Some thieves have wanted to steal my creations so they can learn about it, thus making their own.\"
+Oro continued. \"I have an ultra super weapon im working on, and they heard about it, but thankfully...\"
+\"...my lab can never be broken into, and I have a extraordinary security system!\"
+He kept bragging how great his lab was.
+\"Ahem,\" I said. \"Now we are in a hurry, would you mind guiding us to your amazing lab?\"
+\"Ah yes!\" Oro said. \"Follow me!\"
+We follow Oro to what looks to be a very intricate lab.
+\"Welcome to Labo Laboratories!\", Oro said.
+The place looked deserted and worn down.
+\"Heh, I'll fix it up soon.\", Oro quietly said.
+We walk into the lab, and immediately see a demon fiddling with an invention.
+Aurus looked in shock. \"Wait the thieves are demons?\"
+\"Looks like it.\", Rayden said. \"Let's take 'em down\"
+The demon sharpened it's fangs.
+\"You sh-tand no sh-ance!\", The demon hissed.
 ~end
