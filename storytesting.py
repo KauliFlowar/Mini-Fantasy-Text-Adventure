@@ -33,8 +33,9 @@ while filtering_count != " ":
 # for x in dialogue:
 #     print(dialogue[x])
 # print(dialogue)
-print(dialogue["t4"])
-
+print(dialogue["t4"].format("Isa"))
+if "\n" in dialogue["t4"]:
+    print("hi")
 
 # lol[1][1] = "lol"
 # print(lol)
