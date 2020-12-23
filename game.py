@@ -205,7 +205,11 @@ journey5_part1 = ["\"Where do we start this hunt for the crystal thief?\", Nadru
                   "The demon sharpened it's fangs.",
                   "\"You sh-tand no sh-ance!\", The demon hissed."]
 journey5_part2 = ["The demon fell to the floor, right before disappearing into mist.",
-                  ""]
+                  "\"Well that was easy\", said Rayden.",
+                  "\"Hey why is there only one? Isn't there supposed to be more?\" asked Nadrus.",
+                  "Suddenly, tons of demons rush out of random nooks and crannys, holes and corners around the whole lab",
+                  "\"You had to jinx it.\" said Aurus."
+                  "\"Come on guys!\", I said. \"Here they come!\""]
 
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
