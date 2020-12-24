@@ -190,7 +190,7 @@ journey5_part1 = ["\"Where do we start this hunt for the crystal thief?\", Nadru
                   "\"I can help,\" Oro says. \"But I need to get to my lab, which has been raided by thieves.\"",
                   "\"Why is it raided by thieves though?\" I asked.",
                   "Oro sighs. \"Some thieves have wanted to steal my creations so they can learn about it, thus making their own.\"",
-                  "Oro continued. \"I have an ultra super weapon im working on, and they heard about it, but thankfully...\"",
+                  "Oro continued. \"I have an ultra super weapon I'm working on, and they heard about it, but thankfully...\"",
                   "\"...my lab can never be broken into, and I have a extraordinary security system!\"",
                   "He kept bragging how great his lab was.",
                   "\"Ahem,\" I said. \"Now we are in a hurry, would you mind guiding us to your amazing lab?\"",
@@ -210,7 +210,13 @@ journey5_part2 = ["The demon fell to the floor, right before disappearing into m
                   "Suddenly, tons of demons rush out of random nooks and crannys, holes and corners around the whole lab",
                   "\"You had to jinx it.\" said Aurus."
                   "\"Come on guys!\", I said. \"Here they come!\""]
-
+journey5_part3 = ["More demons were appearing faster than they are dying.",
+                  "\"They're going to overwhelm us!\", said Nadrus. \"We can't stay here!\"",
+                  "\"I got an idea!\" said Rayden and proceeds by bringing thunder and zapping all of the demons.",
+                  "\"Why didn't you do that in the first place?\" I asked.",
+                  "\"Well uhm... I guess I didn't really think about it.\" he said.",
+                  "\"Well thanks for the help, now I have to fix this place up!\" said Oro, and I jumped because I totally forgot he was still there.",
+                  ]
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
 # the list into this command so that the name changes.
