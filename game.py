@@ -218,7 +218,9 @@ journey5_part3 = ["More demons were appearing faster than they are dying.",
                   "\"Well thanks for the help, now I have to fix this place up!\" said Oro, and I jumped because I totally forgot he was still there.",
                   "\"So will you guide us to your amazing ultra super weapon?\" Aurus asked.",
                   "\"Ah yes!\" replied Oro. \"I suppose we can clean this place later.\",
-                  ]
+                  "\"How about me and Rayden help clean the place, and you guys go get the weapon?\" Nadrus asked.",
+                  "\"Sure!\" I said. \"Let's head to the weapon.\"",
+                  "We"]
 
 # setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
 # the list into this command so that the name changes.
