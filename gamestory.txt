@@ -74,6 +74,15 @@ He smirks and looks at me. "I think we need more allies, don't you think?"
 He sighs and looks at the floor. "You're right. Let's go. Even if there's a chance to die, we need to go."
 
 We make our way to a crossroad. Which direction should we go? (Left or Right)
+~j1pl
+"Let's go left.", I say. "I have a good feeling it's this way."
+Nadrus nods and walks ahead to the left road.
+A giant Minotaur walks in front of us. "You chose the wrong way", it said.
+~j1pr
+"Right is always the right way", I say. "I just have a feeling it's this way."
+Nadrus nods and walks ahead to the right road.
+Suddenly, a impish demon pounces on us. "I might be small, but I pack a punch", it says as it gnaws on Nadrus's right foot.
+He kicks it off. "Then show us what you got!"
 ~j1p2
 It fell to the floor and fainted. We pushed it's corpse away and continued along the road.
 "{0}!", Nadrus called out. "You picked the right way. There's Water Kingdom."

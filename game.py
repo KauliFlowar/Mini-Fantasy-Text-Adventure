@@ -73,307 +73,44 @@ mooncaster_pontifex = ["Mooncaster Pontifex", 400, 25, 25, 2, 3, 800]
 demon_scout1 = ["Demon Scout", 300, 16, 20, 0, 5, 600]
 demon_raider1 = ["Demon Raider", 350, 18, 24, 0, 6, 700]
 
-# These are the story lists. Each list has a story, and each line of the story is split into different instances in the list, divided by commas to make another
-# line. All stories including the var of player_name must be copy and pasted onto the setup_name() command, so that the name can change. By default the name
-# is Isa. Y A  B O I
-intro_story = ["Once upon a time, there was a world named Isuren, which was home to many amazing creatures.",
-               "Isuren was divided into various kingdoms, each with their own element.",
-               "Each kingdom's power rests in an elemental crystal, sealed within the kingdom.",
-               "One day, an elemental crystal was stolen and the kingdom's power slowly faded away.",
-               "Within a few years, multiple different elemental crystals were stolen and their kingdoms fell.",
-               "Soon enough, every single kingdom had lost their elemental crystal.",
-               "Then, a prophecy has been spoken about a young hero, who can find and return the crystals from the thief.",
-               "Isuren will be saved one day..."]
+# the dialogue method used in the storytesting.py file
+story = open("gamestory.txt", "r")
+indexing_char = "~"
+filtering_count = "lol ok"
+currently_accessing = 0
 
-tutorial_story = ["I open my eyes.",
-                  "I feel as if they have been closed for an eternity.",
-                  "Where am I...?\n",
-                  "I see a sword right in front of me.",
-                  "I guess I have no choice but to take it, as it is my only defence out here."]
+dialogue = {}
+partition = ""
 
-tutorial_story2 = ["Suddenly, a hissing sound came from a bush",
-                   "A worm comes out of the bush and jumps at me",
-                   "I guess I have no choice but to fight it!"]
+while filtering_count != " ":
+    filtering_count = story.readline().replace("\n", "").strip()
+    if indexing_char in filtering_count and filtering_count.find(indexing_char) == 0:
+        partition = filtering_count.replace(indexing_char, "").strip()
+        # print(partition)
+        if partition == "end":
+            filtering_count = " "
+            break
+        else:
+            try:
+                currently_accessing = filtering_count[1] + filtering_count[2] + filtering_count[3] + filtering_count[4]
+            except IndexError:
+                currently_accessing = filtering_count[1] + filtering_count[2]
+            finally:
+                dialogue[partition] = ""
+    else:
+        if dialogue[partition] == "":
+            dialogue[partition] = filtering_count
+        else:
+            dialogue[partition] = dialogue[partition] + "\n" + filtering_count
 
-tutorial_story3 = ["The worm fled me.",
-                   "I guess I'm ok for now.\n",
-                   "I make my way navigating the forest. It wasn't easy.",
-                   "I was starving. I didn't think it was possible to escape anymore.",
-                   "Then I hear a voice...",
-                   "\"Who's there? Come out now.\"",
-                   "I take a peak. It was a knight in red armor. He must be from the Fire Kingdom.",
-                   "He spots me and looks surprised.",
-                   "\"It's ok\", he says. \"I'm not here to hurt you.\"",
-                   "I come out. \"Hello\" was all I could say to him.",
-                   "\"What's your name?\", he asks.",
-                   "My name? My name is..."]
-tutorial_story4 = []
-tutorial_story5 = []
-journey1_part1 = []
-journey1_part1left = ["\"Let's go left.\", I say. \"I have a good feeling it's this way.\"",
-                      "Nadrus nods and walks ahead to the left road.",
-                      "A giant Minotaur walks in front of us. \"You chose the wrong way\", it said."]
-journey1_part1right = ["\"Right is always the right way\", I say. \"I just have a feeling it's this way.\"",
-                       "Nadrus nods and walks ahead to the right road",
-                       "Suddenly, a impish demon pounces on us. \"I might be small, but I pack a punch\", it says as it gnaws on Nadrus's right foot.",
-                       "He kicks it off. \"Then show us what you got!\""]
-journey1_part2 = []
-journey1_part3 = []
-journey1_part4 = ["\"Alright then\", I say. \"We should head back to Earth Kingdom.\""]
-journey2_part1 = []
-journey2_part2 = ["Aurus looks at me. \"Jeez, what's his problem?\"",
-                  "Nadrus picks up the Galatigos lackey by his neck. \"Don't mess with us again.\" He quickly nods.",
-                  "Nadrus throws him to the ground. \"Alright let's start heading to Water Kingdom.\"\n",
-                  "We head to Water Kingdom, only to be stopped by a brigade of Galatigos soldiers and mages.",
-                  "There was a short mage at the head of the brigade, who held a ginormous stave, disproportionate to her petit size.",
-                  "We head up to the brigade, and all the soldiers turn their heads towards us.",
-                  "\"Halt!\", the tiny mage calls out. \"You may not enter Water Kingdom. Now turn back and leave!\"",
-                  "Aurus takes a step forward. \"Not a chance!\", he yells.",
-                  "The mage looks impatient. \"I am Lithosphere Mage, the 22nd Mooncaster. Turn back now or die under my power.\"",
-                  "Nadrus also takes a step forward. \"You heard the man! We are not turning back!\"",
-                  "The mage follows Nadrus's gaze. \"Very well then...\""]
-journey2_part3 = ["The mage falls to her knees. \"I underestimated your power.\"",
-                  "The Galatigos soldiers looked shocked at their squadron leader's defeat.",
-                  "Aurus looks at all the soldiers' faces and smiles at the mage. \"At least you fought fairly.\"",
-                  "The mage looked a little angered at Aurus and stands up.",
-                  "\"Consider this a tactical retreat. Be warned of the threats that are coming.\"",
-                  "She makes a hand gesture, and all the Galatigos soldiers leave the field.",
-                  "The people of Water Kingdom look outside their kingdom gates and looked surprised that the Galatigos have retreated.",
-                  "Aurus looks at me. \"Well what are you waiting for? Go inside our amazing kingdom!\""]
-journey3_part1 = []
-journey3_part2 = ["Nadrus grabs the Mooncaster by her neck and looks at her with murderous intent.",
-                  "\"Tell us where the Pontifex is NOW.\"",
-                  "\"I don't know, I swear I don't know.\", she struggles.",
-                  "Aurus looks intently at her. \"She is telling the truth.\"",
-                  "Nadrus knocks her out. \"Come on, let's see if anyone inside knows.\"",
-                  "We head on inside and a man gets up from what looks to be a throne and another man tied to a chair.",
-                  "\"Do you know where the Pontifex is?\", Aurus asks.",
-                  "\"Of course I do\", he says.",
-                  "\"As the second hand of the Pontifex, I will not fail.\""]
-journey3_part3 = []
-journey4_part1 = ["We head to the shrine Universe Paladin told us about.",
-                  "\"We need a plan, there are about 20 guards holed up there.\" said Rayden.",
-                  "\"I'll make a distraction, so that you guys can break in\", said Aurus.",
-                  "\"Ok,\" I said. \"Let's do it.\"",
-                  "Aurus went to distract the guards while we waited until the guards left.",
-                  "We went to the shrine, ready to take on whatever the Pontifex has in store.",
-                  "Until one of the guards came back to guard the shrine.",
-                  "\"Hey you! You're the people who Saturn Marcher told me about. You guys need to be executed!\"",
-                  "\"Hey! I'm back!\", Aurus said as he was running toward us. \"Oh, a stray. Let's pummel him!\"",
-                  "\"I'd like to see you try!\" said the guard."]
-journey4_part2 = ["We walk ahead into the chamber, ready to take on the Pontifex.",
-                  "Nadrus busts the door open and we walk into a dark and spacious room.",
-                  "\"For centuries no one has found this place\", said a voice. \"Well done on that behalf.\"",
-                  "Rayden walks forward. \"Pontifex! Give me back my family which you enslaved.\"",
-                  "\"I wouldn't say enslaved, dear.\", she responded. \"I simply opened their eyes.\"",
-                  "Rayden clenched his fists.",
-                  "\"Well aren't you looking for a fight.\", she said. \"And let me guess...\"",
-                  "\"You want to know about the crystal thief?\"",
-                  "She smiled. \"The Galatigos play by the rules. We like to settle things once and for all.\"",
-                  "\"If you can beat me, I will free your family, and tell you all I know about the crystal thief. Lose, and you join us.\"",
-                  "\"Very well\", Rayden said.",
-                  "She snaps her fingers and a faceless soldier appears in front of her.",
-                  "\"Bring it on!\", Nadrus shouts."]
-journey4_part3 = []
-journey4_part4 = []
-journey5_part1 = ["\"Where do we start this hunt for the crystal thief?\", Nadrus asks.",
-                  "\"The Pontifex said that the girl was covered in Demonic Ectoplasm\", I said.",
-                  "\"Does that mean we are going to the Demon realm?\", Aurus asks.",
-                  "\"That seems to be our best chance.\", I sighed.",
-                  "\"None of us can access the demon realm though. We need to find someone who can.\"",
-                  "\"I might be of some assistance...\", a voice called out."
-                  "We all jumped. \"Who's there?\", asked Nadrus."
-                  "It's me, Oro! The master of creations!\", the voice said."
-                  "We looked around but still couldn't see him."
-                  "\"Try looking up.\", said Oro."
-                  "We all looked up, and wondered why he was on the ceiling.",
-                  "\"I can help,\" Oro says. \"But I need to get to my lab, which has been raided by thieves.\"",
-                  "\"Why is it raided by thieves though?\" I asked.",
-                  "Oro sighs. \"Some thieves have wanted to steal my creations so they can learn about it, thus making their own.\"",
-                  "Oro continued. \"I have an ultra super weapon I'm working on, and they heard about it, but thankfully...\"",
-                  "\"...my lab can never be broken into, and I have a extraordinary security system!\"",
-                  "He kept bragging how great his lab was.",
-                  "\"Ahem,\" I said. \"Now we are in a hurry, would you mind guiding us to your amazing lab?\"",
-                  "\"Ah yes!\" Oro said. \"Follow me!\"",
-                  "We follow Oro to what looks to be a very intricate lab.",
-                  "\"Welcome to Labo Laboratories!\", Oro said.",
-                  "The place looked deserted and worn down.",
-                  "\"Heh, I'll fix it up soon.\", Oro quietly said.",
-                  "We walk into the lab, and immediately see a demon fiddling with an invention.",
-                  "Aurus looked in shock. \"Wait the thieves are demons?\"",
-                  "\"Looks like it.\", Rayden said. \"Let's take 'em down\"",
-                  "The demon sharpened it's fangs.",
-                  "\"You sh-tand no sh-ance!\", The demon hissed."]
-journey5_part2 = ["The demon fell to the floor, right before disappearing into mist.",
-                  "\"Well that was easy\", said Rayden.",
-                  "\"Hey why is there only one? Isn't there supposed to be more?\" asked Nadrus.",
-                  "Suddenly, tons of demons rush out of random nooks and crannys, holes and corners around the whole lab",
-                  "\"You had to jinx it.\" said Aurus."
-                  "\"Come on guys!\", I said. \"Here they come!\""]
-journey5_part3 = ["More demons were appearing faster than they are dying.",
-                  "\"They're going to overwhelm us!\", said Nadrus. \"We can't stay here!\"",
-                  "\"I got an idea!\" said Rayden and proceeds by bringing thunder and zapping all of the demons.",
-                  "\"Why didn't you do that in the first place?\" I asked.",
-                  "\"Well uhm... I guess I didn't really think about it.\" he said.",
-                  "\"Well thanks for the help, now I have to fix this place up!\" said Oro, and I jumped because I totally forgot he was still there.",
-                  "\"So will you guide us to your amazing ultra super weapon?\" Aurus asked.",
-                  "\"Ah yes!\" replied Oro. \"I suppose we can clean this place later.\",
-                  "\"How about me and Rayden help clean the place, and you guys go get the weapon?\" Nadrus asked.",
-                  "\"Sure!\" I said. \"Let's head to the weapon.\"",
-                  "We"]
 
-# setup_name() is only called upon once, so not much need to worry about it. If you are adding a story with the var player_name, then you must copy and paste
-# the list into this command so that the name changes.
 def setup_name(saved):
     global player_name
-    global tutorial_story4
-    global tutorial_story5
-    global journey1_part1
-    global journey1_part2
-    global journey1_part3
-    global journey2_part1
-    global journey3_part1
-    global journey3_part3
-    global journey4_part3
-    global journey4_part4
     if not saved:
         print("Type your name. Leave blank for the default name.")
         player_name = input(">")
         if player_name.lower().strip() == "":
             player_name = "Isa"
-    tutorial_story4 = ["\"" + player_name + "? I've heard that name before. You must be the hero.",
-                       "Me? A hero? What does he mean?",
-                       "\"Your name was the name that came from a prophecy, which a great mage has foreseen.\"",
-                       "he said.\n",
-                       "\"I'm a bit lost right now. I have no idea where I am.\", I said.",
-                       "\"You are in the Earth Kingdom's forest. I came down here because I heard a person went missing down here.\", he said.",
-                       "\"I am Nadrus, the Flame Knight. Pleased to meet you.\"",
-                       "He helped guide me out of the forest and gave me some food.\n",
-                       "\"Thank you\", I said. \"For everything you've done.\"",
-                       "Then another knight appeared. He was from the Earth Kingdom.",
-                       "\"Trespassers are not welcome here.\", he grunted.",
-                       "Flame Knight looks at you. " + player_name + "! I'll help you fight him off."]
-    tutorial_story5 = ["\"Grrr\", he grunts. \"You won't get away next time.\"",
-                       "Flame Knight looks at you. \"You fought well " + player_name + "\", he said.",
-                       "I look at Flame Knight and Smile."
-                       "\"It was nice knowing you. I must go now.\"",
-                       "\"" + player_name + "! Wait!\" he said.",
-                       "\"If you are the hero of Isuren, let me join you. I'll protect you.\"",
-                       "\"Why do want to help me?\", I asked.\n",
-                       "You see... Fire Kingdom once lived in peace.",
-                       "Ever since the fire crystal was stolen, our power shrank a lot.",
-                       "Warring kingdoms would attack us while they still had their crystal.",
-                       "Some of our people were tortured. Killed. Or worse.",
-                       "I cannot forgive this crystal thief. So I want to help you on this journey, " + player_name + "\n",
-                       "\"Alright\", I say. \"You may join me. On the journey to save Isuren...\""]
-    journey1_part1 = ["\"Hey " + player_name + ".\", said Nadrus.",
-                      "I look at Nadrus as he holds a piece of paper, smiling.",
-                      "\"What's up?\", I respond.",
-                      "He smirks and looks at me. \"I think we need more allies, don't you think?\"",
-                      "\"Yeah I guess so...\"",
-                      "\"I know a friend who can help us. He is from the Water Kingdom.\"",
-                      "\"Well we should go get him. No one is willing to leave the Kingdom walls ever since the crystal was stolen, right?\"",
-                      "He sighs and looks at the floor. \"You're right. Let's go. Even if there's a chance to die, we need to go.\"\n",
-                      "We make our way to a crossroad. Which direction should we go? (Left or Right)"]
-    journey1_part2 = ["It fell to the floor and fainted. We pushed it's corpse away and continued along the road.",
-                      "\"" + player_name + "!\", Nadrus called out. \"You picked the right way. There's Water Kingdom.\"",
-                      "\"Soon you'll meet my friend, Aurus. He is the Aqua Mage.\"",
-                      "Aqua Mage? If he is the Aqua Mage, then we would have a healer. I turn to Nadrus.",
-                      "\"I'm sure he will be of use.\", I say.\n",
-                      "\"Too bad you wont be able to see him\", a figure calls out.",
-                      "It walks up to us. It was a person who held a staff of the night sky.",
-                      "\"We, the Galatigos, have secured the Water Kingdom.\", he smiles.",
-                      "\"Surrender now or beg for mercy from our Pontifex.\"",
-                      "Nadrus stands in front of me. \"We have no idea what the Galatigos are, but we are on an important mission, so stay out of our way.\"",
-                      "\"I'm afraid I can't do that.\"",
-                      "Nadrus pushes him back. \"Then we will fight.\"",
-                      "He spins his staff in place. \"Very well then.\""]
-    journey1_part3 = ["He collapses onto the floor. \"Y-You'll hear from our Pontifex soon enough.\"",
-                      "Nadrus pushes him aside and walks into the Water Kingdom.",
-                      "\"Aurus, are you out here?\", he calls out.",
-                      "A man with eyes of blue steps out of an alley.",
-                      "\"Nadrus?\", he calls out. \"It's been a while.\"",
-                      "Nadrus nods. \"We need your help. I'm with " + player_name + ". He might be able to help us.\"",
-                      "He gasps. \"" + player_name + "? The chosen one?\"",
-                      "I smile. \"It's a pleasure to meet you, Aurus.\"\n",
-                      "He shakes your hand and gives a serious face. \"I'll help you.\"",
-                      "He sees your wounds on your body. \"You're wounded. I'll heal you up.\""]
-    journey2_part1 = ["Aurus sits at the table and looks me.",
-                      "\"I'm going to be completely honest\" he says. \"What if " + player_name + " was just some kid who called themself " + player_name + "?\"",
-                      "Nadrus puts his hand on Aurus's. \"I know you're on edge because all the Kingdoms have fallen, but we have to trust " + player_name + ".\"",
-                      "Nadrus looks at me. \"I never doubted you even since the time we met.\"",
-                      "I sigh in relief. \"Alright, what's are next plan of action?\", I ask.",
-                      "Aurus sits up straight. \"Maybe we should free Water Kingdom from the control of the Galatigos.\"",
-                      "\"What even are the Galatigos?\", I ask.",
-                      "Aurus looks at me. \"Well...\"\n",
-                      "The Galatigos are a group of organised cultists who try to spread their religion across Isuren.",
-                      "They worship the stars, planets, and galaxies above them. It's a fine religion, but they spread it in the wrong ways.",
-                      "The Galatigos bend the galaxy to their will, using the magic of the universe.",
-                      "Anyone who dares refuse to convert, they will attack them.",
-                      "Their Pontifex is the most powerful of them all. No one knows her location, so she remains mysterious.\n",
-                      "\"Alright then, let's free Water Kingdom then.\", Nadrus says.",
-                      "We start walking towards Water Kingdom.",
-                      "A person starts walking up to our group.",
-                      "\"You'll pay for what you did to me last time\", he says.",
-                      "\"Rats!\", Nadrus curses. \"I knew we should have killed him.\"",
-                      "\"I'll end you once in for all!\", he says."]
-    journey3_part1 = ["Aurus looked distressed and turns to me.",
-                      "\"We better hurry\", says Aurus. \"They're going to force the people to join their religion, and it would be chaos.\"",
-                      "\"Wait, why today?\", I ask. Aurus crosses his arms. \"Two reasons.\"",
-                      "\"One, I know the Pontifex knows something about the crystal thief.\"",
-                      "\"Two, They already do this practice, every. Single. Day.\"\n",
-                      "Without question, we head out to a Galatigos church in order to gain answers.",
-                      "\"I'm so mad at them. So much of my people have suffered...\", Aurus grunts."
-                      "\"Hey chill out Aurus, they'll notice us!\", said Nadrus.",
-                      "I give Nadrus a \"thank you\" nod, and he nods back.",
-                      "And, as if on cue, sadly, the Galatigos noticed us.",
-                      "\"You three! Stop right there!\", said a mage leading the group.",
-                      "Nadrus stands firmly. \"Eh we ain't stopping without a fight.",
-                      "The Mage laughs. \"I am the 5th Mooncaster, Saturn Marcher. What thinks you can stop me?\"",
-                      "Nadrus counters her. \"And what makes you think if you're 5th, you're stronger?\"",
-                      "The Mage stops laughing. \"Shaddup! Let's fight and see who's stronger!\"",
-                      "\"Alright " + player_name + ", let's cream this guy!\" says Nadrus."]
-    journey3_part3 = ["\"I have failed. I deserve to die. I have failed you, my lord.\"",
-                      "Aurus helps him up. \"Now tell us where the Pontifex is.\"",
-                      "He takes a pencil and circles a part on Aurus's map.",
-                      "\"This is a shrine of the Galatigos. We have about 20 Galatigos guarding the place. That's all I know.\"",
-                      "\"You are a true gentleman.\", Aurus says. \"Thank you.\"",
-                      "We release the guy tied to the chair.",
-                      "He points to me. \"I know you already.\"",
-                      "\"" + player_name + ", right? The prophecy?\"",
-                      "\"Yeah...\", I said.",
-                      "\"I'm Rayden, the Thunder Knight. Please let me join you. I need to get a burden off my chest.\"",
-                      "\"If you say so.\", I said. \"Good to have you on the team.\""]
-    journey4_part3 = ["The soldier explodes into pieces and Aurus is knocked down by the impact.",
-                      "\"My oh my.\", the Pontifex said. \"Your healer has already fallen. Looks like I've won.\"",
-                      "\"Don't get too cocky...\", Aurus said as he crawled on the floor.",
-                      "Everyone turns towards Aurus, who is miraculously alive.",
-                      "\"" + player_name + "! I will heal you with the rest of my power!\"",
-                      "He grabs my leg and sends healing magic through my body.",
-                      "I get up and look at the Pontifex. \"We will win!\", I yelled.",
-                      "She smiles. \"Your magic is useless. Show me everything you've got.\""]
-    journey4_part4 = ["\"I... I lost\", said the Pontifex. She gets up and looks at me.",
-                      "\"You are simply more powerful than me. You have earned my respect.\"",
-                      "Nadrus stand firmly. \"Now tell us what you know about the crystal thief\"",
-                      "\"Alright\", she said.\n",
-                      "One quiet evening I stumbled upon a girl who came to my shrine covered in dirt and demonic ectoplasm.",
-                      "I brought her in, as another new member to Galatigos is always welcome.",
-                      "She never said anything. And I could easily tell that she was 9 years, 8 months, and 16 days old.",
-                      "She didn't know her name either. It was so strange."
-                      "As I tried to touch her, some energy shocked me, burned me, and suffocated me all at the same time.",
-                      "As I backed off, she smiled at me, and stood in place as she waited for me to get up.",
-                      "I let her stay at my shrine and she trained alongside some of my strongest lackeys.",
-                      "Time passed quickly, and she easily learned how to absorb magic like me.",
-                      "About 3 months later, on the day of her birthday, she mysteriously snuck out of the shrine without any guards knowing.",
-                      "If trained well, I knew she would surpass the strongest one day.\n",
-                      "\"That was several years ago.\", she said. \"I have no doubt that's who you are looking for.\"",
-                      "\"Thank you Pontifex\", I said.",
-                      "She turns to Rayden. \"You have some people waiting for you at home.\"",
-                      "Rayden smiles. \"Thank you so much...\"",
-                      "Rayden's look becomes stern. \"" + player_name + ". Although my family are at home waiting for me,\"",
-                      "\"I will fight alongside you until the end.\"",
-                      "I smile and Rayden smiles back.",
-                      "\"This is only the beginning of our adventure...\""]
 
 
 # You made this for the start screen, so you don't need to change it. I made get_command() based on the play and quit command get.
@@ -412,7 +149,7 @@ def title_screen():
     if option.lower() == "new game":
         if os.path.exists("save_file.txt"):
             os.remove("save_file.txt")
-        setup_game(intro_story, 0.045, 1, 1)
+        setup_game(dialogue["t0"], 0.045, 1, 1)
     if option.lower() == "quit":
         sys.exit()
     if option.lower() == "load game":
@@ -453,7 +190,7 @@ def title_screen():
             destination = get_command(travel_destinations)
             enter_city(destination.capitalize())
         else:
-            setup_game(intro_story, 0.045, 1, 1)
+            setup_game(dialogue["t0"], 0.045, 1, 1)
     if option.lower() == "settings":
         global text_speed_multiplier
         global wait_speed_multiplier
@@ -481,52 +218,50 @@ def title_screen():
 # setup_game() takes in 4 variables. The story, which is the story var you want to be reading through are the lists that I shown above. text_speed is the time
 # in between each character which is typed out. The base speed is usually 0.05. wait_time is the time in between each line. You can increase this for a more
 # dramatic effect. output is called upon at the end, and if the output is a certain number than the output might do different things.
-def setup_game(story, text_speed, wait_time, output):
+def setup_game(story_x, text_speed, wait_time, output):
     global player_name
     global text_speed_multiplier
     global wait_speed_multiplier
     print("\n")
-    story_num = int(len(story))
-    story_current = 0
-    while story_current < story_num:
-        for char in story[story_current]:
-            sys.stdout.write(char)
-            sys.stdout.flush()
+    current_dialogue = story_x.format(player_name)
+    for char in current_dialogue:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        if char == "\n":
+            time.sleep(wait_time * wait_speed_multiplier)
+        else:
             time.sleep(text_speed * text_speed_multiplier)
-        time.sleep(wait_time * wait_speed_multiplier)
-        sys.stdout.write("\n")
-        story_current = story_current + 1
-    print("\n")
+    sys.stdout.write("\n")  # ????????????????????????????????????
     # he said it couldn't be done
     if output == 1:
         print("█" * 25)
         print("█ The adventure begins! █")
         print("█" * 25)
         time.sleep(2)
-        setup_game(tutorial_story, 0.06, 1.5, 2)
+        setup_game(dialogue["t1"], 0.06, 1.5, 2)
     if output == 2:
         global weapon_type
         print("Type \"Pickup\" to pickup the sword.")
         sword_check = input(">")
         if sword_check.lower() == "pickup":
-            setup_game(["You have picked up sword!", "It has automatically been equipped."], 0.04, 0.5, 0)
+            setup_game("You have picked up sword!\n It has automatically been equipped.", 0.04, 0.5, 0)
             current_commands.append("attack")
             weapon_type = 1
-            setup_game(tutorial_story2, 0.05, 0.75, 3)
+            setup_game(dialogue["t2"], 0.05, 0.75, 3)
         while sword_check.lower() != "pickup":
             print("Type \"Pickup\" to pickup the sword.")
             sword_check = input(">")
             if sword_check.lower() == "pickup":
-                setup_game(["You have picked up sword!", "It has automatically been equipped."], 0.04, 0.5, 0)
+                setup_game("You have picked up sword!\n It has automatically been equipped.", 0.04, 0.5, 0)
                 current_commands.append("attack")
                 weapon_type = 1
-                setup_game(tutorial_story2, 0.05, 0.75, 3)
+                setup_game(dialogue["t2"], 0.05, 0.75, 3)
     if output == 3:
         print("Tip: When using a command, make sure you spell the command properly. Or else nothing will happen.")
         enter_battle(worm, 1)
     if output == 4:
         setup_name(False)
-        setup_game(tutorial_story4, 0.05, 0.5, 5)
+        setup_game(dialogue["t4"], 0.05, 0.5, 5)
     if output == 5:
         global equipped_companion
         heal(20)
@@ -547,9 +282,9 @@ def setup_game(story, text_speed, wait_time, output):
         directions = ["left", "right"]
         going = get_command(directions)
         if going == "left":
-            setup_game(journey1_part1left, 0.05, 0.5, 8)
+            setup_game(dialogue["j1pl"], 0.05, 0.5, 8)
         if going == "right":
-            setup_game(journey1_part1right, 0.05, 0.5, 9)
+            setup_game(dialogue["j1pr"], 0.05, 0.5, 9)
     if output == 8:
         enter_battle(minotaur, 4)
     if output == 9:
@@ -628,25 +363,25 @@ def begin_journey():
         print("Buy a wooden shield before you start journeying!")
         return enter_city("Earth")
     if journey == 1:
-        setup_game(journey1_part1, 0.04, 0.5, 7)
+        setup_game(dialogue["j1p1"], 0.04, 0.5, 7)
         print("You can now set Aqua Mage as your active companion.")
         companions.append(2)
         journey += 1
         return print("Journey Complete!")
     if journey == 2:
-        setup_game(journey2_part1, 0.05, 0.5, 12)
+        setup_game(dialogue["j2p1"], 0.05, 0.5, 12)
         journey += 1
         print("You can now travel to Water Kingdom.")
         travel_destinations.append("water")
         return print("Journey Complete!")
     if journey == 3:
-        setup_game(journey3_part1, 0.05, 0.5, 14)
+        setup_game(dialogue["j3p1"], 0.05, 0.5, 14)
         journey += 1
         print("You can now set Thunder Knight as your active companion.")
         companions.append(3)
         return print("Journey Complete!")
     if journey == 4:
-        setup_game(journey4_part1, 0.05, 0.5, 16)
+        setup_game(dialogue["j4p1"], 0.05, 0.5, 16)
         journey += 1
         print("You have beaten Mooncaster Pontifex.")
         return print("Journey Complete!")
@@ -1196,29 +931,29 @@ def battle(enemy, output):
 def enter_battle(enemy, output):
     outcome = battle(enemy, output)
     if outcome == 1:
-        setup_game(tutorial_story3, 0.05, 0.5, 4)
+        setup_game(dialogue["t3"], 0.05, 0.5, 4)
     if outcome == 2:
-        setup_game(tutorial_story5, 0.05, 0.5, 6)
+        setup_game(dialogue["t5"], 0.05, 0.5, 6)
     if outcome == 3:
         enter_city("Earth")
     if outcome == 4:
-        setup_game(journey1_part2, 0.05, 0.5, 10)
+        setup_game(dialogue["j1p2"], 0.05, 0.5, 10)
     if outcome == 5:
-        setup_game(journey1_part3, 0.05, 0.5, 11)
+        setup_game(dialogue["j1p3"], 0.05, 0.5, 11)
     if outcome == 6:
-        setup_game(journey2_part2, 0.05, 0.5, 13)
+        setup_game(dialogue["j2p2"], 0.05, 0.5, 13)
     if outcome == 7:
-        setup_game(journey2_part3, 0.05, 0.5, 0)
+        setup_game(dialogue["j2p3"], 0.05, 0.5, 0)
     if outcome == 8:
-        setup_game(journey3_part2, 0.05, 0.5, 15)
+        setup_game(dialogue["j3p2"], 0.05, 0.5, 15)
     if outcome == 9:
-        setup_game(journey3_part3, 0.05, 0.5, 0)
+        setup_game(dialogue["j3p3"], 0.05, 0.5, 0)
     if outcome == 10:
-        setup_game(journey4_part2, 0.05, 0.5, 17)
+        setup_game(dialogue["j4p2"], 0.05, 0.5, 17)
     if outcome == 11:
-        setup_game(journey4_part3, 0.05, 0.5, 18)
+        setup_game(dialogue["j4p3"], 0.05, 0.5, 18)
     if outcome == 12:
-        setup_game(journey4_part4, 0.05, 0.5, 0)
+        setup_game(dialogue["j4p4"], 0.05, 0.5, 0)
 
 
 # heal() will heal you for a certain amount. player_hp cannot be bigger than player_max_hp.
