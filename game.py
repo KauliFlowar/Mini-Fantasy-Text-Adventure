@@ -231,7 +231,7 @@ def setup_game(story_x, text_speed, wait_time, output):
             time.sleep(wait_time * wait_speed_multiplier)
         else:
             time.sleep(text_speed * text_speed_multiplier)
-    sys.stdout.write("\n")  # ????????????????????????????????????
+    sys.stdout.write("\n")
     # he said it couldn't be done
     if output == 1:
         print("█" * 25)
@@ -521,8 +521,8 @@ w5 = Item("Aqua Staff", "weapon", 5, 350, "Let the power flow within you.", 0, 1
 s3 = Item("Heavy Shield", "shield", 3, 400, default_buy_phrase, 105, 14, 17)
 w6 = Item("Bloody War Axe", "weapon", 6, 1000, default_buy_phrase, 0, 23, 29)
 s4 = Item("Mighty Shield", "shield", 4, 1000, default_buy_phrase, 180, 16, 21)
-w7 = Item("Spear of Water", "weapon", 7, 2000, "", 0, 27, 37)
-s5 = Item("", "shield", 5, 2000, "", 280, 18, 23)
+w7 = Item("Spear of Water", "weapon", 7, 2000, "Drown your enemies out with it.", 0, 27, 37)
+s5 = Item("Compound Shield", "shield", 5, 2000, "No enemy shall break this sturdy shield.", 280, 18, 23)
 
 
 def enter_shop(city):
