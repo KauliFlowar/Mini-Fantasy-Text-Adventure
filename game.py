@@ -385,12 +385,6 @@ def begin_journey():
         journey += 1
         print("You have beaten Mooncaster Pontifex.")
         return print("Journey Complete!")
-    if journey == 5:
-        setup_game(dialogue["j5p1"], 0.05, 0.5, 19)
-        journey += 1
-        print("You can now set Inventor as your active companion.")
-        companions.append(4)
-        return print("Journey Complete!")
 
 
 # Swaps companions. Same case as begin_journey(). current_city allows the command to exit once the command is done.
