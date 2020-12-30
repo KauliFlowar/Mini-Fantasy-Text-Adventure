@@ -700,6 +700,15 @@ def battle(enemy, output):
     enemy_ability = enemy[4]
     enemy_dodge_chance = enemy[5]
     enemy_gold_drop = enemy[6]
+    enemy_horde_count = 1
+    current_horde_count = 1
+    try:
+        if enemy[7] > 1:
+            print("Horde Battle!")
+            enemy_horde_count = enemy[7]
+            current_horde_count = enemy[7]
+    except IndexError:
+        pass
     enemy_extra_damage = 0
     permanent_block = 0
     # weapons
@@ -830,10 +839,14 @@ def battle(enemy, output):
         enemy_damage = (randint(enemy_minATK, enemy_maxATK) - blocked_damage - permanent_block) + enemy_extra_damage
         if enemy_damage < 0:
             enemy_damage = 0
-        player_hp = player_hp - enemy_damage
+        player_hp = player_hp - enemy_damage * current_horde_count
         if current_cooldown > 0:
             current_cooldown -= 1
-        print(enemy_name + " attacked you for " + str(enemy_damage) + " damage!")
+        for h in range(current_horde_count):
+            if current_horde_count == 1:
+                print(enemy_name + " attacked you for " + str(enemy_damage) + " damage!")
+            else:
+                print(enemy_name + str(h) + " attacked you for " + str(enemy_damage) + " damage!")
         if player_hp <= 0:
             print("You have died!")
             time.sleep(2)
