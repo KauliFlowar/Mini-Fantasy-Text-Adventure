@@ -590,6 +590,10 @@ def enter_shop(city):
         w6.do_shop()
     if buy == "mighty shield":
         s4.do_shop()
+    if buy == "spear of water":
+        w7.do_shop()
+    if buy == "compound shield":
+        s5.do_shop()
     if buy == items[-1]:
         print("Come again!")
     enter_city(city)
