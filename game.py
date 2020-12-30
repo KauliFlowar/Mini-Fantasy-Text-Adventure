@@ -388,7 +388,7 @@ def begin_journey():
     if journey == 5:
         setup_game(dialogue["j5p1"], 0.05, 0.5, 19)
         journey += 1
-        print("You can now set Inventor as your active companion.")
+        print("You can now set Oro as your active companion.")
         companions.append(4)
         return print("Journey Complete!")
 
@@ -567,6 +567,9 @@ def enter_shop(city):
     if journey >= 4:
         print("Bloody War Axe - 1000 gold")
         print("Mighty Shield - 1000 gold")
+    if journey >= 5:
+        print("Spear of Water - 2000 gold")
+        print("Compound Shield - 2000 gold")
     print("Type \"Leave\" to leave.")
     buy = get_command(items).lower()
     if buy == "wooden shield":
